@@ -8,7 +8,7 @@ import Body from "./Header";
 import ReactCountryFlag from "react-country-flag";
 import { Menu, Dropdown } from 'antd';
 import myClasses from "./Left.module.css";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+//import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 //import logo from "../../assets/default.png";
 //import { ResumeContext } from "../../contexts/ResumeContext";
 // import { makeStyles } from "@material-ui/core/styles";
@@ -138,8 +138,8 @@ function Left() {
               fontWeight: 'normal',
               height: '0px'
             }} >JS Developer</h3>
-          </span>s
-        </div>s
+          </span>
+        </div>
 
         <Dropdown overlay={menu} placement="bottomCenter"
           trigger="click"
