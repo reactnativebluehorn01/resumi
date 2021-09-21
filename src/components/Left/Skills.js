@@ -116,32 +116,32 @@ function EducationNew() {
         </div>
         <div className="d-flex flex-wrap">
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Interpersonal Communication <AddIcon />
+            Interpersonal Communication <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Leadership and Teamwork <AddIcon />
+            Leadership and Teamwork <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Effective Team Leader <AddIcon />
+            Effective Team Leader <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Ability to Multitask <AddIcon />
+            Ability to Multitask <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
             Creativity Thinking Skills
-            <AddIcon />
+            <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Collaboration & Teamwork <AddIcon />
+            Collaboration & Teamwork <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Customer Relation <AddIcon />
+            Customer Relation <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Creative Thinking <AddIcon />
+            Creative Thinking <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
           <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Good Communication <AddIcon />
+            Good Communication <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
           </a>
         </div>
       </div>

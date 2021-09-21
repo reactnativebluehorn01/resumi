@@ -129,17 +129,18 @@ function Left() {
   return (
     <div className="left">
 
-      <div style={{ width: '200px', marginLeft: '38%' }} >
-        <div className='row'>
-          <span className='alignCenter1'>
-            <h3 style={{
-              textTransform: 'none', paddingTop: '28px',
-              fontFamily: 'TT Commons,systemUui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
-              fontSize: 25,
-              fontWeight: 'normal',
-              height: '0px'
-            }} >JS Developer</h3>
-          </span>
+      <div style={{ width: '200px', marginLeft: '35%' }} >
+        <div>
+        <span className='alignCenter1'>
+          <h3 className='untitled' style={{
+            textTransform: 'none', paddingTop: '40px',
+            fontFamily: 'TT Commons,systemUui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
+            fontSize:'1.5rem',
+            fontWeight: 'normal',
+            height: '0px'
+            
+          }} >JS Developer</h3>
+        </span>
         </div>
 
         <Dropdown overlay={menu} placement="bottomCenter"
@@ -148,12 +149,12 @@ function Left() {
           {languages ?
             <div className='alignCenter2'>
 
-              <ReactCountryFlag
+         <ReactCountryFlag
                 countryCode={languages[flagIndex].code}
                 svg
                 style={{
-                  width: '1.6em',
-                  height: '1.2em',
+                  width: '1rem',
+                  height: '1rem',
                   marginBottom: '15px'
                 }}
                 title={languages[flagIndex].title}
@@ -162,7 +163,7 @@ function Left() {
                 color: '#98A1B4',
                 fontFamily: 'Noto Sans,sans-serif',
                 fontSize: 13.5,
-                paddingLeft: '10px',
+                paddingLeft: '8px',
               }}>{languages[flagIndex].name}</span>
 
             </div>
