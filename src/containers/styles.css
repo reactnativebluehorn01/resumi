@@ -52,11 +52,24 @@ width: 98vw;
     color:#b2bec3 ;
     
     }
+    .js-title{
+        color: white;
+        font-size: 1.3rem !important;
+        font-weight: 600;
+        padding-bottom: 0px !important;
+    }
+    .js-title:hover{
+        color: #2980B9;
+    }
+
     .pencilIcon-div{
     font-size: 1.3rem !important;
     margin-top: 23px;
     font-weight: 600;
     padding-bottom: 0px !important;
+    }
+    .pencilIcon-div:hover{
+        color: #2980B9;
     }
     /* .pencilIcon-div2{
     font-size: 1.3rem !important;
@@ -147,6 +160,8 @@ min-height: 100vh;
   
 }
 .alignCenter2{
+    position: relative;
+    right: 20px;
     text-align: center;
     margin-top: 25px;
    flex-direction: row;

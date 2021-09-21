@@ -8,7 +8,7 @@ import Body from "./Header";
 import ReactCountryFlag from "react-country-flag";
 import { Menu, Dropdown } from 'antd';
 import myClasses from "./Left.module.css";
-
+import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 //import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 //import logo from "../../assets/default.png";
 //import { ResumeContext } from "../../contexts/ResumeContext";
@@ -137,9 +137,12 @@ function Left() {
             fontFamily: 'TT Commons,systemUui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
             fontSize:'1.5rem',
             fontWeight: 'normal',
-            height: '0px'
+            height: '0px',
+            display:'flex',
+            flexDirection:'row',
+            cursor:'pointer'
             
-          }} >JS Developer</h3>
+          }} >JS Developer <span>  <CreateOutlinedIcon className="js-title" /></span></h3>
         </span>
         </div>
 
@@ -163,7 +166,7 @@ function Left() {
                 color: '#98A1B4',
                 fontFamily: 'Noto Sans,sans-serif',
                 fontSize: 13.5,
-                paddingLeft: '8px',
+                paddingLeft: '5px',
               }}>{languages[flagIndex].name}</span>
 
             </div>

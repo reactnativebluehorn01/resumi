@@ -104,7 +104,7 @@ function SocialLinks() {
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
-        <p style={{ marginTop: -15, fontSize: 14, color: "#98A1B3" }}>
+        <p style={{ marginTop: -5, fontSize: 14, color: "#98A1B3" }}>
           You can add links to websites you want hiring managers to see! Perhaps
           It will be a link to your portfolio, LinkedIn profile, or personal
           website
