@@ -36,4 +36,4 @@ v.2.0.0
 
 ## Authors
 
-* **Wasiq Faiz Afzal Ahmad** - [lucasmrl](https://github.com/lucasmrl)
+* **Wasiq Faiz Afzal Ahmad** - [Faiz](https://github.com/reactnativebluehorn01/)
