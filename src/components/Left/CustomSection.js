@@ -83,11 +83,12 @@ function ExtraCuriActivities({ data, id }) {
         // setBtnText("Update");
     };
     return (
+       <>
         <div>
             <div className='heading'>
                 <div className="d-flex align-items-center py-1 Main-title">
-                    <div className="mt-3">
-                        <h2 className='MainPoints'>{content.addSection.functionTitle ? content.addSection.functionTitle : 'UnTitled'}</h2>
+                    <div className="mt-1 ">
+                        <h2 className='MainPoints' style={{paddingLeft:'23px'}} >{content.addSection.functionTitle ? content.addSection.functionTitle : 'Untitled'}</h2>
                     </div>
                     <div className="mx-1">
                         <CreateOutlinedIcon className="pencilIcon-div" />
@@ -201,6 +202,7 @@ function ExtraCuriActivities({ data, id }) {
 
 
         </div>
+       </>
     );
 }
 

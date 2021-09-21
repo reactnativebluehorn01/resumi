@@ -87,7 +87,7 @@ function EducationNew() {
   const panelHeader = (
     <div className="">
       {content.education ? (
-        <h4>
+        <h4 style={{fontSize:'1rem'}}>
           {content.education.degree} at {content.education.school}
         </h4>
       ) : (
@@ -135,14 +135,14 @@ function EducationNew() {
             <h2 className="MainPoints">Education </h2>
           </div>
           <div className="mx-1">
-            {" "}
+            
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
         <p style={{ marginTop: -15, fontSize: 14, color: "#98A1B3" }}>
-          {" "}
+          
           If relevant, include your most recent educational and achivements and
-          the dates here{" "}
+          the dates here
         </p>
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -217,8 +217,8 @@ function EducationNew() {
                                     <Row className={classes.rowWidth}>
                                       <Col span={11}>
                                         <span className={classes.title}>
-                                          Start & End Date{" "}
-                                          <HelpOutlineIcon fontSize="small" />{" "}
+                                          Start & End Date
+                                          <HelpOutlineIcon fontSize="small" />
                                         </span>
                                         <Row>
                                           <Col span={11}>
@@ -246,7 +246,7 @@ function EducationNew() {
                                               inputRef={register}
                                               onChange={handleSubmit(onSubmit)}
                                               style={{ width: "100%" }}
-                                            />{" "}
+                                            />
                                           </Col>
                                         </Row>
                                       </Col>
@@ -379,8 +379,8 @@ function EducationNew() {
                             <Row className={classes.rowWidth}>
                               <Col span={11}>
                                 <span className={classes.title}>
-                                  Start & End Date{" "}
-                                  <HelpOutlineIcon fontSize="small" />{" "}
+                                  Start & End Date
+                                  <HelpOutlineIcon fontSize="small" />
                                 </span>
                                 <Row>
                                   <Col span={11}>
@@ -408,7 +408,7 @@ function EducationNew() {
                                       inputRef={register}
                                       onChange={handleSubmit(onSubmit)}
                                       style={{ width: "100%" }}
-                                    />{" "}
+                                    />
                                   </Col>
                                 </Row>
                               </Col>
