@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Collapse } from "antd";
+//import { Collapse } from "antd";
 //import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 //import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
@@ -15,55 +15,35 @@ import CustomSection from "./CustomSection";
 
 // import React, { useContext,useState } from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
+//import { makeStyles } from "@material-ui/core/styles";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 //import classes from "./Left.module.css";
-import { useForm } from "react-hook-form";
+//import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 //import TextField from "@material-ui/core/TextField";
-import { createMuiTheme } from "@material-ui/core/styles"; //MuiThemeProvider
+//import { createMuiTheme } from "@material-ui/core/styles"; //MuiThemeProvider
 
-const { Panel } = Collapse;
+//const { Panel } = Collapse;
 
-const useStyles = makeStyles({
-  root: {
-    color: "#2196F3",
-    float: "left",
-  },
-  label: {
-    textTransform: "capitalize",
-    // marginRight:'500px' ,
-    float: "inline-start",
-    justifyContent: "flex-start",
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     color: "#2196F3",
+//     float: "left",
+//   },
+//   label: {
+//     textTransform: "capitalize",
+//     // marginRight:'500px' ,
+//     float: "inline-start",
+//     justifyContent: "flex-start",
+//   },
+// });
 
 function EducationNew() {
   // const btnclass = useStyles();
   const { content, updateAddSection, removeFakeData } =
     useContext(ResumeContext);
 
-  const defaultTheme = createMuiTheme();
 
-  Object.assign(defaultTheme, {
-    overrides: {
-      MUIRichTextEditor: {
-        root: {
-          marginLeft: 5,
-          marginTop: 10,
-          width: "100%",
-          backgroundColor: "#F2F5FA",
-          borderRadius: "5px",
-          padding: "5px",
-        },
-        editor: {
-          overFlow: "wrap",
-          minHeight: "200px",
-          textIndent: "15px",
-        },
-      },
-    },
-  });
 
   const [activitiesFlag, setActivitiesFlag] = useState(
     content.addSection.activities ? content.addSection.activities : false
@@ -139,13 +119,13 @@ function EducationNew() {
     <div>
       {content.contextArray.length
         ? content.contextArray.map((item) => {
-            console.log("item ==> ", item);
-            return (
-              <div key={item.customSectionId}>
-                <CustomSection data={item} id={item.customSectionId} />
-              </div>
-            );
-          })
+          console.log("item ==> ", item);
+          return (
+            <div key={item.customSectionId}>
+              <CustomSection data={item} id={item.customSectionId} />
+            </div>
+          );
+        })
         : ""}
 
       <div className="header">

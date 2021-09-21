@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 
 function EducationNew() {
   const btnclass = useStyles();
-  const { content, updateEducationData, updateSkills, removeFakeData } =
+  const { content, updateSkills, removeFakeData } =
     useContext(ResumeContext);
   const [addEdu, setEdu] = useState([]);
   //const [characters, updateCharacters] = useState(addEdu);
@@ -41,9 +41,9 @@ function EducationNew() {
   function callback(key) {
     console.log(key);
   }
-  const save = (data) => {
-    console.log(data);
-  };
+  // const save = (data) => {
+  //   console.log(data);
+  // };
 
   const handleAddSkills = () => {
     console.log("addEdu >>>>>>>>", addEdu);
@@ -115,33 +115,33 @@ function EducationNew() {
           </div>
         </div>
         <div className="d-flex flex-wrap">
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Interpersonal Communication <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Interpersonal Communication <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Leadership and Teamwork <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Leadership and Teamwork <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Effective Team Leader <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Effective Team Leader <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Ability to Multitask <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Ability to Multitask <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
             Creativity Thinking Skills
-            <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+            <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Collaboration & Teamwork <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Collaboration & Teamwork <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Customer Relation <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Customer Relation <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Creative Thinking <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Creative Thinking <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
-          <a className="btn btn-light btn-div m-1" onClick={handleAddSkills}>
-            Good Communication <AddIcon style={{fontSize:'1.1rem',color:'grey ',fontWeight:'bold'}} />
+          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+            Good Communication <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
           </a>
         </div>
       </div>
@@ -157,7 +157,7 @@ function EducationNew() {
               {addEdu.map((item, index) => (
                 <>
                   <div className="d-flex Main-title">
-                  <div>
+                    <div>
                       <DragIndicatorIcon className="pencilIcon-div mt-4" />
                     </div>
                     <div className="w-100">
@@ -234,7 +234,7 @@ function EducationNew() {
                                 )}
                               </Draggable>
                             </div>
-                           
+
                           </div>
                         </>
                       )}
@@ -312,7 +312,7 @@ function EducationNew() {
                         </>
                       )}
                     </div>
-                   <div>
+                    <div>
                       <DeleteOutlineOutlinedIcon
                         onClick={() => handleDelete(item)}
                         className="pencilIcon-div mt-4"

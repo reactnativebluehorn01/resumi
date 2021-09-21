@@ -156,7 +156,7 @@ function HeaderP() {
 
       <Row className="row">
         <Col span={7}><strong>SKILLS</strong></Col>
-        <Col span={10}><strong>HTML&CSS</strong></Col>
+        <Col span={10}>{content.skills.skillName} {content.skills.level}</Col>
         <Col span={7}>Skill 5</Col>
       </Row>
 
@@ -165,11 +165,7 @@ function HeaderP() {
         <Col span={10}>C++</Col>
         <Col span={7}>JavaScript</Col>
       </Row>
-      <Row className="row">
-        <Col span={7}></Col>
-        <Col span={10}>Skill 1</Col>
 
-      </Row>
 
       <hr className="divideLine" />
       {/* ********************* Hobbies ***************** */}
