@@ -39,9 +39,14 @@ function EducationNew() {
   const [addEdu, setEdu] = useState([]);
   const [characters, updateCharacters] = useState(addEdu);
   const { content, updateEducationData, removeFakeData } =
-    useContext(ResumeContext);
+  useContext(ResumeContext);
   const { register, handleSubmit } = useForm();
   const defaultTheme = createTheme();
+  const dataLocal = JSON.parse(localStorage.getItem("dataLocal"))
+  useEffect(()=>{
+    dataLocal.education && handleAddEducation()
+  },[])
+
   Object.assign(defaultTheme, {
     overrides: {
       MUIRichTextEditor: {
@@ -91,7 +96,7 @@ function EducationNew() {
           {content.education.degree} at {content.education.school}
         </h4>
       ) : (
-        <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
       )}
 
       {content.education && content.education.startDate ? (
@@ -124,6 +129,7 @@ function EducationNew() {
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
   };
+  // console.log(dataLocal.education)
   return (
     <div>
       <div className="heading">
@@ -135,14 +141,14 @@ function EducationNew() {
             <h2 className="MainPoints">Education </h2>
           </div>
           <div className="mx-1">
-            {" "}
+          
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
         <p style={{ marginTop: -15, fontSize: 14, color: "#98A1B3" }}>
-          {" "}
+         
           If relevant, include your most recent educational and achivements and
-          the dates here{" "}
+          the dates here
         </p>
       </div>
       <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -316,11 +322,9 @@ function EducationNew() {
                               <DeleteOutlineOutlinedIcon
                                 onClick={() => handleDelete(item)}
                                 className="pencilIcon-div mt-4"
-                                
                               />
                             </div>
                           </div>
-                         
                         </>
 
                         {/* {addEdu.length === 2 && (
@@ -462,7 +466,6 @@ function EducationNew() {
 
                     )} */}
                       </div>
-                     
                     </div>
                   ))
                 : ""}
