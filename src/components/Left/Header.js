@@ -200,7 +200,7 @@ function Header() {
         )}
       </div>
       <div className="d-flex align-items-center py-1 Main-title2">
-        <div className="mt-3">
+        <div className="mt-1">
           <h2 className='MainPoints'>Personal Details </h2>
         </div>
 
@@ -494,7 +494,7 @@ function Header() {
         <div className='' style={{ marginBottom: '20px' }}>
           <div>
             <div className="d-flex align-items-center Main-title2">
-              <div className="mt-3">
+              <div>
                 <h2 className='MainPoints'>Professional Summary </h2>
               </div>
               <div className="mx-1">
