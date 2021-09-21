@@ -17,10 +17,10 @@ import CustomSection from './CustomSection';
 
 import { makeStyles } from "@material-ui/core/styles";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
-import classes from "./Left.module.css";
+//import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
-import TextField from "@material-ui/core/TextField";
+//import TextField from "@material-ui/core/TextField";
 import { createMuiTheme } from "@material-ui/core/styles"; //MuiThemeProvider
 
 const { Panel } = Collapse;
@@ -40,28 +40,9 @@ const useStyles = makeStyles({
 
 function EducationNew() {
   // const btnclass = useStyles();
-  const { content, updateEducationData, updateAddSection, removeFakeData } =
+  const { content, updateAddSection, removeFakeData } =
     useContext(ResumeContext);
-  const [addEdu, setEdu] = useState([]);
 
-  const [characters, updateCharacters] = useState(addEdu);
-
-  function callback(key) {
-    console.log(key);
-  }
-  const save = (data) => {
-    console.log(data);
-  };
-
-  const handleAddSkills = () => {
-    // console.log("addEdu >>>>>>>>", addEdu);
-
-    // setShowEdu(true);
-    // const addEduValue = addEdu;
-    // addEdu.push([...addEdu, addEdu + 1]);
-    setEdu([...addEdu, addEdu + 1]);
-    // setEdu([...addEdu, addEdu + 1]);
-  };
 
   const defaultTheme = createMuiTheme();
 
@@ -144,38 +125,14 @@ function EducationNew() {
 
 
 
-  const handleOnDragEnd = (result) => {
-    if (!result.destination) return;
-    const items = Array.from(addEdu);
-    const [reorderedItems] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItems);
-    updateCharacters(items);
-  };
+
 
 
   // const [btnText, setBtnText] = useState("Add");
-  const panelHeader = (
-    <div className="">
-      <h4>(Not Specified)</h4>
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        Mar 2019 - Mar 2021
-      </p>
-    </div>
-  );
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    // const addEduValue = [];
-    // addEduValue.push(data);
-    removeFakeData();
-    updateEducationData(data, addEdu.length);
-  };
 
 
 
-  const handleDelete = (delFile) => {
-    const newEdu = addEdu.filter((items) => items !== delFile);
-    setEdu(newEdu);
-  };
+
   return (
     <div>
 

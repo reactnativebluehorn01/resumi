@@ -113,10 +113,6 @@ function Header() {
   };
 
 
-
-
-
-
   const handleDisplayClick = () => {
     setBtnDisplay(false)
     setBtnHide(true)
@@ -579,16 +575,7 @@ function Header() {
           <Refrences />
           : ''}
 
-        {content.contextArray.length ?
-          content.contextArray.map((item) => {
-            console.log('item ==> ', item)
-            return <>
-              <span> item is </span>
-            </>
-          }
-          )
 
-          : ''}
 
 
 
