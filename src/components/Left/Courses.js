@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Collapse, Col, Row } from "antd";
+import { Collapse, Col, Row, Space } from "antd";
 //import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
@@ -12,6 +12,12 @@ import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
+
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -69,7 +75,7 @@ function Courses() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-      <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
+      <h4 style={{ fontSize: '1rem' }}>(Not Specified)</h4>
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
         Mar 2019 - Mar 2021{" "}
       </p>
@@ -104,93 +110,122 @@ function Courses() {
       {addEdu.map((item, index) => (
         <>
           <div className='d-flex Main-title'>
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div mt-4" />
-          </div>
-           <div className='w-100'>
-           <div
-              key={index}
-              style={{
-                border: "0.5px solid #b3d4fc",
-                borderRadius: "5px",
-                marginBottom: 10,
-              }}
-            >
-              <Collapse
-                accordion
-                onChange={callback}
-                expandIconPosition="right"
-                ghost
+            <div>
+              <DragIndicatorIcon className="pencilIcon-div mt-4" />
+            </div>
+            <div className='w-100'>
+              <div
+                key={index}
+                style={{
+                  border: "0.5px solid #b3d4fc",
+                  borderRadius: "5px",
+                  marginBottom: 10,
+                }}
               >
-                <Panel header={panelHeader} key="1">
-                  <Row className={classes.rowWidth}>
-                    <Col span={11}>
-                      <span className={classes.title}>Course</span>
-                      <TextField
-                        id="filled-basic"
-                        // label="City"
-                        name="course"
-                        variant="filled"
-                        defaultValue={content.courses.course}
-                        inputRef={register}
-                        onChange={handleSubmit(onSubmit)}
-                        style={{ width: "100%" }}
-                      />
-                    </Col>
-                    <Col span={2}></Col>
-                    <Col span={11}>
-                      <span className={classes.title}>Institution</span>
+                <Collapse
+                  accordion
+                  onChange={callback}
+                  expandIconPosition="right"
+                  ghost
+                >
+                  <Panel header={panelHeader} key="1">
+                    <Row className={classes.rowWidth}>
+                      <Col span={11}>
+                        <span className={classes.title}>Course</span>
+                        <TextField
+                          id="filled-basic"
+                          // label="City"
+                          name="course"
+                          variant="filled"
+                          defaultValue={content.courses.course}
+                          inputRef={register}
+                          onChange={handleSubmit(onSubmit)}
+                          style={{ width: "100%" }}
+                        />
+                      </Col>
+                      <Col span={2}></Col>
+                      <Col span={11}>
+                        <span className={classes.title}>Institution</span>
 
-                      <TextField
-                        id="filled-basic"
-                        // label="State"
-                        name="institution"
-                        variant="filled"
-                        defaultValue={content.courses.institution}
-                        inputRef={register}
-                        onChange={handleSubmit(onSubmit)}
-                        style={{ width: "100%" }}
-                      />
-                    </Col>
-                  </Row>
-                  <Row className={classes.rowWidth}>
-                    <Col span={11}>
-                      <span className={classes.title}>
-                        Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
-                      </span>
-                      <Row>
-                        <Col span={11}>
-                          <TextField
+                        <TextField
+                          id="filled-basic"
+                          // label="State"
+                          name="institution"
+                          variant="filled"
+                          defaultValue={content.courses.institution}
+                          inputRef={register}
+                          onChange={handleSubmit(onSubmit)}
+                          style={{ width: "100%" }}
+                        />
+                      </Col>
+                    </Row>
+                    <Row className={classes.rowWidth}>
+                      <Col span={11}>
+                        <span className={classes.title}>
+                          Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                        </span>
+                        <Row>
+                          <Col span={11}>
+
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                              <DesktopDatePicker
+                                //  label="Date desktop"
+                                inputFormat="MM/dd/yyyy"
+                                // value={value}
+                                // onChange={handleChange}
+                                renderInput={(params) => <TextField {...params}
+                                  id="filled-basic"
+                                  label="MM/YY"
+                                  name="startDate"
+                                  variant="filled"
+                                  defaultValue={content.courses.startDate}
+                                  inputRef={register}
+                                  onChange={handleSubmit(onSubmit)}
+                                  style={{ width: "100%" }}
+                                />}
+                              />
+                            </LocalizationProvider>
+
+
+
+
+
+
+
+
+
+
+                            {/* <TextField
                             id="filled-basic"
-                            // label="City"
+                             label="MM/YY"
                             name="startDate"
                             variant="filled"
                             defaultValue={content.courses.startDate}
                             inputRef={register}
                             onChange={handleSubmit(onSubmit)}
                             style={{ width: "100%" }}
-                          />
-                        </Col>
-                        <Col span={2}></Col>
-                        <Col span={11}>
-                          <TextField
-                            id="filled-basic"
-                            // label="City"
-                            name="endDate"
-                            variant="filled"
-                            defaultValue={content.courses.endDate}
-                            inputRef={register}
-                            onChange={handleSubmit(onSubmit)}
-                            style={{ width: "100%" }}
-                          />{" "}
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Panel>
-              </Collapse>
+                          /> */}
+                          </Col>
+                          <Col span={2}></Col>
+                          <Col span={11}>
+                            <TextField
+                              id="filled-basic"
+                              label="MM/YY"
+                              name="endDate"
+                              variant="filled"
+                              defaultValue={content.courses.endDate}
+                              inputRef={register}
+                              onChange={handleSubmit(onSubmit)}
+                              style={{ width: "100%" }}
+                            />{" "}
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Panel>
+                </Collapse>
+              </div>
             </div>
-           </div>
             <div>
               <DeleteOutlineOutlinedIcon
                 onClick={() => handleDelete(item)}
