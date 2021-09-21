@@ -96,14 +96,14 @@ function EmploymentHistory() {
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className="MainPoints">Employment History</h2>
+            <h2 className="MainPoints">Employment History </h2>
           </div>
           <div className="mx-1">
             {" "}
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
-        <p style={{ marginTop: -15, fontSize: 14, color: "#98A1B3" }}>
+        <p style={{ marginTop: -5, fontSize: 14, color: "#98A1B3" }}>
           Include your 10 years of relevant experience and date in this section.
           List Your most recent position here.
         </p>

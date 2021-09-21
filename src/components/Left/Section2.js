@@ -160,7 +160,7 @@ function EducationNew() {
 
         <div className="container-fluid align-content-center p-0">
           <div className="row m-0 p-0">
-            <div className="col-6">
+            <div className="col-6" style={{margin:'0px 0px 0px -24px '}}>
               <div
                 onClick={onChangesCustomSection}
                 style={{ cursor: "pointer" }}

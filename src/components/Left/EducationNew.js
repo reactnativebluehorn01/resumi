@@ -144,7 +144,7 @@ function EducationNew() {
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
-        <p style={{ marginTop: -15, fontSize: 14, color: "#98A1B3" }}>
+        <p style={{ marginTop: -5, fontSize: 14, color: "#98A1B3" }}>
           If relevant, include your most recent educational and achivements and
           the dates here
         </p>
