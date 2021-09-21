@@ -96,7 +96,7 @@ function EmploymentHistory() {
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className="MainPoints">Employment History </h2>
+            <h2 className="MainPoints">Employment History</h2>
           </div>
           <div className="mx-1">
             {" "}
@@ -109,7 +109,7 @@ function EmploymentHistory() {
         </p>
       </div>
       {addEdu.map((item, index) => (
-        <div className="d-flex">
+        <div className="d-flex Main-title">
           <div>
             <DragIndicatorIcon className="pencilIcon-div mt-4" />
           </div>
@@ -250,15 +250,11 @@ function EmploymentHistory() {
             </div>
           </div>
           <div>
-            {" "}
-            <a
-              className="delete-div"
-              type="button"
-              onClick={() => handleDelete(item)}
-            >
-              <DeleteOutlineOutlinedIcon />
-            </a>
-          </div>
+                      <DeleteOutlineOutlinedIcon
+                        onClick={() => handleDelete(item)}
+                        className="pencilIcon-div mt-4"
+                      />
+                    </div>
         </div>
       ))}
 
