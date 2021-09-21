@@ -41,12 +41,21 @@ function EducationP() {
       <div className="">
         {title}
         <p>
-          <strong>{contentUse.education.institution} </strong>{" "}
+          <strong>{contentUse.education.school} </strong>{" "}
+          {contentUse.education.degree}
+        </p>
+        <p>
+          {contentUse.education.startDate} {contentUse.education.endDate}
+        </p>
+        <p>
           {contentUse.education.city}
         </p>
         <p>
-          {contentUse.education.major} {contentUse.education.gradYear}
+          {contentUse.education.summary}
         </p>
+
+
+
         {bulletEducation}
       </div>
     </div>

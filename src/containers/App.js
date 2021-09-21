@@ -1,6 +1,7 @@
 import React from "react";
 import Basic from "../components/Left/Basic";
 import Right from "../components/Right/Right";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.css";
 import ResumeContextProvider from "../contexts/ResumeContext";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";

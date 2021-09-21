@@ -1,83 +1,231 @@
+/* @import '~antd/dist/antd.css'; */
+
+
 h2 {
-  font-family: "Roboto", serif;
-  color: #2e4053;
+    font-family: "Roboto", serif;
+    color: #2e4053;
+    font-size: 22px;
+    line-height: 28px;
+    padding: 15px 0px;
 }
+.profileSummary {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgb(37, 184, 105);
+    /* margin-right: 6px; */
+}
+.suggestion{
+    /* position: -webkit-sticky; */
+    position: sticky;
+    top: 0px;
+    padding-top: 20px;
+    z-index: 2;
+    background-color: #FFFFFF;
+}
+.suggestionInfo{
+    background-color:#F2F5FA;
+    position: absolute;
+    min-width: 708px;
+    padding: 20px;
+    height:auto;
+    z-index: 10;
+    border-radius: 5px;
+    box-shadow: 5px 10px 18px #888888;
+   
+
+}
+span:hover {
+    color: #2296F3 !important;
+  }
+  b:hover {
+    color: #2296F3 !important;
+
+  }
+.suggestionInfoRow{
+    margin-bottom: 10px;
+}
+ .suggestionIcon {
+    width: 26px;
+    height: 20px;
+    color: rgb(37, 184, 105) !important;
+    margin-left: 16px;
+    position: relative;
+    bottom: 2px;
+    cursor: pointer;
+    transition: background-color 0.1s ease 0s;
+ }
+ .uploadPhotoText{
+    font-size: 16px;
+    line-height: 20px;
+    color: rgb(152, 161, 179);
+    max-width: 150px;
+    margin-top: 20px;
+    margin-left: 20px;
+ }
+ 
+
 
 h4 {
-  font-family: "Roboto", serif;
-  color: #2e4053;
+    font-family: "Roboto", serif;
+    color: #2e4053;
 }
 
 hr {
-  width: 95%;
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    width: 95%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 img {
-  width: 120px;
-  margin-top: 15px;
-  margin-left: 20px;
+    width: 120px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.rowWidth {
+    padding: 2px 2px;
+    margin-bottom: 20px;
+    }
+/* .zeroPadding{
+    padding: 10px;
+    margin-bottom: 20px;
+} */
+
+.img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: rgb(242, 245, 250);
+    color: rgb(207, 214, 230);
+    border-color: rgb(207, 214, 230);
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    fill: #CFD6E6;
+}
+.ant-upload.ant-upload-select-picture-card {
+    width: 10px !important;
+    height: 104px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+    vertical-align: top;
+    background-color: #fafafa;
+    border: 1px dashed #d9d9d9;
+    border-radius: 2px;
+    cursor: pointer;
+    -webkit-transition: border-color 0.3s;
+    transition: border-color 0.3s;
+}
+.customSection ::before{
+    content: "";
+    margin-right: 3px;
+    display:inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(https://resume.io/packs/media/resume-editor/section-custom-b586e0c5.svg);
+}
+
+
+/* svg {
+   
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        background-color: rgb(242, 245, 250);
+        color: rgb(207, 214, 230);
+        border-color: rgb(207, 214, 230);
+        border-style: solid;
+        border-width: 1px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        fill: #CFD6E6;
+} */
+
+
+
+.title {
+    font-size: 16px;
+    line-height: 20px;
+    color: rgb(152, 161, 179);
 }
 
 .topLeft {
-  display: flex;
-  padding: 15px;
-  text-align: center;
-  justify-content: space-evenly;
+    display: flex;
+    padding: 15px;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.mainMenu {
+    display: flex;
+    padding: 15px;
+    text-align: center;
+    justify-content: space-evenly;
 }
 
 .headerLeft {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .templatesH2 {
-  margin-left: 15px;
+    margin-left: 15px;
 }
 
 .hr2 {
-  width: 90%;
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding-top: 20px;
+    width: 90%;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 20px;
 }
 
 .formsSection {
-  margin: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
 }
 
 .formStyle {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .img2 {
-  width: 120px;
-  margin-top: 15px;
-  margin-left: 20px;
-  margin-bottom: 15px;
+    width: 120px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-bottom: 15px;
 }
 
 .imgThumb {
-  width: 170px;
-  margin-left: 20px;
+    width: 170px;
+    margin-left: 20px;
 }
 
 .templateCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cards {
-  display: flex;
-  width: 80%;
-  margin: 25px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
+    width: 80%;
+    margin: 25px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

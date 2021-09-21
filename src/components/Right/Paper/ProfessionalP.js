@@ -5,7 +5,7 @@ import { ResumeContext } from "../../../contexts/ResumeContext";
 function ProfessionalP() {
   const { content, control, contentFake } = useContext(ResumeContext);
 
-    //If the "control" is TRUE - use "Fake State" to show the example on the page
+  //If the "control" is TRUE - use "Fake State" to show the example on the page
   let contentUse;
   if (control) {
     contentUse = contentFake;
@@ -25,21 +25,22 @@ function ProfessionalP() {
     );
   }
 
-  let bulletProfessional1 = contentUse.professional.desc1.map((el, index) => {
-    if (el === "") {
-      return "";
-    } else {
-      return <li key={index}>{el}</li>;
-    }
-  });
+  let bulletProfessional1 = contentUse.professional.desc1 ? contentUse.professional.desc1.map((el, index) => {
 
-  let bulletProfessional2 = contentUse.professional.desc2.map((el, index) => {
     if (el === "") {
       return "";
     } else {
       return <li key={index}>{el}</li>;
     }
-  });
+  }) : '';
+
+  let bulletProfessional2 = contentUse.professional.desc2 ? contentUse.professional.desc2.map((el, index) => {
+    if (el === "") {
+      return "";
+    } else {
+      return <li key={index}>{el}</li>;
+    }
+  }) : '';
 
   return (
     <div className={classes.professionalResume}>

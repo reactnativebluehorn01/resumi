@@ -19,7 +19,8 @@ function Professional() {
   };
   return (
     <div className="">
-      <h2>Professional Experience</h2>
+      <h2 className='MainPoints'>Professional Experience</h2>
+
       <form
         className={classes.formStyle}
         noValidate
