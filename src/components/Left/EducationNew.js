@@ -91,7 +91,7 @@ function EducationNew() {
           {content.education.degree} at {content.education.school}
         </h4>
       ) : (
-        <h4>(Not Specified)</h4>
+        <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
       )}
 
       {content.education && content.education.startDate ? (

@@ -115,7 +115,7 @@ function Refrences() {
     ResumeContext
   );
   const panelHeader = (<div className='' >
-    <h4>(Not Specified)</h4>
+    <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
     <p style={{ marginTop: -10, fontSize: 12, color: '#98A1B3' }}>Mar 2019 - Mar 2021 </p>
   </div>)
   const { register, handleSubmit } = useForm();
