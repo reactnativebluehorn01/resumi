@@ -82,16 +82,17 @@ function EducationNew() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log('skillName ==> ', data)
-    handleUpdateSkills({ 'name': data });
+
     // const addEduValue = [];
     // addEduValue.push(data);
     removeFakeData();
+    handleUpdateSkills(data);
     // updateEducationData(data, addEdu.length);
   };
   const onSubmit2 = (val) => {
     console.log('level ==> ', val);
     removeFakeData();
-    handleUpdateSkills({ 'level': val });
+    handleUpdateSkills({ ...content.skills, 'level': val });
 
   }
 
@@ -212,13 +213,13 @@ function EducationNew() {
                                               <span className={classes.title}>
                                                 Level
                                               </span>
-                                              <Radio.Group defaultValue={content.skills.level ? content.skills.level : "a"} onChange={val => handleSubmit(
-                                                onSubmit2(val))} buttonStyle='outline'>
-                                                <Radio.Button value="a">Novice</Radio.Button>
-                                                <Radio.Button value="b">Biggner</Radio.Button>
-                                                <Radio.Button value="c">SkillFull</Radio.Button>
-                                                <Radio.Button value="d">Experienced</Radio.Button>
-                                                <Radio.Button value="e">Expert</Radio.Button>
+                                              <Radio.Group defaultValue={content.skills.level ? content.skills.level : "a"} onChange={e => handleSubmit(
+                                                onSubmit2(e.target.value))} buttonStyle='outline'>
+                                                <Radio.Button value="Novice">Novice</Radio.Button>
+                                                <Radio.Button value="Biggner">Biggner</Radio.Button>
+                                                <Radio.Button value="SkillFull">SkillFull</Radio.Button>
+                                                <Radio.Button value="Experienced">Experienced</Radio.Button>
+                                                <Radio.Button value="Expert">Expert</Radio.Button>
                                               </Radio.Group>
                                             </Col>
                                           </Row>
