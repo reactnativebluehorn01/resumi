@@ -32,8 +32,8 @@ My second React.js project. The goal was to learn more about React, Hooks, Conte
 
 ## Versioning
 
-v.1.0.0
+v.2.0.0
 
 ## Authors
 
-* **Lucas Lima** - [lucasmrl](https://github.com/lucasmrl)
+* **Wasiq Faiz Afzal Ahmad** - [lucasmrl](https://github.com/lucasmrl)
