@@ -96,13 +96,11 @@ function EmploymentHistory() {
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className='MainPoints'>Employment History </h2>
+            <h2 className="MainPoints">Employment History </h2>
           </div>
           <div className="mx-1">
             {" "}
-            <CreateOutlinedIcon
-              className="pencilIcon-div"
-            />
+            <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
         <p style={{ marginTop: -15, fontSize: 14, color: "#98A1B3" }}>
@@ -111,7 +109,10 @@ function EmploymentHistory() {
         </p>
       </div>
       {addEdu.map((item, index) => (
-        <div className="d-lg-flex">
+        <div className="d-flex">
+          <div>
+            <DragIndicatorIcon className="pencilIcon-div mt-4" />
+          </div>
           <div className="w-100">
             <div
               key={index}
@@ -221,7 +222,14 @@ function EmploymentHistory() {
                           label=" type here ..."
                           // onSave={save}
                           //    let plainText = d.getCurrentContent().getPlainText();
-                          onChange={(e) => save({ ...content.professional2, 'professionalDesription': e.getCurrentContent().getPlainText() })}
+                          onChange={(e) =>
+                            save({
+                              ...content.professional2,
+                              professionalDesription: e
+                                .getCurrentContent()
+                                .getPlainText(),
+                            })
+                          }
                           inlineToolbar={true}
                           controls={[
                             "bold",

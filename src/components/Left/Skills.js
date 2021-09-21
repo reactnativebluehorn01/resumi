@@ -156,11 +156,15 @@ function EducationNew() {
             >
               {addEdu.map((item, index) => (
                 <>
-                  <div className="d-flex">
+                  <div className="d-flex Main-title">
+                  <div>
+                      <DragIndicatorIcon className="pencilIcon-div mt-4" />
+                    </div>
                     <div className="w-100">
                       {addEdu.length === 1 && (
                         <>
                           <div className="d-flex">
+
                             <div className="w-100">
                               <Draggable
                                 key={index}
@@ -230,7 +234,7 @@ function EducationNew() {
                                 )}
                               </Draggable>
                             </div>
-                            <div> </div>
+                           
                           </div>
                         </>
                       )}
@@ -308,14 +312,11 @@ function EducationNew() {
                         </>
                       )}
                     </div>
-                    <div>
-                      <a
-                        className="delete-div"
-                        type="button"
+                   <div>
+                      <DeleteOutlineOutlinedIcon
                         onClick={() => handleDelete(item)}
-                      >
-                        <DeleteOutlineOutlinedIcon />
-                      </a>
+                        className="pencilIcon-div mt-4"
+                      />
                     </div>
                   </div>
                 </>
