@@ -12,9 +12,9 @@ import CustomSection from "./CustomSection";
 // import SpeakerPhoneOutlinedIcon from "@material-ui/icons/SpeakerPhoneOutlined";
 // import MergeTypeIcon from "@material-ui/icons/MergeType";
 // import LayersIcon from "@material-ui/icons/Layers";
-
+//import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 // import React, { useContext,useState } from "react";
-
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 //import { makeStyles } from "@material-ui/core/styles";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 //import classes from "./Left.module.css";
@@ -39,11 +39,10 @@ import { ResumeContext } from "../../contexts/ResumeContext";
 // });
 
 function EducationNew() {
+  const [contextArray, setContextArray] = useState([]);
   // const btnclass = useStyles();
   const { content, updateAddSection, removeFakeData } =
     useContext(ResumeContext);
-
-
 
   const [activitiesFlag, setActivitiesFlag] = useState(
     content.addSection.activities ? content.addSection.activities : false
@@ -114,18 +113,36 @@ function EducationNew() {
   };
 
   // const [btnText, setBtnText] = useState("Add");
-
+  const handleDelete = (delFile) => {
+    const newEdu = contextArray.filter((items) => items !== delFile);
+    setContextArray(newEdu);
+  };
   return (
     <div>
       {content.contextArray.length
         ? content.contextArray.map((item) => {
-          console.log("item ==> ", item);
-          return (
-            <div key={item.customSectionId}>
-              <CustomSection data={item} id={item.customSectionId} />
-            </div>
-          );
-        })
+            console.log("item ==> ", item);
+            return (
+              <>
+                <div className="d-flex align-items-center  Main-title">
+                  <div>
+                    <DragIndicatorIcon className="pencilIcon-div mt-5" />
+                  </div>
+                  <div className="w-100">
+                    <div key={item.customSectionId}>
+                      <CustomSection data={item} id={item.customSectionId} />
+                    </div>
+                  </div>
+                  <div>
+                    <DeleteOutlineOutlinedIcon
+                      onClick={() => handleDelete(item)}
+                      className="pencilIcon-div mt-5"
+                    />
+                  </div>
+                </div>
+              </>
+            );
+          })
         : ""}
 
       <div className="header">
