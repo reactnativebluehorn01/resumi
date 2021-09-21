@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderP from "./HeaderP";
 import ProfessionalP from "./ProfessionalP";
-import EducationP from "./EducationP";
+//import EducationP from "./EducationP";
 import AdditionalSkillsP from "./AdditionalSkillsP";
 
 function Paper() {
@@ -10,7 +10,7 @@ function Paper() {
       <div size="A4" className="page">
         <HeaderP />
         <ProfessionalP />
-        <EducationP />
+        {/* <EducationP /> */}
         <AdditionalSkillsP />
       </div>
     </div>
