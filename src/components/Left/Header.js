@@ -143,7 +143,7 @@ function Header() {
             <span style={{ color: "#98A1B4" }}> <b style={{ color: "#FFBA19", paddingRight: 10 }}>53% </b>Profile completeness</span>
           </Col>
           <Col span={8}>
-            <span style={{ color: "#98A1B4" }}> <b className={classes.profileSummary}>+10%</b> Add profile Sumary
+            <span style={{ color: "#98A1B4",position:'relative',left:'10px' }}> <b className={classes.profileSummary}>+10%</b> Add profile Sumary
             </span>
           </Col>
           <Col span={2}>
