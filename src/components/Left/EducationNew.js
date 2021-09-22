@@ -44,7 +44,7 @@ function EducationNew() {
   const defaultTheme = createTheme();
   const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
   useEffect(() => {
-    dataLocal.education && handleAddEducation();
+    Object.keys(dataLocal.education).length > 0 && handleAddEducation();
   }, []);
 
   Object.assign(defaultTheme, {
@@ -180,7 +180,7 @@ function EducationNew() {
                                   onChange={callback}
                                   expandIconPosition="right"
                                   ghost
-                                  defaultActiveKey={["1"]}
+                                  // defaultActiveKey={["1"]}
                                 >
                                   <Panel header={panelHeader} key={"1"}>
                                     <Row className={classes.rowWidth}>
