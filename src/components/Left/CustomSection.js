@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Collapse, Col, Row } from 'antd';
 import MUIRichTextEditor from "mui-rte";
 
@@ -36,6 +36,10 @@ const useStyles = makeStyles({
 function ExtraCuriActivities({ data, id }) {
     const btnclass = useStyles();
     const [addActivity, setEdu] = useState([]);
+    useEffect(() => {
+        const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+        dataLocal && Object.keys(dataLocal.addSection).length > 0 && addExtraActivity();
+      }, []);
     function callback(key) {
         console.log(key);
     }

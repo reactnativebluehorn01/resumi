@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
@@ -33,6 +33,12 @@ const useStyles = makeStyles({
 function EmploymentHistory() {
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.professional2).length > 0 && addEmploymentHistory();
+  }, []);
+
+ 
   function callback(key) {
     console.log(key);
   }

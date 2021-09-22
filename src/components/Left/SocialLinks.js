@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 //import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
@@ -38,6 +38,10 @@ const useStyles = makeStyles({
 function SocialLinks() {
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.socialLinks).length > 0 && addLink();
+  }, []);
   function callback(key) {
     console.log(key);
   }
@@ -80,7 +84,7 @@ function SocialLinks() {
   };
   const panelHeader = (
     <div className="">
-      <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
         Mar 2019 - Mar 2021{" "}
       </p>
@@ -112,70 +116,68 @@ function SocialLinks() {
       </div>
       {addEdu.map((item, index) => (
         <>
-        <div className='d-flex Main-title'>
-        <div>
-                              <DragIndicatorIcon className="pencilIcon-div mt-4" />
-                            </div>
-        <div className='w-100'>
-          <div
-            key={index}
-            style={{
-              border: "0.5px solid #b3d4fc",
-              borderRadius: "5px",
-              marginBottom: 10,
-            }}
-          >
-            <Collapse
-              accordion
-              onChange={callback}
-              expandIconPosition="right"
-              ghost
-            >
-              <Panel header={panelHeader} key="1">
-                <Row className={classes.zeroPadding}>
-                  <Col span={11}>
-                    <span className={classes.title}>Label</span>
-                    <TextField
-                      id="filled-basic"
-                      // label="City"
-                      name="label"
-                      variant="filled"
-                      defaultValue={content.socialLinks.label}
-                      inputRef={register}
-                      onChange={handleSubmit(onSubmit)}
-                      style={{ width: "100%" }}
-                    />
-                  </Col>
-                  <Col span={2}></Col>
-                  <Col span={11}>
-                    <span className={classes.title}>Link</span>
+          <div className="d-flex Main-title">
+            <div>
+              <DragIndicatorIcon className="pencilIcon-div mt-4" />
+            </div>
+            <div className="w-100">
+              <div
+                key={index}
+                style={{
+                  border: "0.5px solid #b3d4fc",
+                  borderRadius: "5px",
+                  marginBottom: 10,
+                }}
+              >
+                <Collapse
+                  accordion
+                  onChange={callback}
+                  expandIconPosition="right"
+                  ghost
+                >
+                  <Panel header={panelHeader} key="1">
+                    <Row className={classes.zeroPadding}>
+                      <Col span={11}>
+                        <span className={classes.title}>Label</span>
+                        <TextField
+                          id="filled-basic"
+                          // label="City"
+                          name="label"
+                          variant="filled"
+                          defaultValue={content.socialLinks.label}
+                          inputRef={register}
+                          onChange={handleSubmit(onSubmit)}
+                          style={{ width: "100%" }}
+                        />
+                      </Col>
+                      <Col span={2}></Col>
+                      <Col span={11}>
+                        <span className={classes.title}>Link</span>
 
-                    <TextField
-                      id="filled-basic"
-                      // label="State"
-                      name="link"
-                      variant="filled"
-                      defaultValue={content.socialLinks.link}
-                      inputRef={register}
-                      onChange={handleSubmit(onSubmit)}
-                      style={{ width: "100%" }}
-                    />
-                  </Col>
-                </Row>
-              </Panel>
-            </Collapse>
+                        <TextField
+                          id="filled-basic"
+                          // label="State"
+                          name="link"
+                          variant="filled"
+                          defaultValue={content.socialLinks.link}
+                          inputRef={register}
+                          onChange={handleSubmit(onSubmit)}
+                          style={{ width: "100%" }}
+                        />
+                      </Col>
+                    </Row>
+                  </Panel>
+                </Collapse>
+              </div>
+            </div>
+            <div>
+              <DeleteOutlineOutlinedIcon
+                onClick={() => handleDelete(item)}
+                className="pencilIcon-div2 mt-4"
+              />
+            </div>
           </div>
-        </div>
-        <div>
-                              <DeleteOutlineOutlinedIcon
-                                onClick={() => handleDelete(item)}
-                                className="pencilIcon-div2 mt-4"
-                                
-                              />
-                            </div>
-        </div>
         </>
-        
       ))}
 
       <Button

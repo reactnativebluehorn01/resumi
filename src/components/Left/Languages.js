@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Collapse, Col, Row, Select } from 'antd';
 
 // import React, { useContext,useState } from "react";
@@ -46,10 +46,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Languages() {
-
+  
   //const [age, setAge] = React.useState('');
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.languages).length > 0 && addLanguage();
+  }, []);
   // const [state1, setState1] = useState({
   //   age: '',
   //   name: 'hai',

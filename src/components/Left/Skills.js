@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row, Radio } from "antd";
 
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
@@ -36,6 +36,10 @@ function EducationNew() {
   const { content, updateSkills, removeFakeData } =
     useContext(ResumeContext);
   const [addEdu, setEdu] = useState([]);
+  useEffect(()=>{
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"))
+    dataLocal && Object.keys(dataLocal.skills).length > 0 && handleAddSkills()
+  },[])
   //const [characters, updateCharacters] = useState(addEdu);
 
   function callback(key) {
@@ -190,7 +194,7 @@ function EducationNew() {
                                         onChange={callback}
                                         expandIconPosition="right"
                                         ghost
-                                        defaultActiveKey={["1"]}
+                                        // defaultActiveKey={["1"]}
                                       >
                                         <Panel header={panelHeader} key={"1"}>
                                           <Row className={classes.rowWidth}>

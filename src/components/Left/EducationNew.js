@@ -42,9 +42,9 @@ function EducationNew() {
     useContext(ResumeContext);
   const { register, handleSubmit } = useForm();
   const defaultTheme = createTheme();
-  const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
   useEffect(() => {
-    Object.keys(dataLocal.education).length > 0 && handleAddEducation();
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.education).length > 0 && handleAddEducation();
   }, []);
 
   Object.assign(defaultTheme, {

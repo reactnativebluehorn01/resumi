@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Collapse, Col, Row } from 'antd';
 import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
@@ -39,6 +39,10 @@ function Internship() {
   function callback(key) {
     console.log(key);
   }
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.intrenship).length > 0 && addEmploymentHistory();
+  }, []);
   const save = (data) => {
     console.log(data);
   };

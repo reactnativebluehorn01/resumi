@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Collapse, Col, Row } from 'antd';
 //import MUIRichTextEditor from "mui-rte";
 
@@ -77,7 +77,11 @@ function Refrences() {
   const handleSwitchChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
-
+  
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.refrences).length > 0 && addExtraActivity();
+  }, []);
   const btnclass = useStyles();
   const [addActivity, setEdu] = useState([]);
   function callback(key) {

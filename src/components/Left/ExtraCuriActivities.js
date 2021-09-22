@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { Collapse, Col, Row } from 'antd';
 import MUIRichTextEditor from "mui-rte";
 
@@ -39,6 +39,10 @@ function ExtraCuriActivities() {
   function callback(key) {
     console.log(key);
   }
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.extraCurricularActivity).length > 0 && addExtraActivity();
+  }, []);
   const save = (data) => {
     console.log(data);
   };
