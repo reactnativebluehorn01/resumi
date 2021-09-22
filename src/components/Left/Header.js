@@ -128,6 +128,32 @@ function Header() {
     setSuggesion(false)
   }
 
+  const handleClickAway1 = () => {
+
+    document.getElementById('activitiesDiv').scrollIntoView();
+  }
+
+  const handleClickAway2 = () => {
+
+    document.getElementById('coursesDiv').scrollIntoView();
+  }
+  const handleClickAway3 = () => {
+
+    document.getElementById('educationDiv').scrollIntoView();
+  }
+  const handleClickAway4 = () => {
+
+    document.getElementById('languagesDiv').scrollIntoView();
+  }
+  const handleClickAway5 = () => {
+
+    document.getElementById('skillDiv').scrollIntoView();
+  }
+
+  const handleClickAway6 = () => {
+
+    document.getElementById('employmentHistoryDiv').scrollIntoView();
+  }
   // const disabledDate = (current) => {
 
   //   // let customDate = "2018-11-25";
@@ -143,7 +169,7 @@ function Header() {
             <span style={{ color: "#98A1B4" }}> <b style={{ color: "#FFBA19", paddingRight: 10 }}>53% </b>Profile completeness</span>
           </Col>
           <Col span={8}>
-            <span style={{ color: "#98A1B4",position:'relative',left:'10px' }}> <b className={classes.profileSummary}>+10%</b> Add profile Sumary
+            <span style={{ color: "#98A1B4", position: 'relative', left: '10px' }}> <b className={classes.profileSummary}>+10%</b> Add profile Sumary
             </span>
           </Col>
           <Col span={2}>
@@ -179,21 +205,21 @@ function Header() {
           <div className={classes.suggestionInfo}>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+4% </b>Add extra-curricular activities</span></Col>
+              <Col span={10}> <a href onClick={handleClickAway1}><span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+4% </b>Add extra-curricular activities</span></a></Col>
               <Col span={4}> </Col>
-              <Col span={10}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add courses</span></Col>
+              <Col span={10}> <a href onClick={handleClickAway2}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add courses</span></a></Col>
             </Row>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+8% </b>Add education</span></Col>
+              <Col span={10}><a href onClick={handleClickAway3}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+8% </b>Add education</span></a></Col>
               <Col span={4}> </Col>
-              <Col span={10}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add languages</span></Col>
+              <Col span={10}><a href onClick={handleClickAway4}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add languages</span></a></Col>
             </Row>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+5% </b>Add skills</span></Col>
+              <Col span={10}><a href onClick={handleClickAway5}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+5% </b>Add skills</span></a></Col>
               <Col span={4}></Col>
-              <Col span={10}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+9% </b>Add employment history</span></Col>
+              <Col span={10}> <a href onClick={handleClickAway6}><span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+9% </b>Add employment history</span></a></Col>
             </Row>
 
           </div>
@@ -546,26 +572,43 @@ function Header() {
         </div>
 
         {/* <ProfessionalSummary /> */}
-        <EmploymentHistory />
-        <EducationNew />
+        <div id='employmentHistoryDiv'>
+          <EmploymentHistory />
+        </div>
+        <div id='educationDiv'>
+          <EducationNew />
+        </div>
+
         <SocialLinks />
-        <Skill />
-        {content.addSection.courses ?
-          <Courses />
-          : ''}
+        <div id='skillDiv'>
+          <Skill />
+        </div>
+
+        <div id='coursesDiv'>
+          {content.addSection.courses ?
+            <Courses />
+            : ''}
+        </div>
+
+        <div id='activitiesDiv'>
+          {content.addSection.activities ?
+            <ExtraCuriActivities />
+            : ''}
+        </div>
+
+        <div id='hobbiesDiv'>
+          {content.addSection.hobbies ?
+            <Hobbies />
+            : ''}
+        </div>
 
 
-        {content.addSection.activities ?
-          <ExtraCuriActivities />
-          : ''}
-        {content.addSection.hobbies ?
-          <Hobbies />
-          : ''}
+        <div id='languagesDiv'>
+          {content.addSection.languages ?
+            <Languages />
+            : ''}
+        </div>
 
-
-        {content.addSection.languages ?
-          <Languages />
-          : ''}
         {content.addSection.internship ?
           <Internship />
           : ''}
