@@ -140,7 +140,8 @@ function Left() {
               height: '0px',
               display: 'flex',
               flexDirection: 'row',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              marginBottom:'30px'
 
             }} >JS Developer <span>  <CreateOutlinedIcon className="js-title" /></span></h3>
           </span>

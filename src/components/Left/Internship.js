@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Collapse, Col, Row } from 'antd';
 import MUIRichTextEditor from "mui-rte";
-
+import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
@@ -85,7 +85,11 @@ function Internship() {
     <div>
       <div className='heading'>
         <div className="d-flex align-items-center py-1 Main-title">
-          <div className="mt-3">
+      
+        <div>
+            <DragIndicatorIcon className="pencilIcon-div" />
+          </div>
+          <div>
             <h2 className='MainPoints'>Intrenship </h2>
           </div>
           <div className="mx-1">

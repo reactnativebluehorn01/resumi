@@ -194,7 +194,7 @@ function EducationNew() {
                   />
                 </div>
                 <div className="mt-4 mx-1">
-                  <h6 className="title-section"> Activities</h6>
+                  <h6 className="title-section">Extra-curricular Activities</h6>
                 </div>
               </div>
               <div
