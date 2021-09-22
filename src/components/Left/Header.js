@@ -91,6 +91,7 @@ function Header() {
   );
   const [btnDisplay, setBtnDisplay] = useState(true);
   const [btnHide, setBtnHide] = useState(false);
+  const [topBarPercent, setTopBarPercent] = useState(18);
   const { register, handleSubmit } = useForm();
 
 
