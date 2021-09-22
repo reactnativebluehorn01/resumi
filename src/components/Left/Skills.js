@@ -77,11 +77,20 @@ function EducationNew() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-      <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
+    {content.skills.skillName ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.skills.skillName}
+      </h4>
+    ) : (
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.skills.level ? (
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        Mar 2019 - Mar 2021
+        {content.skills.level}
       </p>
-    </div>
+    ) : null}
+  </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {

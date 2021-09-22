@@ -76,11 +76,21 @@ function EmploymentHistory() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-      <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
+    {content.professional2.jobTitle ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.professional2.jobTitle} at {content.professional2.employer}
+      </h4>
+    ) : (
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.professional2.date1 ? (
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        Mar 2019 - Mar 2021{" "}
+        {content.professional2.date1} - {content.professional2.date2}
       </p>
-    </div>
+    ) : null}
+  </div>
+
   );
   const { register, handleSubmit } = useForm();
   const save = (data) => {

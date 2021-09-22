@@ -44,7 +44,9 @@ function EducationNew() {
   const defaultTheme = createTheme();
   useEffect(() => {
     const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
-    dataLocal && Object.keys(dataLocal.education).length > 0 && handleAddEducation();
+    dataLocal &&
+      Object.keys(dataLocal.education).length > 0 &&
+      handleAddEducation();
   }, []);
 
   Object.assign(defaultTheme, {
@@ -91,7 +93,7 @@ function EducationNew() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-      {content.education ? (
+      {content.education.degree && content.education.school ? (
         <h4 style={{ fontSize: "1rem" }}>
           {content.education.degree} at {content.education.school}
         </h4>
@@ -101,11 +103,9 @@ function EducationNew() {
 
       {content.education && content.education.startDate ? (
         <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-          {content.education.startDate} at {content.education.startDate}
+          {content.education.startDate} - {content.education.endDate}
         </p>
-      ) : (
-        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}> - </p>
-      )}
+      ) : null}
     </div>
   );
 

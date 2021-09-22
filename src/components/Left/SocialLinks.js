@@ -84,11 +84,20 @@ function SocialLinks() {
   };
   const panelHeader = (
     <div className="">
+    {content.socialLinks.label ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.socialLinks.label}
+      </h4>
+    ) : (
       <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.socialLinks.link ? (
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        Mar 2019 - Mar 2021{" "}
+        {content.socialLinks.link}
       </p>
-    </div>
+    ) : null}
+  </div>
   );
   const handleDelete = (delFile) => {
     const newEdu = addEdu.filter((items) => items !== delFile);
