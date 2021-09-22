@@ -49,7 +49,9 @@ function Right() {
       extraCurricularActivity: {},
       addSection: {},
       skills: {},
-      contextArray: []
+      contextArray: [],
+      barComplet: { 'percent': 18, 'headerData': true, 'professionalData': true }
+
     });
   };
   const handleSaveToPDF = (event) => {

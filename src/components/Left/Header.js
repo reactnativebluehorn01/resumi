@@ -86,27 +86,35 @@ function Header() {
 
   const iconClass = useStyles();
   const [displaySugession, setSuggesion] = useState(false);
-  const { content, updateHeaderData, removeFakeData, updateProfessionalData } = useContext(
+  const { content, updateHeaderData, removeFakeData, updateProfessionalData, updateTopBarPercentage } = useContext(
     ResumeContext
   );
   const [btnDisplay, setBtnDisplay] = useState(true);
   const [btnHide, setBtnHide] = useState(false);
-  const [topBarPercent, setTopBarPercent] = useState(18);
+
   const { register, handleSubmit } = useForm();
 
 
   const onSubmit = (data) => {
-    console.log('sample data==> ', data)
+    // console.log('sample data==> ', data);
+
     removeFakeData();
     updateHeaderData(data);
+    if (!content.barComplet.headerData && (!content.header.job_title && content.header.job_title.length == 0)) {
+      let top_per = content.barComplet.percent - 8;
+      updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
+
+
+    }
+
   };
   const save = (d) => {
     let plainText = d.getCurrentContent().getPlainText();
 
-    // const { target: { value } } = d;
-    // console.log('d----=--=>', plainText)
     onSubmit2({ professionalSummer: plainText });
+
   }
+
   const onSubmit2 = (data) => {
 
     removeFakeData();
@@ -189,7 +197,7 @@ function Header() {
           <ProgressBar
             height='4px'
             // width="80%"
-            completed={73}
+            completed={content.barComplet.percent}
             isLabelVisible={false}
             bgColor='rgb(37 184 98)'
           />

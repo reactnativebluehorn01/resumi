@@ -21,7 +21,8 @@ const ResumeContextProvider = (props) => {
       extraCurricularActivity: {},
       addSection: {},
       skills: {},
-      contextArray: []
+      contextArray: [],
+      barComplet: { 'percent': 18, 'headerData': true, 'professionalData': true }
 
     }
   );
@@ -32,17 +33,19 @@ const ResumeContextProvider = (props) => {
   const [control, setControl] = useState(false);
 
   function updateAddSection(data) {
-    // console.log('updateHeaderData data is =======>>>', data);
+
 
     setContent({ ...content, addSection: data });
   }
+
+  function updateTopBarPercentage(data) {
+
+
+    setContent({ ...content, barComplet: data });
+  }
+
   function updateSkills(data) {
-    // console.log('updateHeaderData data is =======>>>', data);
 
-
-    // let a = content.skills;
-
-    // a.push(data);
 
     setContent({ ...content, skills: data });
   }
@@ -51,10 +54,31 @@ const ResumeContextProvider = (props) => {
     // console.log('updateHeaderData data is =======>>>', data);
 
     setContent({ ...content, header: data });
+
+    if (content.barComplet.headerData && data) {
+      let top_per = content.barComplet.percent + 8;
+      updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
+
+    }
+
+
+  }
+
+
+  function updateProfessionalData(data) {
+
+    setContent({ ...content, professional: data });
+
+    if (content.barComplet.professionalData && data.professionalSummer) {
+      let top_per1 = content.barComplet.percent + 10;
+      updateTopBarPercentage({ ...content.barComplet, 'percent': top_per1, 'professionalData': !content.barComplet.professionalData });
+
+    }
+
   }
 
   function updateExtraCurricularActivity(data) {
-    // console.log('updateHeaderData data is =======>>>', data);
+
 
     setContent({ ...content, extraCurricularActivity: data });
   }
@@ -81,10 +105,6 @@ const ResumeContextProvider = (props) => {
     setContent({ ...content, languages: data });
   }
 
-  function updateProfessionalData(data) {
-
-    setContent({ ...content, professional: data });
-  }
 
   function updateProfessionalData2(data) {
     // console.log('updateProfessionalData2 data is =======>>>', data);
@@ -147,11 +167,14 @@ const ResumeContextProvider = (props) => {
       extraCurricularActivity: {},
       addSection: {},
       skills: {},
-      contextArray: []
+      contextArray: [],
+      barComplet: { 'percent': 18, 'headerData': true, 'professionalData': true }
+
     });
   }
   useEffect(() => {
     localStorage.setItem("dataLocal", JSON.stringify(content));
+
   }, [content]);
 
   return (
@@ -176,7 +199,8 @@ const ResumeContextProvider = (props) => {
         updateIntrenshipData,
         updateExtraCurricularActivity,
         updateAddSection,
-        updateSkills
+        updateSkills,
+        updateTopBarPercentage
       }}
     >
       {/* This refers to the children that this provider/components wraps. */}
