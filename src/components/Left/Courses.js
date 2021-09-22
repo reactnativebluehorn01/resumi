@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import DatePicker from '@mui/lab/DatePicker';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -167,48 +167,57 @@ function Courses() {
                         <Row>
                           <Col span={11}>
 
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                              <DesktopDatePicker
-                                //  label="Date desktop"
-                                inputFormat="MM/dd/yyyy"
-                                // value={value}
-                                // onChange={handleChange}
+                            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                              <DatePicker
+
+                                onChange={handleSubmit(onSubmit)}
+                                openTo="month"
+                                views={['year', 'month']}
+                                //  value={value}
+                                // onChange={(newValue) => {
+                                //   setValue(newValue);
+                                // }}
                                 renderInput={(params) => <TextField {...params}
                                   id="filled-basic"
                                   label="MM/YY"
                                   name="startDate"
                                   variant="filled"
                                   defaultValue={content.courses.startDate}
-                                  inputRef={register}
-                                  onChange={handleSubmit(onSubmit)}
                                   style={{ width: "100%" }}
                                 />}
                               />
-                            </LocalizationProvider>
+                            </LocalizationProvider> */}
 
+                            <TextField
+                              // id="filled-basic"
+                              id="date"
+                              type="month"
+                              //label="MM/YY"
 
-
-
-
-
-
-
-
-
-                            {/* <TextField
-                            id="filled-basic"
-                             label="MM/YY"
-                            name="startDate"
-                            variant="filled"
-                            defaultValue={content.courses.startDate}
-                            inputRef={register}
-                            onChange={handleSubmit(onSubmit)}
-                            style={{ width: "100%" }}
-                          /> */}
+                              name="startDate"
+                              variant="filled"
+                              defaultValue={content.courses.startDate}
+                              inputRef={register}
+                              onChange={handleSubmit(onSubmit)}
+                              style={{ width: "100%" }}
+                            />
                           </Col>
                           <Col span={2}></Col>
                           <Col span={11}>
                             <TextField
+                              // id="filled-basic"
+                              id="date"
+                              type="date"
+                              //label="MM/YY"
+
+                              name="endDate"
+                              variant="filled"
+                              defaultValue={content.courses.endDate}
+                              inputRef={register}
+                              onChange={handleSubmit(onSubmit)}
+                              style={{ width: "100%" }}
+                            />
+                            {/* <TextField
                               id="filled-basic"
                               label="MM/YY"
                               name="endDate"
@@ -217,7 +226,7 @@ function Courses() {
                               inputRef={register}
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
-                            />{" "}
+                            />{" "} */}
                           </Col>
                         </Row>
                       </Col>

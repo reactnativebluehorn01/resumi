@@ -131,22 +131,22 @@ function Left() {
 
       <div style={{ width: '200px', marginLeft: '35%' }} >
         <div>
-        <span className='alignCenter1'>
-          <h3 className='untitled' style={{
-            textTransform: 'none', paddingTop: '40px',
-            fontFamily: 'TT Commons,systemUui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
-            fontSize:'1.5rem',
-            fontWeight: 'normal',
-            height: '0px',
-            display:'flex',
-            flexDirection:'row',
-            cursor:'pointer'
-            
-          }} >JS Developer <span>  <CreateOutlinedIcon className="js-title" /></span></h3>
-        </span>
+          <span className='alignCenter1'>
+            <h3 className='untitled' style={{
+              textTransform: 'none', paddingTop: '40px',
+              fontFamily: 'TT Commons,systemUui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
+              fontSize: '1.5rem',
+              fontWeight: 'normal',
+              height: '0px',
+              display: 'flex',
+              flexDirection: 'row',
+              cursor: 'pointer'
+
+            }} >JS Developer <span>  <CreateOutlinedIcon className="js-title" /></span></h3>
+          </span>
         </div>
 
-        <Dropdown overlay={menu} placement="bottomCenter"
+        {/* <Dropdown overlay={menu} placement="bottomCenter"
           trigger="click"
           arrow>
           {languages ?
@@ -173,7 +173,7 @@ function Left() {
             : ''
           }
 
-        </Dropdown>
+        </Dropdown> */}
 
 
       </div>
