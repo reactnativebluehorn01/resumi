@@ -100,7 +100,7 @@ function Header() {
 
     removeFakeData();
     updateHeaderData(data);
-    if (!content.barComplet.headerData && (!content.header.job_title && content.header.job_title.length == 0)) {
+    if (!content.barComplet.headerData && (!content.header.job_title)) {
       let top_per = content.barComplet.percent - 8;
       updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
 
