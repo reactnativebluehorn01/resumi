@@ -36,10 +36,10 @@ function EducationNew() {
   const { content, updateSkills, removeFakeData } =
     useContext(ResumeContext);
   const [addEdu, setEdu] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     const dataLocal = JSON.parse(localStorage.getItem("dataLocal"))
     dataLocal && Object.keys(dataLocal.skills).length > 0 && handleAddSkills()
-  },[])
+  }, [])
   //const [characters, updateCharacters] = useState(addEdu);
 
   function callback(key) {
@@ -77,20 +77,20 @@ function EducationNew() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-    {content.skills.skillName ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.skills.skillName}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.skills.skillName ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.skills.skillName}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.skills.level ? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.skills.level}
-      </p>
-    ) : null}
-  </div>
+      {content.skills.level ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.skills.level}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -110,7 +110,7 @@ function EducationNew() {
   }
 
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, skills:{}}));
+    localStorage.setItem("dataLocal", JSON.stringify({ ...content, skills: {} }));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
   };
@@ -118,9 +118,7 @@ function EducationNew() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-2 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className='MainPoints'>Skills </h2>
           </div>
@@ -204,7 +202,7 @@ function EducationNew() {
                                         onChange={callback}
                                         expandIconPosition="right"
                                         ghost
-                                        // defaultActiveKey={["1"]}
+                                      // defaultActiveKey={["1"]}
                                       >
                                         <Panel header={panelHeader} key={"1"}>
                                           <Row className={classes.rowWidth}>

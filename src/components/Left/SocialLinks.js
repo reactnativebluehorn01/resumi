@@ -84,23 +84,23 @@ function SocialLinks() {
   };
   const panelHeader = (
     <div className="">
-    {content.socialLinks.label ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.socialLinks.label}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.socialLinks.label ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.socialLinks.label}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.socialLinks.link ? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.socialLinks.link}
-      </p>
-    ) : null}
-  </div>
+      {content.socialLinks.link ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.socialLinks.link}
+        </p>
+      ) : null}
+    </div>
   );
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, socialLinks:{}}));
+    localStorage.setItem("dataLocal", JSON.stringify({ ...content, socialLinks: {} }));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
 
@@ -109,9 +109,7 @@ function SocialLinks() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Website & SocialLinks </h2>
           </div>

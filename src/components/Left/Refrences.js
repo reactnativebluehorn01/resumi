@@ -4,7 +4,7 @@ import { Collapse, Col, Row } from "antd";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+//import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 //import FormGroup from '@material-ui/core/FormGroup';
 //import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from "@material-ui/core/Switch";
@@ -120,7 +120,7 @@ function Refrences() {
   const panelHeader = (
     <div className="">
       {content.refrences.referent ? (
-        <h4 style={{ fontSize: "1rem" }}>{content.refrences.referent }</h4>
+        <h4 style={{ fontSize: "1rem" }}>{content.refrences.referent}</h4>
       ) : (
         <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
       )}
@@ -149,9 +149,7 @@ function Refrences() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Refrences </h2>
           </div>
@@ -178,87 +176,87 @@ function Refrences() {
       </Typography>
 
       {addActivity.map((item, index) => (
-         <div className="d-flex ">
-        <div
-          key={index}
-          style={{
-            border: "0.5px solid #b3d4fc",
-            borderRadius: "5px",
-            marginBottom: 10,
-            width:"100%"
-          }}
-        >
-          <Collapse
-            accordion
-            onChange={callback}
-            expandIconPosition="right"
-            ghost
+        <div className="d-flex ">
+          <div
+            key={index}
+            style={{
+              border: "0.5px solid #b3d4fc",
+              borderRadius: "5px",
+              marginBottom: 10,
+              width: "100%"
+            }}
           >
-            <Panel header={panelHeader} key="1">
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}> Referent's Full Name</span>
-                  <TextField
-                    id="filled-basic"
-                    // label="City"
-                    name="referent"
-                    variant="filled"
-                    defaultValue={content.refrences.referent}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <span className={classes.title}>Company</span>
+            <Collapse
+              accordion
+              onChange={callback}
+              expandIconPosition="right"
+              ghost
+            >
+              <Panel header={panelHeader} key="1">
+                <Row className={classes.rowWidth}>
+                  <Col span={11}>
+                    <span className={classes.title}> Referent's Full Name</span>
+                    <TextField
+                      id="filled-basic"
+                      // label="City"
+                      name="referent"
+                      variant="filled"
+                      defaultValue={content.refrences.referent}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                  <Col span={2}></Col>
+                  <Col span={11}>
+                    <span className={classes.title}>Company</span>
 
-                  <TextField
-                    id="filled-basic"
-                    // label="State"
-                    name="company"
-                    variant="filled"
-                    defaultValue={content.refrences.company}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}>Phone</span>
-                  <TextField
-                    id="filled-basic"
-                    // label="City"
-                    name="phone"
-                    variant="filled"
-                    defaultValue={content.refrences.phone}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <span className={classes.title}>Email</span>
+                    <TextField
+                      id="filled-basic"
+                      // label="State"
+                      name="company"
+                      variant="filled"
+                      defaultValue={content.refrences.company}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                </Row>
+                <Row className={classes.rowWidth}>
+                  <Col span={11}>
+                    <span className={classes.title}>Phone</span>
+                    <TextField
+                      id="filled-basic"
+                      // label="City"
+                      name="phone"
+                      variant="filled"
+                      defaultValue={content.refrences.phone}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                  <Col span={2}></Col>
+                  <Col span={11}>
+                    <span className={classes.title}>Email</span>
 
-                  <TextField
-                    id="filled-basic"
-                    // label="State"
-                    name="email"
-                    variant="filled"
-                    defaultValue={content.refrences.email}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-              </Row>
-            </Panel>
-          </Collapse>
-        </div>
-        <div>
+                    <TextField
+                      id="filled-basic"
+                      // label="State"
+                      name="email"
+                      variant="filled"
+                      defaultValue={content.refrences.email}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                </Row>
+              </Panel>
+            </Collapse>
+          </div>
+          <div>
             <DeleteOutlineOutlinedIcon
               onClick={() => handleDelete(item)}
               className="pencilIcon-div mt-4"

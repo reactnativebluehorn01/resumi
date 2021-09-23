@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
-import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+//import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 // import React, { useContext,useState } from "react";
@@ -109,9 +109,7 @@ function Internship() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Intrenship </h2>
           </div>
@@ -122,138 +120,138 @@ function Internship() {
       </div>
       {addEdu.map((item, index) => (
         <div className="d-flex ">
-        <div
-          key={index}
-          style={{
-            border: "0.5px solid #b3d4fc",
-            borderRadius: "5px",
-            marginBottom: 10,
-            width:"100%"
-          }}
-        >
-          <Collapse
-            accordion
-            onChange={callback}
-            expandIconPosition="right"
-            ghost
+          <div
+            key={index}
+            style={{
+              border: "0.5px solid #b3d4fc",
+              borderRadius: "5px",
+              marginBottom: 10,
+              width: "100%"
+            }}
           >
-            <Panel header={panelHeader} key="1">
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}> Job title</span>
-                  <TextField
-                    id="filled-basic"
-                    // label="City"
-                    name="jobTitle"
-                    variant="filled"
-                    defaultValue={content.intrenship.jobTitle}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <span className={classes.title}>Employer</span>
-
-                  <TextField
-                    id="filled-basic"
-                    // label="State"
-                    name="employer"
-                    variant="filled"
-                    defaultValue={content.intrenship.employer}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}>
-                    Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
-                  </span>
-                  <Row>
-                    <Col span={11}>
-                      <TextField
-                        id="filled-basic"
-                        // label="City"
-                        name="startDate"
-                        variant="filled"
-                        defaultValue={content.intrenship.startDate}
-                        inputRef={register}
-                        onChange={handleSubmit(onSubmit)}
-                        style={{ width: "100%" }}
-                      />
-                    </Col>
-                    <Col span={2}></Col>
-                    <Col span={11}>
-                      <TextField
-                        id="filled-basic"
-                        // label="City"
-                        name="endDate"
-                        variant="filled"
-                        defaultValue={content.intrenship.endDate}
-                        inputRef={register}
-                        onChange={handleSubmit(onSubmit)}
-                        style={{ width: "100%" }}
-                      />{" "}
-                    </Col>
-                  </Row>
-                </Col>
-
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <span className={classes.title}>city</span>
-
-                  <TextField
-                    id="filled-basic"
-                    // label="State"
-                    name="city"
-                    variant="filled"
-                    defaultValue={content.intrenship.city}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.rowWidth}>
-                <Col span={24}>
-                  <span
-                    className={classes.title}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Description
-                  </span>
-                  <MuiThemeProvider theme={defaultTheme}>
-                    <MUIRichTextEditor
-                      label=" type here ..."
-                      // onSave={save}
-                      inlineToolbar={true}
-                      onChange={(e) =>
-                        onSubmit({
-                          ...content.intrenship,
-                          intrenship_description: e
-                            .getCurrentContent()
-                            .getPlainText(),
-                        })
-                      }
-                      controls={[
-                        "bold",
-                        "italic",
-                        "underline",
-                        "strikethrough",
-                        "numberList",
-                        "bulletList",
-                        "spellcheck",
-                      ]}
+            <Collapse
+              accordion
+              onChange={callback}
+              expandIconPosition="right"
+              ghost
+            >
+              <Panel header={panelHeader} key="1">
+                <Row className={classes.rowWidth}>
+                  <Col span={11}>
+                    <span className={classes.title}> Job title</span>
+                    <TextField
+                      id="filled-basic"
+                      // label="City"
+                      name="jobTitle"
+                      variant="filled"
+                      defaultValue={content.intrenship.jobTitle}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
                     />
-                  </MuiThemeProvider>
-                </Col>
-              </Row>
-            </Panel>
-          </Collapse>
+                  </Col>
+                  <Col span={2}></Col>
+                  <Col span={11}>
+                    <span className={classes.title}>Employer</span>
+
+                    <TextField
+                      id="filled-basic"
+                      // label="State"
+                      name="employer"
+                      variant="filled"
+                      defaultValue={content.intrenship.employer}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                </Row>
+                <Row className={classes.rowWidth}>
+                  <Col span={11}>
+                    <span className={classes.title}>
+                      Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                    </span>
+                    <Row>
+                      <Col span={11}>
+                        <TextField
+                          id="filled-basic"
+                          // label="City"
+                          name="startDate"
+                          variant="filled"
+                          defaultValue={content.intrenship.startDate}
+                          inputRef={register}
+                          onChange={handleSubmit(onSubmit)}
+                          style={{ width: "100%" }}
+                        />
+                      </Col>
+                      <Col span={2}></Col>
+                      <Col span={11}>
+                        <TextField
+                          id="filled-basic"
+                          // label="City"
+                          name="endDate"
+                          variant="filled"
+                          defaultValue={content.intrenship.endDate}
+                          inputRef={register}
+                          onChange={handleSubmit(onSubmit)}
+                          style={{ width: "100%" }}
+                        />{" "}
+                      </Col>
+                    </Row>
+                  </Col>
+
+                  <Col span={2}></Col>
+                  <Col span={11}>
+                    <span className={classes.title}>city</span>
+
+                    <TextField
+                      id="filled-basic"
+                      // label="State"
+                      name="city"
+                      variant="filled"
+                      defaultValue={content.intrenship.city}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                </Row>
+                <Row className={classes.rowWidth}>
+                  <Col span={24}>
+                    <span
+                      className={classes.title}
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Description
+                    </span>
+                    <MuiThemeProvider theme={defaultTheme}>
+                      <MUIRichTextEditor
+                        label=" type here ..."
+                        // onSave={save}
+                        inlineToolbar={true}
+                        onChange={(e) =>
+                          onSubmit({
+                            ...content.intrenship,
+                            intrenship_description: e
+                              .getCurrentContent()
+                              .getPlainText(),
+                          })
+                        }
+                        controls={[
+                          "bold",
+                          "italic",
+                          "underline",
+                          "strikethrough",
+                          "numberList",
+                          "bulletList",
+                          "spellcheck",
+                        ]}
+                      />
+                    </MuiThemeProvider>
+                  </Col>
+                </Row>
+              </Panel>
+            </Collapse>
           </div>
           <div>
             <DeleteOutlineOutlinedIcon

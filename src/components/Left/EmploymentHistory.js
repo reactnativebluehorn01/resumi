@@ -3,7 +3,7 @@ import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+//import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
@@ -112,9 +112,7 @@ function EmploymentHistory() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Employment History </h2>
           </div>
@@ -130,9 +128,7 @@ function EmploymentHistory() {
       </div>
       {addEdu.map((item, index) => (
         <div className="d-flex Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div mt-4" />
-          </div>
+
           <div className="w-100">
             <div
               key={index}
@@ -288,7 +284,7 @@ function EmploymentHistory() {
       >
         Add employment
       </Button>
-      
+
     </div>
   );
 }

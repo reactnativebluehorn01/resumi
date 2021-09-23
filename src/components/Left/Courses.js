@@ -102,7 +102,7 @@ function Courses() {
     // setBtnText("Update");
   };
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, courses:{}}));
+    localStorage.setItem("dataLocal", JSON.stringify({ ...content, courses: {} }));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
 
@@ -111,9 +111,7 @@ function Courses() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Courses </h2>
           </div>
