@@ -44,10 +44,6 @@ width: 98vw;
     color: white;
     font-size:8px;
     cursor: pointer;
-    position: relative;
-    right: 4%;
-    width: 100% !important;
-    
     }
     .Main-title:hover{
     color:#b2bec3 ;
@@ -65,7 +61,7 @@ width: 98vw;
 
     .pencilIcon-div{
     font-size: 1.3rem !important;
-    margin-top: 23px;
+    margin-top: 10px;
     font-weight: 600;
     padding-bottom: 0px !important;
     }
@@ -87,7 +83,7 @@ width: 98vw;
     font-size: 1.1rem !important;
     font-weight: 600;
     padding-bottom: 0px !important;
-    margin-top: 1.1rem;
+    margin-top:5px;
     }
     .edit-hide{
     cursor: pointer;

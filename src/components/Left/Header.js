@@ -764,7 +764,7 @@ function Header() {
                             <div className='Main-title'>
                               <DragIndicatorIcon className=" pencilIcon-div mt-4" />
                             </div>
-                            <div>{myContent}</div>
+                            <div className='mb-2'>{myContent}</div>
                           </div>{" "}
                         </div>
                       )}
