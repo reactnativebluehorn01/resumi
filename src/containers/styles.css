@@ -46,6 +46,7 @@ width: 98vw;
     cursor: pointer;
     position: relative;
     right: 4%;
+    width: 100% !important;
     
     }
     .Main-title:hover{

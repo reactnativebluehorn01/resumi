@@ -5,8 +5,7 @@ import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
-//import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import { DragDropContext, Droppable } from "react-beautiful-dnd"; //Draggable
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"; //Draggable
 
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
@@ -131,7 +130,7 @@ function EducationNew() {
   };
   // console.log(dataLocal.education)
   return (
-    <div>
+    <div className='w-100'>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
           <div>
@@ -160,172 +159,172 @@ function EducationNew() {
             >
               {addEdu.length
                 ? addEdu.map((item, index) => (
-                    <div className="d-flex" key={index}>
-                      <div className="w-100">
-                        <>
-                          <div className="d-flex Main-title">
-                            <div>
-                              <DragIndicatorIcon className="pencilIcon-div mt-4" />
-                            </div>
-                            <div className="w-100">
-                              <div
-                                style={{
-                                  border: "0.5px solid #b3d4fc",
-                                  borderRadius: "5px",
-                                  marginBottom: 10,
-                                }}
+                  <div className="d-flex" key={index}>
+                    <div className="w-100">
+                      <>
+                        <div className="d-flex Main-title">
+                          <div>
+                            <DragIndicatorIcon className="pencilIcon-div mt-4" />
+                          </div>
+                          <div className="w-100">
+                            <div
+                              style={{
+                                border: "0.5px solid #b3d4fc",
+                                borderRadius: "5px",
+                                marginBottom: 10,
+                              }}
+                            >
+                              <Collapse
+                                accordion
+                                onChange={callback}
+                                expandIconPosition="right"
+                                ghost
+                              // defaultActiveKey={["1"]}
                               >
-                                <Collapse
-                                  accordion
-                                  onChange={callback}
-                                  expandIconPosition="right"
-                                  ghost
-                                  // defaultActiveKey={["1"]}
-                                >
-                                  <Panel header={panelHeader} key={"1"}>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          School
-                                        </span>
-                                        <TextField
-                                          id="filled-basic"
-                                          name="school"
-                                          variant="filled"
-                                          defaultValue={
-                                            content.education.school
-                                          }
-                                          inputRef={register}
-                                          onChange={handleSubmit(onSubmit)}
-                                          style={{ width: "100%" }}
-                                        />
-                                      </Col>
-                                      <Col span={2}></Col>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          Degree
-                                        </span>
-                                        <TextField
-                                          id="filled-basic"
-                                          name="degree"
-                                          variant="filled"
-                                          defaultValue={
-                                            content.education.degree
-                                          }
-                                          inputRef={register}
-                                          onChange={handleSubmit(onSubmit)}
-                                          style={{ width: "100%" }}
-                                        />
-                                      </Col>
-                                    </Row>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          Start & End Date
-                                          <HelpOutlineIcon fontSize="small" />
-                                        </span>
-                                        <Row>
-                                          <Col span={11}>
-                                            <TextField
-                                              id="filled-basic"
-                                              name="startDate"
-                                              variant="filled"
-                                              defaultValue={
-                                                content.education.startDate
-                                              }
-                                              inputRef={register}
-                                              onChange={handleSubmit(onSubmit)}
-                                              style={{ width: "100%" }}
-                                            />
-                                          </Col>
-                                          <Col span={2}></Col>
-                                          <Col span={11}>
-                                            <TextField
-                                              id="filled-basic"
-                                              name="endDate"
-                                              variant="filled"
-                                              defaultValue={
-                                                content.education.endDate
-                                              }
-                                              inputRef={register}
-                                              onChange={handleSubmit(onSubmit)}
-                                              style={{ width: "100%" }}
-                                            />
-                                          </Col>
-                                        </Row>
-                                      </Col>
-
-                                      <Col span={2}></Col>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          city
-                                        </span>
-                                        <TextField
-                                          id="filled-basic"
-                                          name="city"
-                                          variant="filled"
-                                          defaultValue={content.education.city}
-                                          inputRef={register}
-                                          onChange={handleSubmit(onSubmit)}
-                                          style={{ width: "100%" }}
-                                        />
-                                      </Col>
-                                    </Row>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={24}>
-                                        <span
-                                          className={classes.title}
-                                          style={{ marginLeft: "10px" }}
-                                        >
-                                          Description
-                                        </span>
-                                        <MuiThemeProvider theme={defaultTheme}>
-                                          <MUIRichTextEditor
-                                            label="Enter description"
-                                            // onSave={save}
-                                            inlineToolbar={true}
-                                            name="education_description"
-                                            // inputRef={register}
-                                            // readOnly={false}
-                                            // onChange={handleSubmit(onSubmit2)}
-                                            // onChange={handleSubmit(onSubmit)}
-                                            onChange={(e) =>
-                                              onSubmit({
-                                                ...content.education,
-                                                education_description: e
-                                                  .getCurrentContent()
-                                                  .getPlainText(),
-                                              })
+                                <Panel header={panelHeader} key={"1"}>
+                                  <Row className={classes.rowWidth}>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        School
+                                      </span>
+                                      <TextField
+                                        id="filled-basic"
+                                        name="school"
+                                        variant="filled"
+                                        defaultValue={
+                                          content.education.school
+                                        }
+                                        inputRef={register}
+                                        onChange={handleSubmit(onSubmit)}
+                                        style={{ width: "100%" }}
+                                      />
+                                    </Col>
+                                    <Col span={2}></Col>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        Degree
+                                      </span>
+                                      <TextField
+                                        id="filled-basic"
+                                        name="degree"
+                                        variant="filled"
+                                        defaultValue={
+                                          content.education.degree
+                                        }
+                                        inputRef={register}
+                                        onChange={handleSubmit(onSubmit)}
+                                        style={{ width: "100%" }}
+                                      />
+                                    </Col>
+                                  </Row>
+                                  <Row className={classes.rowWidth}>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        Start & End Date
+                                        <HelpOutlineIcon fontSize="small" />
+                                      </span>
+                                      <Row>
+                                        <Col span={11}>
+                                          <TextField
+                                            id="filled-basic"
+                                            name="startDate"
+                                            variant="filled"
+                                            defaultValue={
+                                              content.education.startDate
                                             }
-                                            // onChange={save}
-                                            // defaultValue={content.education.education_description}
-                                            controls={[
-                                              "bold",
-                                              "italic",
-                                              "underline",
-                                              "strikethrough",
-                                              "numberList",
-                                              "bulletList",
-                                              "spellcheck",
-                                            ]}
+                                            inputRef={register}
+                                            onChange={handleSubmit(onSubmit)}
+                                            style={{ width: "100%" }}
                                           />
-                                        </MuiThemeProvider>
-                                      </Col>
-                                    </Row>
-                                  </Panel>
-                                </Collapse>
-                              </div>
-                            </div>
-                            <div>
-                              <DeleteOutlineOutlinedIcon
-                                onClick={() => handleDelete(item)}
-                                className="pencilIcon-div mt-4"
-                              />
+                                        </Col>
+                                        <Col span={2}></Col>
+                                        <Col span={11}>
+                                          <TextField
+                                            id="filled-basic"
+                                            name="endDate"
+                                            variant="filled"
+                                            defaultValue={
+                                              content.education.endDate
+                                            }
+                                            inputRef={register}
+                                            onChange={handleSubmit(onSubmit)}
+                                            style={{ width: "100%" }}
+                                          />
+                                        </Col>
+                                      </Row>
+                                    </Col>
+
+                                    <Col span={2}></Col>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        city
+                                      </span>
+                                      <TextField
+                                        id="filled-basic"
+                                        name="city"
+                                        variant="filled"
+                                        defaultValue={content.education.city}
+                                        inputRef={register}
+                                        onChange={handleSubmit(onSubmit)}
+                                        style={{ width: "100%" }}
+                                      />
+                                    </Col>
+                                  </Row>
+                                  <Row className={classes.rowWidth}>
+                                    <Col span={24}>
+                                      <span
+                                        className={classes.title}
+                                        style={{ marginLeft: "10px" }}
+                                      >
+                                        Description
+                                      </span>
+                                      <MuiThemeProvider theme={defaultTheme}>
+                                        <MUIRichTextEditor
+                                          label="Enter description"
+                                          // onSave={save}
+                                          inlineToolbar={true}
+                                          name="education_description"
+                                          // inputRef={register}
+                                          // readOnly={false}
+                                          // onChange={handleSubmit(onSubmit2)}
+                                          // onChange={handleSubmit(onSubmit)}
+                                          onChange={(e) =>
+                                            onSubmit({
+                                              ...content.education,
+                                              education_description: e
+                                                .getCurrentContent()
+                                                .getPlainText(),
+                                            })
+                                          }
+                                          // onChange={save}
+                                          // defaultValue={content.education.education_description}
+                                          controls={[
+                                            "bold",
+                                            "italic",
+                                            "underline",
+                                            "strikethrough",
+                                            "numberList",
+                                            "bulletList",
+                                            "spellcheck",
+                                          ]}
+                                        />
+                                      </MuiThemeProvider>
+                                    </Col>
+                                  </Row>
+                                </Panel>
+                              </Collapse>
                             </div>
                           </div>
-                        </>
+                          <div>
+                            <DeleteOutlineOutlinedIcon
+                              onClick={() => handleDelete(item)}
+                              className="pencilIcon-div mt-4"
+                            />
+                          </div>
+                        </div>
+                      </>
 
-                        {/* {addEdu.length === 2 && (
+                      {/* {addEdu.length === 2 && (
 
                       <div
 
@@ -463,9 +462,9 @@ function EducationNew() {
                       </div>
 
                     )} */}
-                      </div>
                     </div>
-                  ))
+                  </div>
+                ))
                 : ""}
 
               {provided.placeholder}
