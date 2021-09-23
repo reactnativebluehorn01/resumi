@@ -49,6 +49,7 @@ function EmploymentHistory() {
   };
   const defaultTheme = createMuiTheme();
   const handleDelete = (delFile) => {
+    localStorage.setItem("dataLocal", JSON.stringify({...content, professional2:{}}));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
   };

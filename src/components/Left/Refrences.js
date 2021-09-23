@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 //import MUIRichTextEditor from "mui-rte";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
@@ -136,6 +137,14 @@ function Refrences() {
     removeFakeData();
     updateRefrencesData(data);
   };
+  const handleDelete = (delFile) => {
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, refrences: {} })
+    );
+    const newEdu = addActivity.filter((items) => items !== delFile);
+    setEdu(newEdu);
+  };
   return (
     <div>
       <div className="heading">
@@ -169,12 +178,14 @@ function Refrences() {
       </Typography>
 
       {addActivity.map((item, index) => (
+         <div className="d-flex ">
         <div
           key={index}
           style={{
             border: "0.5px solid #b3d4fc",
             borderRadius: "5px",
             marginBottom: 10,
+            width:"100%"
           }}
         >
           <Collapse
@@ -246,6 +257,13 @@ function Refrences() {
               </Row>
             </Panel>
           </Collapse>
+        </div>
+        <div>
+            <DeleteOutlineOutlinedIcon
+              onClick={() => handleDelete(item)}
+              className="pencilIcon-div mt-4"
+            />
+          </div>
         </div>
       ))}
 

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
@@ -75,26 +76,34 @@ function Internship() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-    {content.intrenship.jobTitle ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.intrenship.jobTitle} at {content.intrenship.employer}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.intrenship.jobTitle ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.intrenship.jobTitle} at {content.intrenship.employer}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.courses.startDate? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.intrenship.startDate} - {content.intrenship.endDate} 
-      </p>
-    ) : null}
-  </div>
+      {content.courses.startDate ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.intrenship.startDate} - {content.intrenship.endDate}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     removeFakeData();
     updateIntrenshipData(data);
     // setBtnText("Update");
+  };
+  const handleDelete = (delFile) => {
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, intrenship: {} })
+    );
+    const newEdu = addEdu.filter((items) => items !== delFile);
+    setEdu(newEdu);
   };
   return (
     <div>
@@ -112,12 +121,14 @@ function Internship() {
         </div>
       </div>
       {addEdu.map((item, index) => (
+        <div className="d-flex ">
         <div
           key={index}
           style={{
             border: "0.5px solid #b3d4fc",
             borderRadius: "5px",
             marginBottom: 10,
+            width:"100%"
           }}
         >
           <Collapse
@@ -243,6 +254,13 @@ function Internship() {
               </Row>
             </Panel>
           </Collapse>
+          </div>
+          <div>
+            <DeleteOutlineOutlinedIcon
+              onClick={() => handleDelete(item)}
+              className="pencilIcon-div mt-4"
+            />
+          </div>
         </div>
       ))}
 

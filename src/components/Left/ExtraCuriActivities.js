@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 // import React, { useContext,useState } from "react";
@@ -97,6 +98,14 @@ function ExtraCuriActivities() {
     updateExtraCurricularActivity(data);
     // setBtnText("Update");
   };
+  const handleDelete = (delFile) => {
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, extraCurricularActivity: {} })
+    );
+    const newEdu = addActivity.filter((items) => items !== delFile);
+    setEdu(newEdu);
+  };
   return (
     <div>
       <div className="heading">
@@ -113,12 +122,14 @@ function ExtraCuriActivities() {
         </div>
       </div>
       {addActivity.map((item, index) => (
+        <div className="d-flex ">
         <div
           key={index}
           style={{
             border: "0.5px solid #b3d4fc",
             borderRadius: "5px",
             marginBottom: 10,
+            width:"100%"
           }}
         >
           <Collapse
@@ -241,6 +252,13 @@ function ExtraCuriActivities() {
               </Row>
             </Panel>
           </Collapse>
+        </div>
+        <div>
+            <DeleteOutlineOutlinedIcon
+              onClick={() => handleDelete(item)}
+              className="pencilIcon-div mt-4"
+            />
+          </div>
         </div>
       ))}
 

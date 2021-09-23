@@ -13,10 +13,11 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 
-import DatePicker from '@mui/lab/DatePicker';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from "@mui/lab/DatePicker";
 
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
@@ -78,22 +79,21 @@ function Courses() {
     useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
-   
     <div className="">
-    {content.courses.course ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.courses.course} at {content.courses.institution}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.courses.course ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.courses.course} at {content.courses.institution}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.courses.startDate? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.courses.startDate} - {content.courses.endDate} 
-      </p>
-    ) : null}
-  </div>
+      {content.courses.startDate ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.courses.startDate} - {content.courses.endDate}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -102,8 +102,10 @@ function Courses() {
     // setBtnText("Update");
   };
   const handleDelete = (delFile) => {
+    localStorage.setItem("dataLocal", JSON.stringify({...content, courses:{}}));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+
   };
   return (
     <div>
@@ -123,11 +125,11 @@ function Courses() {
       </div>
       {addEdu.map((item, index) => (
         <>
-          <div className='d-flex Main-title'>
+          <div className="d-flex Main-title">
             <div>
               <DragIndicatorIcon className="pencilIcon-div mt-4" />
             </div>
-            <div className='w-100'>
+            <div className="w-100">
               <div
                 key={index}
                 style={{
@@ -180,7 +182,6 @@ function Courses() {
                         </span>
                         <Row>
                           <Col span={11}>
-
                             {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
                               <DatePicker
 
@@ -221,7 +222,7 @@ function Courses() {
                             <TextField
                               // id="filled-basic"
                               id="date"
-                              type="date"
+                              type="month"
                               //label="MM/YY"
 
                               name="endDate"

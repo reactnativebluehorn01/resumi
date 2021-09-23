@@ -100,8 +100,10 @@ function SocialLinks() {
   </div>
   );
   const handleDelete = (delFile) => {
+    localStorage.setItem("dataLocal", JSON.stringify({...content, socialLinks:{}}));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+
   };
   return (
     <div>

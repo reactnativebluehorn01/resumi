@@ -110,6 +110,7 @@ function EducationNew() {
   }
 
   const handleDelete = (delFile) => {
+    localStorage.setItem("dataLocal", JSON.stringify({...content, skills:{}}));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
   };

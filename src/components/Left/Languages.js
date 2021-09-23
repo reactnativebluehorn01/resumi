@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row, Select } from "antd";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
@@ -99,6 +100,11 @@ function Languages() {
   //   //   [name]: event.target.value,
   //   // });
   // };
+  const handleDelete = (delFile) => {
+    localStorage.setItem("dataLocal", JSON.stringify({...content, languages:{}}));
+    const newEdu = addEdu.filter((items) => items !== delFile);
+    setEdu(newEdu);
+  };
   return (
     <div>
       <div className="heading">
@@ -115,12 +121,14 @@ function Languages() {
         </div>
       </div>
       {addEdu.map((item, index) => (
+        <div className="d-flex ">
         <div
           key={index}
           style={{
             border: "0.5px solid #b3d4fc",
             borderRadius: "5px",
             marginBottom: 10,
+            width:"100%"
           }}
         >
           <Collapse
@@ -176,6 +184,13 @@ function Languages() {
               </Row>
             </Panel>
           </Collapse>
+        </div>
+        <div>
+            <DeleteOutlineOutlinedIcon
+              onClick={() => handleDelete(item)}
+              className="pencilIcon-div mt-4"
+            />
+          </div>
         </div>
       ))}
 

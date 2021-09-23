@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 // import React, { useContext,useState } from "react";
 //import Button from "@material-ui/core/Button";
@@ -82,20 +83,20 @@ function ExtraCuriActivities({ data, id }) {
     // </div>
 
     <div className="">
-    {content.addSection.functionTitle ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.addSection.functionTitle} ,  {content.addSection.city} 
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.addSection.functionTitle ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.addSection.functionTitle} , {content.addSection.city}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.addSection.startDate? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.addSection.startDate} - {content.addSection.endDate}
-      </p>
-    ) : null}
-  </div>
+      {content.addSection.startDate ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.addSection.startDate} - {content.addSection.endDate}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data1) => {
@@ -103,6 +104,14 @@ function ExtraCuriActivities({ data, id }) {
     updateAddSection(data1);
     //updateExtraCurricularActivity(data);
     // setBtnText("Update");
+  };
+  const handleDelete = (delFile) => {
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, addSection: {} })
+    );
+    const newEdu = addActivity.filter((items) => items !== delFile);
+    setEdu(newEdu);
   };
   return (
     <>
@@ -121,64 +130,33 @@ function ExtraCuriActivities({ data, id }) {
             </div>
           </div>
         </div>
-
-        <div
-          key={id}
-          style={{
-            border: "0.5px solid #b3d4fc",
-            borderRadius: "5px",
-            marginBottom: 10,
-          }}
-        >
-          <Collapse
-            accordion
-            onChange={callback}
-            expandIconPosition="right"
-            ghost
-          >
-            <Panel header={panelHeader} key="1">
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}> Function Title</span>
-                  <TextField
-                    id="filled-basic"
-                    // label="City"
-                    name="functionTitle"
-                    variant="filled"
-                    defaultValue={content.addSection.functionTitle}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <span className={classes.title}>Employer</span>
-
-                  <TextField
-                    id="filled-basic"
-                    // label="State"
-                    name="employer"
-                    variant="filled"
-                    defaultValue={content.addSection.employer}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}>
-                    Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
-                  </span>
-                  <Row>
+        {addActivity.map((item, index) => (
+          <div className="d-flex ">
+            <div
+              key={id}
+              style={{
+                border: "0.5px solid #b3d4fc",
+                borderRadius: "5px",
+                marginBottom: 10,
+                width: "100%",
+              }}
+            >
+              <Collapse
+                accordion
+                onChange={callback}
+                expandIconPosition="right"
+                ghost
+              >
+                <Panel header={panelHeader} key="1">
+                  <Row className={classes.rowWidth}>
                     <Col span={11}>
+                      <span className={classes.title}> Function Title</span>
                       <TextField
                         id="filled-basic"
-                        name="startDate"
+                        // label="City"
+                        name="functionTitle"
                         variant="filled"
-                        defaultValue={content.addSection.startDate}
+                        defaultValue={content.addSection.functionTitle}
                         inputRef={register}
                         onChange={handleSubmit(onSubmit)}
                         style={{ width: "100%" }}
@@ -186,71 +164,112 @@ function ExtraCuriActivities({ data, id }) {
                     </Col>
                     <Col span={2}></Col>
                     <Col span={11}>
+                      <span className={classes.title}>Employer</span>
+
                       <TextField
                         id="filled-basic"
-                        name="endDate"
+                        // label="State"
+                        name="employer"
                         variant="filled"
-                        defaultValue={content.addSection.endDate}
+                        defaultValue={content.addSection.employer}
                         inputRef={register}
                         onChange={handleSubmit(onSubmit)}
                         style={{ width: "100%" }}
-                      />{" "}
+                      />
                     </Col>
                   </Row>
-                </Col>
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <span className={classes.title}>city</span>
+                  <Row className={classes.rowWidth}>
+                    <Col span={11}>
+                      <span className={classes.title}>
+                        Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                      </span>
+                      <Row>
+                        <Col span={11}>
+                          <TextField
+                            id="filled-basic"
+                            name="startDate"
+                            variant="filled"
+                            defaultValue={content.addSection.startDate}
+                            inputRef={register}
+                            onChange={handleSubmit(onSubmit)}
+                            style={{ width: "100%" }}
+                          />
+                        </Col>
+                        <Col span={2}></Col>
+                        <Col span={11}>
+                          <TextField
+                            id="filled-basic"
+                            name="endDate"
+                            variant="filled"
+                            defaultValue={content.addSection.endDate}
+                            inputRef={register}
+                            onChange={handleSubmit(onSubmit)}
+                            style={{ width: "100%" }}
+                          />{" "}
+                        </Col>
+                      </Row>
+                    </Col>
+                    <Col span={2}></Col>
+                    <Col span={11}>
+                      <span className={classes.title}>city</span>
 
-                  <TextField
-                    id="filled-basic"
-                    // label="State"
-                    name="city"
-                    variant="filled"
-                    defaultValue={content.addSection.city}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.rowWidth}>
-                <Col span={24}>
-                  <span
-                    className={classes.title}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Description
-                  </span>
-                  <MuiThemeProvider theme={defaultTheme}>
-                    <MUIRichTextEditor
-                      label=" type here ..."
-                      // onSave={save}
-                      inlineToolbar={true}
-                      onChange={(e) =>
-                        onSubmit({
-                          ...content.addSection,
-                          addSection_description: e
-                            .getCurrentContent()
-                            .getPlainText(),
-                        })
-                      }
-                      controls={[
-                        "bold",
-                        "italic",
-                        "underline",
-                        "strikethrough",
-                        "numberList",
-                        "bulletList",
-                        "spellcheck",
-                      ]}
-                    />
-                  </MuiThemeProvider>
-                </Col>
-              </Row>
-            </Panel>
-          </Collapse>
-        </div>
+                      <TextField
+                        id="filled-basic"
+                        // label="State"
+                        name="city"
+                        variant="filled"
+                        defaultValue={content.addSection.city}
+                        inputRef={register}
+                        onChange={handleSubmit(onSubmit)}
+                        style={{ width: "100%" }}
+                      />
+                    </Col>
+                  </Row>
+                  <Row className={classes.rowWidth}>
+                    <Col span={24}>
+                      <span
+                        className={classes.title}
+                        style={{ marginLeft: "10px" }}
+                      >
+                        Description
+                      </span>
+                      <MuiThemeProvider theme={defaultTheme}>
+                        <MUIRichTextEditor
+                          label=" type here ..."
+                          // onSave={save}
+                          inlineToolbar={true}
+                          onChange={(e) =>
+                            onSubmit({
+                              ...content.addSection,
+                              addSection_description: e
+                                .getCurrentContent()
+                                .getPlainText(),
+                            })
+                          }
+                          controls={[
+                            "bold",
+                            "italic",
+                            "underline",
+                            "strikethrough",
+                            "numberList",
+                            "bulletList",
+                            "spellcheck",
+                          ]}
+                        />
+                      </MuiThemeProvider>
+                    </Col>
+                  </Row>
+                </Panel>
+              </Collapse>
+            </div>
+            <div>
+              <DeleteOutlineOutlinedIcon
+                onClick={() => handleDelete(item)}
+                className="pencilIcon-div "
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );

@@ -113,10 +113,10 @@ function EducationNew() {
   };
 
   // const [btnText, setBtnText] = useState("Add");
-  const handleDelete = (delFile) => {
-    const newEdu = contextArray.filter((items) => items !== delFile);
-    setContextArray(newEdu);
-  };
+  // const handleDelete = (delFile) => {
+  //   const newEdu = contextArray.filter((items) => items !== delFile);
+  //   setContextArray(newEdu);
+  // };
   return (
     <div>
       {content.contextArray.length
@@ -133,12 +133,12 @@ function EducationNew() {
                       <CustomSection data={item} id={item.customSectionId} />
                     </div>
                   </div>
-                  <div>
+                  {/* <div>
                     <DeleteOutlineOutlinedIcon
                       onClick={() => handleDelete(item)}
                       className="pencilIcon-div mt-5"
                     />
-                  </div>
+                  </div> */}
                 </div>
               </>
             );
