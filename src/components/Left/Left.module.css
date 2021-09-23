@@ -10,7 +10,7 @@ h2 {
 }
 .profileSummary {
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     font-weight: 600;
     color: rgb(37, 184, 105);
@@ -201,6 +201,7 @@ img {
 
 .formStyle {
     display: flex;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -228,4 +229,11 @@ img {
     margin: 25px;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+   
+}
+@media (max-width: 576px) {
+    
 }

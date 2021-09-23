@@ -68,7 +68,7 @@ function App() {
             <Route path="/basic" component={Basic} />
           </Switch>
         </BrowserRouter>
-        <Right />
+        <Right/>
       </ResumeContextProvider>
     </div>
   );
