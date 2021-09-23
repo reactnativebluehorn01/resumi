@@ -21,6 +21,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme } from "@material-ui/core/styles";
+import { Modal } from "antd";
 
 const { Panel } = Collapse;
 
@@ -71,6 +72,10 @@ const AntSwitch = withStyles((theme) => ({
 }))(Switch);
 
 function Refrences() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [state, setState] = React.useState({ checkedC: true });
   const handleSwitchChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -144,12 +149,12 @@ function Refrences() {
     );
     const newEdu = addActivity.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose();
   };
   return (
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-
           <div>
             <h2 className="MainPoints">Refrences </h2>
           </div>
@@ -183,7 +188,7 @@ function Refrences() {
               border: "0.5px solid #b3d4fc",
               borderRadius: "5px",
               marginBottom: 10,
-              width: "100%"
+              width: "100%",
             }}
           >
             <Collapse
@@ -258,10 +263,20 @@ function Refrences() {
           </div>
           <div>
             <DeleteOutlineOutlinedIcon
-              onClick={() => handleDelete(item)}
+              onClick={handleShow}
               className="pencilIcon-div mt-4"
             />
           </div>
+          <Modal
+            // title="Vertically centered modal dialog"
+            centered
+            visible={show}
+            onOk={() => handleDelete(item)}
+            onCancel={handleClose}
+          >
+            <h4>Delete Entry</h4>
+            <h6>Are you sure you want to delete entry?</h6>
+          </Modal>
         </div>
       ))}
 

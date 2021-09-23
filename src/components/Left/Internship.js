@@ -15,6 +15,7 @@ import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import { Modal } from "antd";
 
 const { Panel } = Collapse;
 
@@ -32,6 +33,10 @@ const useStyles = makeStyles({
 });
 
 function Internship() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   function callback(key) {
@@ -104,12 +109,12 @@ function Internship() {
     );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose();
   };
   return (
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-
           <div>
             <h2 className="MainPoints">Intrenship </h2>
           </div>
@@ -126,7 +131,7 @@ function Internship() {
               border: "0.5px solid #b3d4fc",
               borderRadius: "5px",
               marginBottom: 10,
-              width: "100%"
+              width: "100%",
             }}
           >
             <Collapse
@@ -255,10 +260,20 @@ function Internship() {
           </div>
           <div>
             <DeleteOutlineOutlinedIcon
-              onClick={() => handleDelete(item)}
+              onClick={handleShow}
               className="pencilIcon-div mt-4"
             />
           </div>
+          <Modal
+            // title="Vertically centered modal dialog"
+            centered
+            visible={show}
+            onOk={() => handleDelete(item)}
+            onCancel={handleClose}
+          >
+            <h4>Delete Entry</h4>
+            <h6>Are you sure you want to delete entry?</h6>
+          </Modal>
         </div>
       ))}
 
