@@ -3,7 +3,7 @@
 }
 
 .divideLine {
-    width: 50%;
+    width: 100% !important;
     border: 0;
     height: 0;
     border-top: 1.5px solid #222222;

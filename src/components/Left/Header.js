@@ -29,12 +29,12 @@ import Skill from "./Skills";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
-
+import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import AddCircle from "@material-ui/icons/AddCircle";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
+import { AiFillFileText } from "react-icons/ai";
 //import AddIcon from "@mui/icons-material/Add";
 
 //import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
@@ -82,10 +82,10 @@ Object.assign(defaultTheme, {
 });
 
 //const component = React.lazy(() => import('./component.jsx'));
-const getItems = count =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
+const getItems = (count) =>
+  Array.from({ length: count }, (v, k) => k).map((k) => ({
     id: `item-${k}`,
-    content: `${k}`
+    content: `${k}`,
   }));
 
 const reorder = (list, startIndex, endIndex) => {
@@ -97,7 +97,6 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 function Header() {
-
   const [items, setItems] = useState(getItems(10));
 
   const onDragEnd = (result) => {
@@ -112,15 +111,18 @@ function Header() {
       result.destination.index
     );
     setItems(items1);
-
-  }
+  };
 
   const iconClass = useStyles();
 
   const [displaySugession, setSuggesion] = useState(false);
-  const { content, updateHeaderData, removeFakeData, updateProfessionalData, updateTopBarPercentage } = useContext(
-    ResumeContext
-  );
+  const {
+    content,
+    updateHeaderData,
+    removeFakeData,
+    updateProfessionalData,
+    updateTopBarPercentage,
+  } = useContext(ResumeContext);
   const [btnDisplay, setBtnDisplay] = useState(true);
   const [btnHide, setBtnHide] = useState(false);
 
@@ -133,23 +135,19 @@ function Header() {
     updateHeaderData(data);
     if (!content.barComplet.headerData && !content.header.job_title) {
       let top_per = content.barComplet.percent - 8;
-      console.log('top_per1 == ', top_per);
+      console.log("top_per1 == ", top_per);
       //  updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
-
     } else {
       let top_per = content.barComplet.percent - 8;
-      console.log('top_per2 == ', top_per)
+      console.log("top_per2 == ", top_per);
       //  updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
-
     }
-
   };
   const save = (d) => {
     let plainText = d.getCurrentContent().getPlainText();
 
     onSubmit2({ professionalSummer: plainText });
-
-  }
+  };
 
   const onSubmit2 = (data) => {
     removeFakeData();
@@ -172,30 +170,25 @@ function Header() {
   };
 
   const handleClickAway1 = () => {
-    document.getElementById('activitiesDiv').scrollIntoView();
-  }
+    document.getElementById("activitiesDiv").scrollIntoView();
+  };
 
   const handleClickAway2 = () => {
-
-    document.getElementById('coursesDiv').scrollIntoView();
-  }
+    document.getElementById("coursesDiv").scrollIntoView();
+  };
   const handleClickAway3 = () => {
-
-    document.getElementById('educationDiv').scrollIntoView();
-  }
+    document.getElementById("educationDiv").scrollIntoView();
+  };
   const handleClickAway4 = () => {
-
-    document.getElementById('languagesDiv').scrollIntoView();
-  }
+    document.getElementById("languagesDiv").scrollIntoView();
+  };
   const handleClickAway5 = () => {
-
-    document.getElementById('skillDiv').scrollIntoView();
-  }
+    document.getElementById("skillDiv").scrollIntoView();
+  };
 
   const handleClickAway6 = () => {
-
-    document.getElementById('employmentHistoryDiv').scrollIntoView();
-  }
+    document.getElementById("employmentHistoryDiv").scrollIntoView();
+  };
 
   // const handleOnDragEnd = (result) => {
   //   if (!result.destination) return;
@@ -215,32 +208,33 @@ function Header() {
   return (
     <div>
       <div className={classes.suggestion}>
-      <Row>
+        <Row>
           <Col span={12}>
-            <span className='summry'>
-                
+            <span className="summry">
               <b style={{ color: "#FFBA19", paddingRight: 10 }}>53% </b>Profile
               completeness
             </span>
           </Col>
           <Col span={12}>
-           <div className='d-flex justify-content-end'>
-           <div>
-           <span className='summry'> <b style={{color:'#2ecc71'}}>+10% </b> Add profile Sumary </span>
-           </div>
-           <div className={classes.suggestionIcon}>
-              <ClickAwayListener onClickAway={handleClickAway}>
-                <span className={iconClass.fontSizeSmall}>
-                  <HelpIcon
-                    fontSize="small"
-                    onClick={handleDisplaySuggestion}
-                  />{" "}
+            <div className="d-flex justify-content-end">
+              <div>
+                <span className="summry">
+                  {" "}
+                  <b style={{ color: "#2ecc71" }}>+10% </b> Add profile Sumary{" "}
                 </span>
-              </ClickAwayListener>
+              </div>
+              <div className={classes.suggestionIcon}>
+                <ClickAwayListener onClickAway={handleClickAway}>
+                  <span className={iconClass.fontSizeSmall}>
+                    <HelpIcon
+                      fontSize="small"
+                      onClick={handleDisplaySuggestion}
+                    />{" "}
+                  </span>
+                </ClickAwayListener>
+              </div>
             </div>
-           </div>
           </Col>
-          
         </Row>
         <div style={{ alignSelf: "center", width: "99%" }}>
           <ProgressBar
@@ -262,21 +256,76 @@ function Header() {
         {displaySugession && (
           <div className={classes.suggestionInfo}>
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}> <a href onClick={handleClickAway1}><span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+4% </b>Add extra-curricular activities</span></a></Col>
+              <Col span={10}>
+                {" "}
+                <a href onClick={handleClickAway1}>
+                  <span style={{ color: "#98A1B4", cursor: "pointer" }}>
+                    {" "}
+                    <b style={{ color: "#25B869", paddingRight: 10 }}>+4% </b>
+                    Add extra-curricular activities
+                  </span>
+                </a>
+              </Col>
               <Col span={4}> </Col>
-              <Col span={10}> <a href onClick={handleClickAway2}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add courses</span></a></Col>
+              <Col span={10}>
+                {" "}
+                <a href onClick={handleClickAway2}>
+                  {" "}
+                  <span style={{ color: "#98A1B4", cursor: "pointer" }}>
+                    {" "}
+                    <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>
+                    Add courses
+                  </span>
+                </a>
+              </Col>
             </Row>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}><a href onClick={handleClickAway3}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+8% </b>Add education</span></a></Col>
+              <Col span={10}>
+                <a href onClick={handleClickAway3}>
+                  {" "}
+                  <span style={{ color: "#98A1B4", cursor: "pointer" }}>
+                    {" "}
+                    <b style={{ color: "#25B869", paddingRight: 10 }}>+8% </b>
+                    Add education
+                  </span>
+                </a>
+              </Col>
               <Col span={4}> </Col>
-              <Col span={10}><a href onClick={handleClickAway4}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add languages</span></a></Col>
+              <Col span={10}>
+                <a href onClick={handleClickAway4}>
+                  {" "}
+                  <span style={{ color: "#98A1B4", cursor: "pointer" }}>
+                    {" "}
+                    <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>
+                    Add languages
+                  </span>
+                </a>
+              </Col>
             </Row>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}><a href onClick={handleClickAway5}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+5% </b>Add skills</span></a></Col>
+              <Col span={10}>
+                <a href onClick={handleClickAway5}>
+                  {" "}
+                  <span style={{ color: "#98A1B4", cursor: "pointer" }}>
+                    {" "}
+                    <b style={{ color: "#25B869", paddingRight: 10 }}>+5% </b>
+                    Add skills
+                  </span>
+                </a>
+              </Col>
               <Col span={4}></Col>
-              <Col span={10}> <a href onClick={handleClickAway6}><span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+9% </b>Add employment history</span></a></Col>
+              <Col span={10}>
+                {" "}
+                <a href onClick={handleClickAway6}>
+                  <span style={{ color: "#98A1B4", cursor: "pointer" }}>
+                    {" "}
+                    <b style={{ color: "#25B869", paddingRight: 10 }}>+9% </b>
+                    Add employment history
+                  </span>
+                </a>
+              </Col>
             </Row>
           </div>
         )}
@@ -291,7 +340,7 @@ function Header() {
         </div>
       </div>
       <form
-      className='position-relative'
+        className="position-relative"
         className={classes.formStyle}
         noValidate
         autoComplete="off"
@@ -409,7 +458,6 @@ function Header() {
 
         {btnDisplay && (
           <span>
-  
             <h4
               onClick={handleDisplayClick}
               className="edit-hide"
@@ -423,7 +471,7 @@ function Header() {
 
         {btnHide && (
           <span>
-            <Row className={classes.rowWidth}>
+            <Row gutter={32} className={classes.rowWidth}>
               <Col xs={24} sm={12}>
                 <span className={classes.title}>Country</span>
                 <TextField
@@ -453,7 +501,7 @@ function Header() {
               </Col>
             </Row>
 
-            <Row className={classes.rowWidth}>
+            <Row gutter={32} className={classes.rowWidth}>
               <Col xs={24} sm={12}>
                 <span className={classes.title}>Address</span>
 
@@ -484,7 +532,7 @@ function Header() {
                 />
               </Col>
             </Row>
-            <Row className={classes.rowWidth}>
+            <Row gutter={32} className={classes.rowWidth}>
               <Col xs={24} sm={12}>
                 <span className={classes.title}>Driving license</span>
 
@@ -514,7 +562,7 @@ function Header() {
               </Col>
             </Row>
 
-            <Row className={classes.rowWidth}>
+            <Row gutter={32} className={classes.rowWidth}>
               <Col xs={24} sm={12}>
                 <span className={classes.title}>Place Of Birth</span>
 
@@ -618,93 +666,113 @@ function Header() {
               ]}
             />
           </MuiThemeProvider>
-
         </div>
 
         {/* <ProfessionalSummary /> */}
 
-
-        <DragDropContext
-          onDragEnd={onDragEnd}
-        >
-          <Droppable
-            droppableId='characters'
-          >
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="characters">
             {(provided) => (
-              <div  {...provided.droppableProps} ref={provided.innerRef} style={{ listStyle: 'none' }}>
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                style={{ listStyle: "none" }}
+              >
                 {items.map((item, index) => {
                   let myContent;
                   if (item.content == 0) {
-                    myContent = <div id='employmentHistoryDiv'> <EmploymentHistory /> </div>
+                    myContent = (
+                      <div id="employmentHistoryDiv">
+                        {" "}
+                        <EmploymentHistory />{" "}
+                      </div>
+                    );
                   } else if (item.content == 1) {
-                    myContent = <div id='educationDiv'> <EducationNew /> </div>
+                    myContent = (
+                      <div id="educationDiv">
+                        {" "}
+                        <EducationNew />{" "}
+                      </div>
+                    );
                   } else if (item.content == 2) {
-                    myContent = <SocialLinks />
+                    myContent = <SocialLinks />;
                   } else if (item.content == 3) {
-                    myContent = <div id='skillDiv'> <Skill /> </div>
+                    myContent = (
+                      <div id="skillDiv">
+                        {" "}
+                        <Skill />{" "}
+                      </div>
+                    );
                   } else if (item.content == 4) {
-                    myContent = <div id='coursesDiv'>
-                      {content.addSection.courses ?
-                        <Courses />
-                        : ''}
-                    </div>
+                    myContent = (
+                      <div id="coursesDiv">
+                        {content.addSection.courses ? <Courses /> : ""}
+                      </div>
+                    );
                   } else if (item.content == 5) {
-                    myContent = <div id='activitiesDiv'>
-                      {content.addSection.activities ?
-                        <ExtraCuriActivities />
-                        : ''}
-                    </div>
+                    myContent = (
+                      <div id="activitiesDiv">
+                        {content.addSection.activities ? (
+                          <ExtraCuriActivities />
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    );
                   } else if (item.content == 6) {
-                    myContent = <div id='hobbiesDiv'>
-                      {content.addSection.hobbies ?
-                        <Hobbies />
-                        : ''}
-                    </div>
+                    myContent = (
+                      <div id="hobbiesDiv">
+                        {content.addSection.hobbies ? <Hobbies /> : ""}
+                      </div>
+                    );
                   } else if (item.content == 7) {
-                    myContent = <div id='languagesDiv'>
-                      {content.addSection.languages ?
-                        <Languages />
-                        : ''}
-                    </div>
+                    myContent = (
+                      <div id="languagesDiv">
+                        {content.addSection.languages ? <Languages /> : ""}
+                      </div>
+                    );
                   } else if (item.content == 8) {
-                    myContent = <> {content.addSection.internship ?
-                      <Internship />
-                      : ''}</>
+                    myContent = (
+                      <>
+                        {" "}
+                        {content.addSection.internship ? <Internship /> : ""}
+                      </>
+                    );
                   } else {
-                    myContent = <>
-                      {content.addSection.refrences ?
-                        <Refrences />
-                        : ''}
-                    </>
+                    myContent = (
+                      <>{content.addSection.refrences ? <Refrences /> : ""}</>
+                    );
                   }
 
-
-
-
-                  return <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      // style={getItemStyle(
-                      //   snapshot.isDragging,
-                      //   provided.draggableProps.style
-                      // )}
-                      >
-                        {myContent}
-                      </div>
-                    )}
-                  </Draggable>
+                  return (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          // style={getItemStyle(
+                          //   snapshot.isDragging,
+                          //   provided.draggableProps.style
+                          // )}
+                        >
+                          <div className="row col-12">
+                            <DragIndicatorIcon className="pencilIcon-div mt-4" />
+                            <>{myContent}</>
+                          </div>{" "}
+                        </div>
+                      )}
+                    </Draggable>
+                  );
                 })}
-
               </div>
             )}
           </Droppable>
         </DragDropContext>
-
-
-
 
         {content.addSection.activities ? <ExtraCuriActivities /> : ""}
         {content.addSection.hobbies ? <Hobbies /> : ""}
@@ -726,8 +794,11 @@ function Header() {
           Update
         </Button> */}
       </form>
-      <div >
-      <button className='btn btn-primary'> Click Me</button>
+      <div className="d-xl-none d-block">
+        <button type="button" className="btnDiv fixed-bottom ">
+          <b> Preview & Download</b>
+          <AiFillFileText className="fixButton" />{" "}
+        </button>
       </div>
     </div>
   );
