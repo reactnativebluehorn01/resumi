@@ -129,7 +129,7 @@ function Left() {
   return (
     <div className="left">
 
-      <div style={{ width: '200px', marginLeft: '35%' }} >
+      <div style={{ width: '200px', marginLeft: '36%' }} >
         <div>
           <span className='alignCenter1'>
             <h3 className='untitled' style={{

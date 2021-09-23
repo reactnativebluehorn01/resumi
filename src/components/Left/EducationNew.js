@@ -183,8 +183,8 @@ function EducationNew() {
                                   defaultActiveKey={["1"]}
                                 >
                                   <Panel header={panelHeader} key={"1"}>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={11}>
+                                    <Row gutter={32} className={classes.rowWidth}>
+                                      <Col  xs={24} sm={12}>
                                         <span className={classes.title}>
                                           School
                                         </span>
@@ -200,8 +200,8 @@ function EducationNew() {
                                           style={{ width: "100%" }}
                                         />
                                       </Col>
-                                      <Col span={2}></Col>
-                                      <Col span={11}>
+                                      
+                                      <Col  xs={24} sm={12}>
                                         <span className={classes.title}>
                                           Degree
                                         </span>
@@ -218,14 +218,14 @@ function EducationNew() {
                                         />
                                       </Col>
                                     </Row>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={11}>
+                                    <Row  gutter={32} className={classes.rowWidth}>
+                                      <Col  xs={24} sm={12}>
                                         <span className={classes.title}>
                                           Start & End Date
                                           <HelpOutlineIcon fontSize="small" />
                                         </span>
-                                        <Row>
-                                          <Col span={11}>
+                                        <Row  gutter={32}>
+                                          <Col  xs={24} sm={12}>
                                             <TextField
                                               id="filled-basic"
                                               name="startDate"
@@ -238,8 +238,8 @@ function EducationNew() {
                                               style={{ width: "100%" }}
                                             />
                                           </Col>
-                                          <Col span={2}></Col>
-                                          <Col span={11}>
+                                          
+                                          <Col  xs={24} sm={12}>
                                             <TextField
                                               id="filled-basic"
                                               name="endDate"
@@ -255,8 +255,8 @@ function EducationNew() {
                                         </Row>
                                       </Col>
 
-                                      <Col span={2}></Col>
-                                      <Col span={11}>
+                                      
+                                      <Col  xs={24} sm={12}>
                                         <span className={classes.title}>
                                           city
                                         </span>
@@ -271,7 +271,7 @@ function EducationNew() {
                                         />
                                       </Col>
                                     </Row>
-                                    <Row className={classes.rowWidth}>
+                                    <Row  gutter={32} className={classes.rowWidth}>
                                       <Col span={24}>
                                         <span
                                           className={classes.title}
@@ -344,7 +344,7 @@ function EducationNew() {
                         >
                           <Panel header={panelHeader} key={"1"}>
                             <Row className={classes.rowWidth}>
-                              <Col span={11}>
+                              <Col  xs={24} sm={12}>
                                 <span className={classes.title}>
                                   School
                                 </span>
@@ -360,7 +360,7 @@ function EducationNew() {
                                   style={{ width: "100%" }}
                                 />
                               </Col>
-                              <Col span={2}></Col>
+                              
                               <Col span={11}>
                                 <span className={classes.title}>
                                   Degree
@@ -398,7 +398,7 @@ function EducationNew() {
                                       style={{ width: "100%" }}
                                     />
                                   </Col>
-                                  <Col span={2}></Col>
+                                  
                                   <Col span={11}>
                                     <TextField
                                       id="filled-basic"
@@ -415,7 +415,7 @@ function EducationNew() {
                                 </Row>
                               </Col>
 
-                              <Col span={2}></Col>
+                              
                               <Col span={11}>
                                 <span className={classes.title}>
                                   city
