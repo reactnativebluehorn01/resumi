@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 //import { createMuiTheme } from '@material-ui/core/styles'
+import { Modal } from "antd";
 
 const { Option } = Select;
 
@@ -44,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Languages() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   //const [age, setAge] = React.useState('');
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
@@ -72,9 +76,7 @@ function Languages() {
   const panelHeader = (
     <div className="">
       {content.languages.language ? (
-        <h4 style={{ fontSize: "1rem" }}>
-          {content.languages.language}
-        </h4>
+        <h4 style={{ fontSize: "1rem" }}>{content.languages.language}</h4>
       ) : (
         <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
       )}
@@ -101,15 +103,18 @@ function Languages() {
   //   // });
   // };
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({ ...content, languages: {} }));
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, languages: {} })
+    );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose();
   };
   return (
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-
           <div>
             <h2 className="MainPoints">Languages</h2>
           </div>
@@ -126,7 +131,7 @@ function Languages() {
               border: "0.5px solid #b3d4fc",
               borderRadius: "5px",
               marginBottom: 10,
-              width: "100%"
+              width: "100%",
             }}
           >
             <Collapse
@@ -185,10 +190,20 @@ function Languages() {
           </div>
           <div>
             <DeleteOutlineOutlinedIcon
-              onClick={() => handleDelete(item)}
+              onClick={handleShow}
               className="pencilIcon-div mt-4"
             />
           </div>
+          <Modal
+            // title="Vertically centered modal dialog"
+            centered
+            visible={show}
+            onOk={() => handleDelete(item)}
+            onCancel={handleClose}
+          >
+            <h4>Delete Entry</h4>
+            <h6>Are you sure you want to delete entry?</h6>
+          </Modal>
         </div>
       ))}
 

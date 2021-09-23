@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { Modal } from "antd";
 
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 
@@ -33,6 +34,10 @@ const useStyles = makeStyles({
 });
 
 function ExtraCuriActivities() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
   const [addActivity, setEdu] = useState([]);
   function callback(key) {
@@ -79,7 +84,8 @@ function ExtraCuriActivities() {
     <div className="">
       {content.extraCurricularActivity.functionTitle ? (
         <h4 style={{ fontSize: "1rem" }}>
-          {content.extraCurricularActivity.functionTitle} at   {content.extraCurricularActivity.employer}
+          {content.extraCurricularActivity.functionTitle} at{" "}
+          {content.extraCurricularActivity.employer}
         </h4>
       ) : (
         <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
@@ -87,7 +93,8 @@ function ExtraCuriActivities() {
 
       {content.extraCurricularActivity.startDate ? (
         <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-          {content.extraCurricularActivity.startDate} -  {content.extraCurricularActivity.endDate}
+          {content.extraCurricularActivity.startDate} -{" "}
+          {content.extraCurricularActivity.endDate}
         </p>
       ) : null}
     </div>
@@ -105,12 +112,12 @@ function ExtraCuriActivities() {
     );
     const newEdu = addActivity.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose();
   };
   return (
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-
           <div>
             <h2 className="MainPoints">Extra Curricular activity </h2>
           </div>
@@ -127,7 +134,7 @@ function ExtraCuriActivities() {
               border: "0.5px solid #b3d4fc",
               borderRadius: "5px",
               marginBottom: 10,
-              width: "100%"
+              width: "100%",
             }}
           >
             <Collapse
@@ -145,7 +152,9 @@ function ExtraCuriActivities() {
                       // label="City"
                       name="functionTitle"
                       variant="filled"
-                      defaultValue={content.extraCurricularActivity.functionTitle}
+                      defaultValue={
+                        content.extraCurricularActivity.functionTitle
+                      }
                       inputRef={register}
                       onChange={handleSubmit(onSubmit)}
                       style={{ width: "100%" }}
@@ -178,7 +187,9 @@ function ExtraCuriActivities() {
                           id="filled-basic"
                           name="startDate"
                           variant="filled"
-                          defaultValue={content.extraCurricularActivity.startDate}
+                          defaultValue={
+                            content.extraCurricularActivity.startDate
+                          }
                           inputRef={register}
                           onChange={handleSubmit(onSubmit)}
                           style={{ width: "100%" }}
@@ -253,10 +264,20 @@ function ExtraCuriActivities() {
           </div>
           <div>
             <DeleteOutlineOutlinedIcon
-              onClick={() => handleDelete(item)}
+              onClick={handleShow}
               className="pencilIcon-div mt-4"
             />
           </div>
+          <Modal
+            // title="Vertically centered modal dialog"
+            centered
+            visible={show}
+            onOk={() => handleDelete(item)}
+            onCancel={handleClose}
+          >
+            <h4>Delete Entry</h4>
+            <h6>Are you sure you want to delete entry?</h6>
+          </Modal>
         </div>
       ))}
 

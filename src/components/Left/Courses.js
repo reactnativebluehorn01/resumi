@@ -12,6 +12,7 @@ import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
+import { Modal } from "antd";
 
 import DatePicker from "@mui/lab/DatePicker";
 
@@ -39,6 +40,10 @@ const useStyles = makeStyles({
 });
 
 function Courses() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   function callback(key) {
@@ -102,16 +107,18 @@ function Courses() {
     // setBtnText("Update");
   };
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({ ...content, courses: {} }));
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, courses: {} })
+    );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
-
+    handleClose();
   };
   return (
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-
           <div>
             <h2 className="MainPoints">Courses </h2>
           </div>
@@ -250,10 +257,20 @@ function Courses() {
             </div>
             <div>
               <DeleteOutlineOutlinedIcon
-                onClick={() => handleDelete(item)}
+                onClick={handleShow}
                 className="pencilIcon-div mt-4"
               />
             </div>
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={show}
+              onOk={() => handleDelete(item)}
+              onCancel={handleClose}
+            >
+              <h4>Delete Entry</h4>
+              <h6>Are you sure you want to delete entry?</h6>
+            </Modal>
           </div>
         </>
       ))}

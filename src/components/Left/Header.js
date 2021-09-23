@@ -776,14 +776,6 @@ function Header() {
           </Droppable>
         </DragDropContext>
 
-        {content.addSection.activities ? <ExtraCuriActivities /> : ""}
-        {content.addSection.hobbies ? <Hobbies /> : ""}
-
-        {content.addSection.languages ? <Languages /> : ""}
-        {content.addSection.internship ? <Internship /> : ""}
-
-        {content.addSection.refrences ? <Refrences /> : ""}
-
         <AddSection />
         {/* <button className='btn btn-primary'>Click Me</button> */}
 
