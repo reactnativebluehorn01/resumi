@@ -37,8 +37,21 @@ function Right() {
     setContent({
       header: {},
       professional: { desc1: ["", "", ""], desc2: ["", "", ""] },
+      professional2: {},
       education: {},
       additional: [],
+      socialLinks: {},
+      courses: {},
+      hobbies: {},
+      languages: {},
+      refrences: {},
+      intrenship: {},
+      extraCurricularActivity: {},
+      addSection: {},
+      skills: {},
+      contextArray: [],
+      barComplet: { 'percent': 18, 'headerData': true, 'professionalData': true }
+
     });
   };
   const handleSaveToPDF = (event) => {

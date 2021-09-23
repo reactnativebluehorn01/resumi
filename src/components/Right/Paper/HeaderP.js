@@ -16,7 +16,7 @@ function HeaderP() {
   } else {
     contentUse = content;
   }
-  console.log('contentUse................', contentUse);
+  // console.log('contentUse................', contentUse);
   //let divider;
   // if (Object.keys(contentUse.header).length > 0) {
   //   divider = <hr className={classes.dividerRight} />;

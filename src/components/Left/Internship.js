@@ -1,37 +1,34 @@
-import React, { useState, useContext } from 'react';
-import { Collapse, Col, Row } from 'antd';
+import React, { useState, useContext, useEffect } from "react";
+import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { makeStyles } from "@material-ui/core/styles";
+import AddIcon from "@material-ui/icons/Add";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-
-
 
 const { Panel } = Collapse;
 
 const useStyles = makeStyles({
   root: {
-    color: '#2196F3',
-    float: 'left'
+    color: "#2196F3",
+    float: "left",
   },
   label: {
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
     // marginRight:'500px' ,
-    float: 'inline-start',
-    justifyContent: "flex-start"
+    float: "inline-start",
+    justifyContent: "flex-start",
   },
 });
-
 
 function Internship() {
   const btnclass = useStyles();
@@ -39,14 +36,20 @@ function Internship() {
   function callback(key) {
     console.log(key);
   }
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal &&
+      Object.keys(dataLocal.intrenship).length > 0 &&
+      addEmploymentHistory();
+  }, []);
   const save = (data) => {
     console.log(data);
   };
   const addEmploymentHistory = () => {
-    setEdu([...addEdu, ' ']);
+    setEdu([...addEdu, " "]);
     console.log(addEdu);
-  }
-  const defaultTheme = createMuiTheme()
+  };
+  const defaultTheme = createMuiTheme();
 
   Object.assign(defaultTheme, {
     overrides: {
@@ -55,26 +58,38 @@ function Internship() {
           marginLeft: 5,
           marginTop: 10,
           width: "100%",
-          backgroundColor: '#F2F5FA',
-          borderRadius: '5px',
-          padding: '5px'
+          backgroundColor: "#F2F5FA",
+          borderRadius: "5px",
+          padding: "5px",
         },
         editor: {
-          overFlow: 'wrap',
-          minHeight: '200px',
-          textIndent: '15px'
-        }
-      }
-    }
-  })
-  const { content, updateIntrenshipData, removeFakeData } = useContext(
-    ResumeContext
-  );
+          overFlow: "wrap",
+          minHeight: "200px",
+          textIndent: "15px",
+        },
+      },
+    },
+  });
+  const { content, updateIntrenshipData, removeFakeData } =
+    useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
-  const panelHeader = (<div className='' >
-    <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
-    <p style={{ marginTop: -10, fontSize: 12, color: '#98A1B3' }}>Mar 2019 - Mar 2021 </p>
-  </div>)
+  const panelHeader = (
+    <div className="">
+    {content.intrenship.jobTitle ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.intrenship.jobTitle} at {content.intrenship.employer}
+      </h4>
+    ) : (
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.courses.startDate? (
+      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+        {content.intrenship.startDate} - {content.intrenship.endDate} 
+      </p>
+    ) : null}
+  </div>
+  );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     removeFakeData();
@@ -83,14 +98,13 @@ function Internship() {
   };
   return (
     <div>
-      <div className='heading'>
+      <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-      
-        <div>
+          <div>
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className='MainPoints'>Intrenship </h2>
+            <h2 className="MainPoints">Intrenship </h2>
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
@@ -98,16 +112,22 @@ function Internship() {
         </div>
       </div>
       {addEdu.map((item, index) => (
-        <div key={index} style={{ border: '0.5px solid #b3d4fc', borderRadius: '5px', marginBottom: 10 }}>
-
-          <Collapse accordion
+        <div
+          key={index}
+          style={{
+            border: "0.5px solid #b3d4fc",
+            borderRadius: "5px",
+            marginBottom: 10,
+          }}
+        >
+          <Collapse
+            accordion
             onChange={callback}
-            expandIconPosition='right'
+            expandIconPosition="right"
             ghost
           >
-            <Panel header={panelHeader} key='1'>
+            <Panel header={panelHeader} key="1">
               <Row className={classes.rowWidth}>
-
                 <Col span={11}>
                   <span className={classes.title}> Job title</span>
                   <TextField
@@ -118,7 +138,7 @@ function Internship() {
                     defaultValue={content.intrenship.jobTitle}
                     inputRef={register}
                     onChange={handleSubmit(onSubmit)}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   />
                 </Col>
                 <Col span={2}></Col>
@@ -133,13 +153,15 @@ function Internship() {
                     defaultValue={content.intrenship.employer}
                     inputRef={register}
                     onChange={handleSubmit(onSubmit)}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   />
                 </Col>
               </Row>
               <Row className={classes.rowWidth}>
                 <Col span={11}>
-                  <span className={classes.title}>Start & End Date <HelpOutlineIcon fontSize='small' /> </span>
+                  <span className={classes.title}>
+                    Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                  </span>
                   <Row>
                     <Col span={11}>
                       <TextField
@@ -150,7 +172,7 @@ function Internship() {
                         defaultValue={content.intrenship.startDate}
                         inputRef={register}
                         onChange={handleSubmit(onSubmit)}
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                       />
                     </Col>
                     <Col span={2}></Col>
@@ -163,8 +185,10 @@ function Internship() {
                         defaultValue={content.intrenship.endDate}
                         inputRef={register}
                         onChange={handleSubmit(onSubmit)}
-                        style={{ width: '100%' }}
-                      /> </Col></Row>
+                        style={{ width: "100%" }}
+                      />{" "}
+                    </Col>
+                  </Row>
                 </Col>
 
                 <Col span={2}></Col>
@@ -179,32 +203,48 @@ function Internship() {
                     defaultValue={content.intrenship.city}
                     inputRef={register}
                     onChange={handleSubmit(onSubmit)}
-                    style={{ width: '100%' }}
-
+                    style={{ width: "100%" }}
                   />
                 </Col>
               </Row>
               <Row className={classes.rowWidth}>
                 <Col span={24}>
-                  <span className={classes.title} style={{ marginLeft: '10px' }}>Description</span>
+                  <span
+                    className={classes.title}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    Description
+                  </span>
                   <MuiThemeProvider theme={defaultTheme}>
                     <MUIRichTextEditor
                       label=" type here ..."
                       // onSave={save}
                       inlineToolbar={true}
-                      onChange={(e) => onSubmit({ ...content.intrenship, 'intrenship_description': e.getCurrentContent().getPlainText() })}
-
-                      controls={["bold", "italic", "underline", "strikethrough", "numberList", "bulletList", "spellcheck"]}
+                      onChange={(e) =>
+                        onSubmit({
+                          ...content.intrenship,
+                          intrenship_description: e
+                            .getCurrentContent()
+                            .getPlainText(),
+                        })
+                      }
+                      controls={[
+                        "bold",
+                        "italic",
+                        "underline",
+                        "strikethrough",
+                        "numberList",
+                        "bulletList",
+                        "spellcheck",
+                      ]}
                     />
                   </MuiThemeProvider>
                 </Col>
-
               </Row>
             </Panel>
           </Collapse>
         </div>
-      )
-      )}
+      ))}
 
       <Button
         classes={{
@@ -217,7 +257,6 @@ function Internship() {
       >
         Add Internship
       </Button>
-
     </div>
   );
 }

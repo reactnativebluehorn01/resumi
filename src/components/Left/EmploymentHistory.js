@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
@@ -33,6 +33,12 @@ const useStyles = makeStyles({
 function EmploymentHistory() {
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.professional2).length > 0 && addEmploymentHistory();
+  }, []);
+
+ 
   function callback(key) {
     console.log(key);
   }
@@ -70,11 +76,21 @@ function EmploymentHistory() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-      <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
+    {content.professional2.jobTitle ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.professional2.jobTitle} at {content.professional2.employer}
+      </h4>
+    ) : (
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.professional2.date1 ? (
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        Mar 2019 - Mar 2021{" "}
+        {content.professional2.date1} - {content.professional2.date2}
       </p>
-    </div>
+    ) : null}
+  </div>
+
   );
   const { register, handleSubmit } = useForm();
   const save = (data) => {

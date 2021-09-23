@@ -1,37 +1,35 @@
-import React, { useState, useContext } from 'react';
-import { Collapse, Col, Row } from 'antd';
+import React, { useState, useContext, useEffect } from "react";
+import { Collapse, Col, Row } from "antd";
 import MUIRichTextEditor from "mui-rte";
 
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 // import React, { useContext,useState } from "react";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { makeStyles } from "@material-ui/core/styles";
+import AddIcon from "@material-ui/icons/Add";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-
 
 const { Panel } = Collapse;
 
 const useStyles = makeStyles({
   root: {
-    color: '#2196F3',
-    float: 'left'
+    color: "#2196F3",
+    float: "left",
   },
   label: {
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
     // marginRight:'500px' ,
-    float: 'inline-start',
-    justifyContent: "flex-start"
+    float: "inline-start",
+    justifyContent: "flex-start",
   },
 });
-
 
 function ExtraCuriActivities() {
   const btnclass = useStyles();
@@ -39,14 +37,20 @@ function ExtraCuriActivities() {
   function callback(key) {
     console.log(key);
   }
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal &&
+      Object.keys(dataLocal.extraCurricularActivity).length > 0 &&
+      addExtraActivity();
+  }, []);
   const save = (data) => {
     console.log(data);
   };
   const addExtraActivity = () => {
-    setEdu([...addActivity, ' ']);
+    setEdu([...addActivity, " "]);
     console.log(addActivity);
-  }
-  const defaultTheme = createMuiTheme()
+  };
+  const defaultTheme = createMuiTheme();
 
   Object.assign(defaultTheme, {
     overrides: {
@@ -55,26 +59,38 @@ function ExtraCuriActivities() {
           marginLeft: 5,
           marginTop: 10,
           width: "100%",
-          backgroundColor: '#F2F5FA',
-          borderRadius: '5px',
-          padding: '5px'
+          backgroundColor: "#F2F5FA",
+          borderRadius: "5px",
+          padding: "5px",
         },
         editor: {
-          overFlow: 'wrap',
-          minHeight: '200px',
-          textIndent: '15px'
-        }
-      }
-    }
-  })
-  const { content, updateExtraCurricularActivity, removeFakeData } = useContext(
-    ResumeContext
-  );
+          overFlow: "wrap",
+          minHeight: "200px",
+          textIndent: "15px",
+        },
+      },
+    },
+  });
+  const { content, updateExtraCurricularActivity, removeFakeData } =
+    useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
-  const panelHeader = (<div className='' >
-    <h4 style={{fontSize:'1rem'}}>(Not Specified)</h4>
-    <p style={{ marginTop: -10, fontSize: 12, color: '#98A1B3' }}>Mar 2019 - Mar 2021 </p>
-  </div>)
+  const panelHeader = (
+    <div className="">
+    {content.extraCurricularActivity.functionTitle ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.extraCurricularActivity.functionTitle } at   {content.extraCurricularActivity.employer }
+      </h4>
+    ) : (
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.extraCurricularActivity.startDate? (
+      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+        {content.extraCurricularActivity.startDate} -  {content.extraCurricularActivity.endDate} 
+      </p>
+    ) : null}
+  </div>
+  );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     removeFakeData();
@@ -83,13 +99,13 @@ function ExtraCuriActivities() {
   };
   return (
     <div>
-      <div className='heading'>
+      <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
           <div>
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className='MainPoints'>Extra Curricular activity </h2>
+            <h2 className="MainPoints">Extra Curricular activity </h2>
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
@@ -97,16 +113,22 @@ function ExtraCuriActivities() {
         </div>
       </div>
       {addActivity.map((item, index) => (
-        <div key={index} style={{ border: '0.5px solid #b3d4fc', borderRadius: '5px', marginBottom: 10 }}>
-
-          <Collapse accordion
+        <div
+          key={index}
+          style={{
+            border: "0.5px solid #b3d4fc",
+            borderRadius: "5px",
+            marginBottom: 10,
+          }}
+        >
+          <Collapse
+            accordion
             onChange={callback}
-            expandIconPosition='right'
+            expandIconPosition="right"
             ghost
           >
-            <Panel header={panelHeader} key='1'>
+            <Panel header={panelHeader} key="1">
               <Row className={classes.rowWidth}>
-
                 <Col span={11}>
                   <span className={classes.title}> Function Title</span>
                   <TextField
@@ -117,7 +139,7 @@ function ExtraCuriActivities() {
                     defaultValue={content.extraCurricularActivity.functionTitle}
                     inputRef={register}
                     onChange={handleSubmit(onSubmit)}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   />
                 </Col>
                 <Col span={2}></Col>
@@ -132,24 +154,25 @@ function ExtraCuriActivities() {
                     defaultValue={content.extraCurricularActivity.employer}
                     inputRef={register}
                     onChange={handleSubmit(onSubmit)}
-                    style={{ width: '100%' }}
+                    style={{ width: "100%" }}
                   />
                 </Col>
               </Row>
               <Row className={classes.rowWidth}>
                 <Col span={11}>
-                  <span className={classes.title}>Start & End Date <HelpOutlineIcon fontSize='small' /> </span>
+                  <span className={classes.title}>
+                    Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                  </span>
                   <Row>
                     <Col span={11}>
                       <TextField
                         id="filled-basic"
-
                         name="startDate"
                         variant="filled"
                         defaultValue={content.extraCurricularActivity.startDate}
                         inputRef={register}
                         onChange={handleSubmit(onSubmit)}
-                        style={{ width: '100%' }}
+                        style={{ width: "100%" }}
                       />
                     </Col>
                     <Col span={2}></Col>
@@ -161,8 +184,10 @@ function ExtraCuriActivities() {
                         defaultValue={content.extraCurricularActivity.endDate}
                         inputRef={register}
                         onChange={handleSubmit(onSubmit)}
-                        style={{ width: '100%' }}
-                      /> </Col></Row>
+                        style={{ width: "100%" }}
+                      />{" "}
+                    </Col>
+                  </Row>
                 </Col>
                 <Col span={2}></Col>
                 <Col span={11}>
@@ -176,32 +201,48 @@ function ExtraCuriActivities() {
                     defaultValue={content.extraCurricularActivity.city}
                     inputRef={register}
                     onChange={handleSubmit(onSubmit)}
-                    style={{ width: '100%' }}
-
+                    style={{ width: "100%" }}
                   />
                 </Col>
               </Row>
               <Row className={classes.rowWidth}>
                 <Col span={24}>
-                  <span className={classes.title} style={{ marginLeft: '10px' }}>Description</span>
+                  <span
+                    className={classes.title}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    Description
+                  </span>
                   <MuiThemeProvider theme={defaultTheme}>
                     <MUIRichTextEditor
                       label=" type here ..."
                       // onSave={save}
                       inlineToolbar={true}
-                      onChange={(e) => onSubmit({ ...content.extraCurricularActivity, 'extraCurricularActivity_description': e.getCurrentContent().getPlainText() })}
-
-                      controls={["bold", "italic", "underline", "strikethrough", "numberList", "bulletList", "spellcheck"]}
+                      onChange={(e) =>
+                        onSubmit({
+                          ...content.extraCurricularActivity,
+                          extraCurricularActivity_description: e
+                            .getCurrentContent()
+                            .getPlainText(),
+                        })
+                      }
+                      controls={[
+                        "bold",
+                        "italic",
+                        "underline",
+                        "strikethrough",
+                        "numberList",
+                        "bulletList",
+                        "spellcheck",
+                      ]}
                     />
                   </MuiThemeProvider>
                 </Col>
-
               </Row>
             </Panel>
           </Collapse>
         </div>
-      )
-      )}
+      ))}
 
       <Button
         classes={{
@@ -214,7 +255,6 @@ function ExtraCuriActivities() {
       >
         Add Activity
       </Button>
-
     </div>
   );
 }

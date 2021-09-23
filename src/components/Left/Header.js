@@ -33,6 +33,7 @@ import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import MUIRichTextEditor from "mui-rte";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import AddCircle from "@material-ui/icons/AddCircle";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 //import AddIcon from "@mui/icons-material/Add";
 
@@ -80,27 +81,76 @@ Object.assign(defaultTheme, {
   },
 });
 
+//const component = React.lazy(() => import('./component.jsx'));
+const getItems = count =>
+  Array.from({ length: count }, (v, k) => k).map(k => ({
+    id: `item-${k}`,
+    content: `${k}`
+  }));
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
 function Header() {
+
+  const [items, setItems] = useState(getItems(10));
+
+  const onDragEnd = (result) => {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    const items1 = reorder(
+      items,
+      result.source.index,
+      result.destination.index
+    );
+    setItems(items1);
+
+  }
+
   const iconClass = useStyles();
+
   const [displaySugession, setSuggesion] = useState(false);
-  const { content, updateHeaderData, removeFakeData, updateProfessionalData } =
-    useContext(ResumeContext);
+  const { content, updateHeaderData, removeFakeData, updateProfessionalData, updateTopBarPercentage } = useContext(
+    ResumeContext
+  );
   const [btnDisplay, setBtnDisplay] = useState(true);
   const [btnHide, setBtnHide] = useState(false);
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log("sample data==> ", data);
+    // console.log('sample data==> ', data);
+
     removeFakeData();
     updateHeaderData(data);
+    if (!content.barComplet.headerData && !content.header.job_title) {
+      let top_per = content.barComplet.percent - 8;
+      console.log('top_per1 == ', top_per);
+      //  updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
+
+    } else {
+      let top_per = content.barComplet.percent - 8;
+      console.log('top_per2 == ', top_per)
+      //  updateTopBarPercentage({ ...content.barComplet, 'percent': top_per, 'headerData': !content.barComplet.headerData });
+
+    }
+
   };
   const save = (d) => {
     let plainText = d.getCurrentContent().getPlainText();
 
-    // const { target: { value } } = d;
-    // console.log('d----=--=>', plainText)
     onSubmit2({ professionalSummer: plainText });
-  };
+
+  }
+
   const onSubmit2 = (data) => {
     removeFakeData();
     updateProfessionalData(data);
@@ -121,6 +171,40 @@ function Header() {
     setSuggesion(false);
   };
 
+  const handleClickAway1 = () => {
+    document.getElementById('activitiesDiv').scrollIntoView();
+  }
+
+  const handleClickAway2 = () => {
+
+    document.getElementById('coursesDiv').scrollIntoView();
+  }
+  const handleClickAway3 = () => {
+
+    document.getElementById('educationDiv').scrollIntoView();
+  }
+  const handleClickAway4 = () => {
+
+    document.getElementById('languagesDiv').scrollIntoView();
+  }
+  const handleClickAway5 = () => {
+
+    document.getElementById('skillDiv').scrollIntoView();
+  }
+
+  const handleClickAway6 = () => {
+
+    document.getElementById('employmentHistoryDiv').scrollIntoView();
+  }
+
+  // const handleOnDragEnd = (result) => {
+  //   if (!result.destination) return;
+  //   const items = Array.from(addEdu);
+  //   const [reorderedItems] = items.splice(result.source.index, 1);
+  //   items.splice(result.destination.index, 0, reorderedItems);
+  //   updateCharacters(items);
+  // }
+
   // const disabledDate = (current) => {
 
   //   // let customDate = "2018-11-25";
@@ -129,9 +213,9 @@ function Header() {
   // }
 
   return (
-    <div className="">
+    <div>
       <div className={classes.suggestion}>
-        <Row>
+      <Row>
           <Col span={12}>
             <span className='summry'>
                 
@@ -162,7 +246,7 @@ function Header() {
           <ProgressBar
             height="4px"
             // width="80%"
-            completed={73}
+            completed={content.barComplet.percent}
             isLabelVisible={false}
             bgColor="rgb(37 184 98)"
           />
@@ -178,63 +262,21 @@ function Header() {
         {displaySugession && (
           <div className={classes.suggestionInfo}>
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}>
-      
-                <span style={{ color: "#98A1B4", cursor: "pointer" }}>
-        
-                  <b style={{ color: "#25B869", paddingRight: 10 }}>+4% </b>Add
-                  extra-curricular activities
-                </span>
-              </Col>
+              <Col span={10}> <a href onClick={handleClickAway1}><span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+4% </b>Add extra-curricular activities</span></a></Col>
               <Col span={4}> </Col>
-              <Col span={10}>
-      
-                <span style={{ color: "#98A1B4", cursor: "pointer" }}>
-        
-                  <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add
-                  courses
-                </span>
-              </Col>
+              <Col span={10}> <a href onClick={handleClickAway2}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add courses</span></a></Col>
             </Row>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}>
-      
-                <span style={{ color: "#98A1B4", cursor: "pointer" }}>
-        
-                  <b style={{ color: "#25B869", paddingRight: 10 }}>+8% </b>Add
-                  education
-                </span>
-              </Col>
+              <Col span={10}><a href onClick={handleClickAway3}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+8% </b>Add education</span></a></Col>
               <Col span={4}> </Col>
-              <Col span={10}>
-      
-                <span style={{ color: "#98A1B4", cursor: "pointer" }}>
-        
-                  <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add
-                  languages
-                </span>
-              </Col>
+              <Col span={10}><a href onClick={handleClickAway4}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+2% </b>Add languages</span></a></Col>
             </Row>
 
             <Row className={classes.suggestionInfoRow}>
-              <Col span={10}>
-      
-                <span style={{ color: "#98A1B4", cursor: "pointer" }}>
-        
-                  <b style={{ color: "#25B869", paddingRight: 10 }}>+5% </b>Add
-                  skills
-                </span>
-              </Col>
+              <Col span={10}><a href onClick={handleClickAway5}> <span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+5% </b>Add skills</span></a></Col>
               <Col span={4}></Col>
-              <Col span={10}>
-      
-                <span style={{ color: "#98A1B4", cursor: "pointer" }}>
-        
-                  <b style={{ color: "#25B869", paddingRight: 10 }}>+9% </b>Add
-                  employment history
-                </span>
-              </Col>
+              <Col span={10}> <a href onClick={handleClickAway6}><span style={{ color: "#98A1B4", cursor: "pointer" }}> <b style={{ color: "#25B869", paddingRight: 10 }}>+9% </b>Add employment history</span></a></Col>
             </Row>
           </div>
         )}
@@ -576,14 +618,93 @@ function Header() {
               ]}
             />
           </MuiThemeProvider>
+
         </div>
 
         {/* <ProfessionalSummary /> */}
-        <EmploymentHistory />
-        <EducationNew />
-        <SocialLinks />
-        <Skill />
-        {content.addSection.courses ? <Courses /> : ""}
+
+
+        <DragDropContext
+          onDragEnd={onDragEnd}
+        >
+          <Droppable
+            droppableId='characters'
+          >
+            {(provided) => (
+              <div  {...provided.droppableProps} ref={provided.innerRef} style={{ listStyle: 'none' }}>
+                {items.map((item, index) => {
+                  let myContent;
+                  if (item.content == 0) {
+                    myContent = <div id='employmentHistoryDiv'> <EmploymentHistory /> </div>
+                  } else if (item.content == 1) {
+                    myContent = <div id='educationDiv'> <EducationNew /> </div>
+                  } else if (item.content == 2) {
+                    myContent = <SocialLinks />
+                  } else if (item.content == 3) {
+                    myContent = <div id='skillDiv'> <Skill /> </div>
+                  } else if (item.content == 4) {
+                    myContent = <div id='coursesDiv'>
+                      {content.addSection.courses ?
+                        <Courses />
+                        : ''}
+                    </div>
+                  } else if (item.content == 5) {
+                    myContent = <div id='activitiesDiv'>
+                      {content.addSection.activities ?
+                        <ExtraCuriActivities />
+                        : ''}
+                    </div>
+                  } else if (item.content == 6) {
+                    myContent = <div id='hobbiesDiv'>
+                      {content.addSection.hobbies ?
+                        <Hobbies />
+                        : ''}
+                    </div>
+                  } else if (item.content == 7) {
+                    myContent = <div id='languagesDiv'>
+                      {content.addSection.languages ?
+                        <Languages />
+                        : ''}
+                    </div>
+                  } else if (item.content == 8) {
+                    myContent = <> {content.addSection.internship ?
+                      <Internship />
+                      : ''}</>
+                  } else {
+                    myContent = <>
+                      {content.addSection.refrences ?
+                        <Refrences />
+                        : ''}
+                    </>
+                  }
+
+
+
+
+                  return <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      // style={getItemStyle(
+                      //   snapshot.isDragging,
+                      //   provided.draggableProps.style
+                      // )}
+                      >
+                        {myContent}
+                      </div>
+                    )}
+                  </Draggable>
+                })}
+
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+
+
+
 
         {content.addSection.activities ? <ExtraCuriActivities /> : ""}
         {content.addSection.hobbies ? <Hobbies /> : ""}

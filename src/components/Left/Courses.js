@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Collapse, Col, Row, Space } from "antd";
 //import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
@@ -43,6 +43,10 @@ function Courses() {
   function callback(key) {
     console.log(key);
   }
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.courses).length > 0 && addCourses();
+  }, []);
   // const save = (data) => {
   //   console.log(data);
   // };
@@ -74,12 +78,22 @@ function Courses() {
     useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
+   
     <div className="">
-      <h4 style={{ fontSize: '1rem' }}>(Not Specified)</h4>
+    {content.courses.course ? (
+      <h4 style={{ fontSize: "1rem" }}>
+        {content.courses.course} at {content.courses.institution}
+      </h4>
+    ) : (
+      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+    )}
+
+    {content.courses.startDate? (
       <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        Mar 2019 - Mar 2021{" "}
+        {content.courses.startDate} - {content.courses.endDate} 
       </p>
-    </div>
+    ) : null}
+  </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
