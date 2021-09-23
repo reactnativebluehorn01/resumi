@@ -138,7 +138,7 @@ function EducationNew() {
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className="MainPoints">Education </h2>
+            <h2 className="MainPoints">Education  </h2>
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
@@ -492,4 +492,3 @@ function EducationNew() {
 }
 
 export default EducationNew;
-  
