@@ -35,10 +35,11 @@ function EmploymentHistory() {
   const [addEdu, setEdu] = useState([]);
   useEffect(() => {
     const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
-    dataLocal && Object.keys(dataLocal.professional2).length > 0 && addEmploymentHistory();
+    dataLocal &&
+      Object.keys(dataLocal.professional2).length > 0 &&
+      addEmploymentHistory();
   }, []);
 
- 
   function callback(key) {
     console.log(key);
   }
@@ -49,7 +50,10 @@ function EmploymentHistory() {
   };
   const defaultTheme = createMuiTheme();
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, professional2:{}}));
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, professional2: {} })
+    );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
   };
@@ -77,21 +81,20 @@ function EmploymentHistory() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-    {content.professional2.jobTitle ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.professional2.jobTitle} at {content.professional2.employer}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.professional2.jobTitle ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.professional2.jobTitle} at {content.professional2.employer}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.professional2.date1 ? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.professional2.date1} - {content.professional2.date2}
-      </p>
-    ) : null}
-  </div>
-
+      {content.professional2.date1 ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.professional2.date1} - {content.professional2.date2}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const save = (data) => {
@@ -267,14 +270,13 @@ function EmploymentHistory() {
             </div>
           </div>
           <div>
-                      <DeleteOutlineOutlinedIcon
-                        onClick={() => handleDelete(item)}
-                        className="pencilIcon-div mt-4"
-                      />
-                    </div>
+            <DeleteOutlineOutlinedIcon
+              onClick={() => handleDelete(item)}
+              className="pencilIcon-div mt-4"
+            />
+          </div>
         </div>
       ))}
-
       <Button
         classes={{
           root: btnclass.root,
@@ -286,6 +288,7 @@ function EmploymentHistory() {
       >
         Add employment
       </Button>
+      
     </div>
   );
 }
