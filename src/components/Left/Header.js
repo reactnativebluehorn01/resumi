@@ -35,6 +35,9 @@ import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import AddCircle from "@material-ui/icons/AddCircle";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { AiFillFileText } from "react-icons/ai";
+
+import onDrag from '../../utils/OnDrag';
+
 //import AddIcon from "@mui/icons-material/Add";
 
 //import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
@@ -88,13 +91,7 @@ const getItems = (count) =>
     content: `${k}`,
   }));
 
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
 
-  return result;
-};
 
 function Header() {
   const [items, setItems] = useState(getItems(10));
@@ -105,7 +102,7 @@ function Header() {
       return;
     }
 
-    const items1 = reorder(
+    const items1 = onDrag(
       items,
       result.source.index,
       result.destination.index
@@ -340,8 +337,7 @@ function Header() {
         </div>
       </div>
       <form
-        className="position-relative"
-        className={classes.formStyle}
+        className={classes.formStyle + " position-relative"}
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
