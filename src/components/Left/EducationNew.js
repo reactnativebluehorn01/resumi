@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { Modal } from "antd";
 
 const { Panel } = Collapse;
 
@@ -35,6 +36,10 @@ const useStyles = makeStyles({
 });
 
 function EducationNew() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   const [characters, updateCharacters] = useState(addEdu);
@@ -128,6 +133,7 @@ function EducationNew() {
   const handleDelete = (delFile) => {
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose()
   };
   // console.log(dataLocal.education)
   return (
@@ -135,10 +141,7 @@ function EducationNew() {
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
           <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
-          <div>
-            <h2 className="MainPoints">Education  </h2>
+            <h2 className="MainPoints">Education </h2>
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
@@ -318,10 +321,20 @@ function EducationNew() {
                             </div>
                             <div>
                               <DeleteOutlineOutlinedIcon
-                                onClick={() => handleDelete(item)}
+                                onClick={handleShow}
                                 className="pencilIcon-div mt-4"
                               />
                             </div>
+                            <Modal
+                              // title="Vertically centered modal dialog"
+                              centered
+                              visible={show}
+                              onOk={() => handleDelete(item)}
+                              onCancel={handleClose}
+                            >
+                              <h4>Delete Entry</h4>
+                              <h6>Are you sure you want to delete entry?</h6>
+                            </Modal>
                           </div>
                         </>
 

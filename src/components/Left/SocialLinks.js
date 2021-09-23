@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme } from "@material-ui/core/styles";
+import { Modal } from "antd";
 
 const { Panel } = Collapse;
 
@@ -36,6 +37,10 @@ const useStyles = makeStyles({
 });
 
 function SocialLinks() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   useEffect(() => {
@@ -84,26 +89,27 @@ function SocialLinks() {
   };
   const panelHeader = (
     <div className="">
-    {content.socialLinks.label ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.socialLinks.label}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.socialLinks.label ? (
+        <h4 style={{ fontSize: "1rem" }}>{content.socialLinks.label}</h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.socialLinks.link ? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.socialLinks.link}
-      </p>
-    ) : null}
-  </div>
+      {content.socialLinks.link ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.socialLinks.link}
+        </p>
+      ) : null}
+    </div>
   );
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, socialLinks:{}}));
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, socialLinks: {} })
+    );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
-
+    handleClose();
   };
   return (
     <div>
@@ -183,10 +189,20 @@ function SocialLinks() {
             </div>
             <div>
               <DeleteOutlineOutlinedIcon
-                onClick={() => handleDelete(item)}
+                onClick={handleShow}
                 className="pencilIcon-div2 mt-4"
               />
             </div>
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={show}
+              onOk={() => handleDelete(item)}
+              onCancel={handleClose}
+            >
+              <h4>Delete Entry</h4>
+              <h6>Are you sure you want to delete entry?</h6>
+            </Modal>
           </div>
         </>
       ))}

@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { Modal } from "antd";
 
 const { Panel } = Collapse;
 
@@ -31,6 +32,10 @@ const useStyles = makeStyles({
 });
 
 function EmploymentHistory() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   useEffect(() => {
@@ -56,6 +61,7 @@ function EmploymentHistory() {
     );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose()
   };
   Object.assign(defaultTheme, {
     overrides: {
@@ -112,9 +118,6 @@ function EmploymentHistory() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
           <div>
             <h2 className="MainPoints">Employment History </h2>
           </div>
@@ -271,10 +274,21 @@ function EmploymentHistory() {
           </div>
           <div>
             <DeleteOutlineOutlinedIcon
-              onClick={() => handleDelete(item)}
+              onClick={handleShow}
+              // onClick={() => handleDelete(item)}
               className="pencilIcon-div mt-4"
             />
           </div>
+          <Modal
+            // title="Vertically centered modal dialog"
+            centered
+            visible={show}
+            onOk={() => handleDelete(item)}
+            onCancel={handleClose}
+          >
+            <h4>Delete Entry</h4>
+            <h6>Are you sure you want to delete entry?</h6>
+          </Modal>
         </div>
       ))}
       <Button
@@ -288,7 +302,6 @@ function EmploymentHistory() {
       >
         Add employment
       </Button>
-      
     </div>
   );
 }

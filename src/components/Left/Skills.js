@@ -15,6 +15,7 @@ import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
+import { Modal } from "antd";
 
 const { Panel } = Collapse;
 
@@ -32,14 +33,17 @@ const useStyles = makeStyles({
 });
 
 function EducationNew() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnclass = useStyles();
-  const { content, updateSkills, removeFakeData } =
-    useContext(ResumeContext);
+  const { content, updateSkills, removeFakeData } = useContext(ResumeContext);
   const [addEdu, setEdu] = useState([]);
-  useEffect(()=>{
-    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"))
-    dataLocal && Object.keys(dataLocal.skills).length > 0 && handleAddSkills()
-  },[])
+  useEffect(() => {
+    const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
+    dataLocal && Object.keys(dataLocal.skills).length > 0 && handleAddSkills();
+  }, []);
   //const [characters, updateCharacters] = useState(addEdu);
 
   function callback(key) {
@@ -60,10 +64,8 @@ function EducationNew() {
   };
 
   const handleUpdateSkills = (data) => {
-
-
     updateSkills(data);
-  }
+  };
 
   // const handleOnDragEnd = (result) => {
   //   if (!result.destination) return;
@@ -73,28 +75,25 @@ function EducationNew() {
   //   updateCharacters(items);
   // };
 
-
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-    {content.skills.skillName ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.skills.skillName}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.skills.skillName ? (
+        <h4 style={{ fontSize: "1rem" }}>{content.skills.skillName}</h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.skills.level ? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.skills.level}
-      </p>
-    ) : null}
-  </div>
+      {content.skills.level ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.skills.level}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log('skillName ==> ', data)
+    console.log("skillName ==> ", data);
 
     // const addEduValue = [];
     // addEduValue.push(data);
@@ -103,16 +102,19 @@ function EducationNew() {
     // updateEducationData(data, addEdu.length);
   };
   const onSubmit2 = (val) => {
-    console.log('level ==> ', val);
+    console.log("level ==> ", val);
     removeFakeData();
-    handleUpdateSkills({ ...content.skills, 'level': val });
-
-  }
+    handleUpdateSkills({ ...content.skills, level: val });
+  };
 
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, skills:{}}));
+    localStorage.setItem(
+      "dataLocal",
+      JSON.stringify({ ...content, skills: {} })
+    );
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
+    handleClose();
   };
   return (
     <div>
@@ -122,40 +124,102 @@ function EducationNew() {
             <DragIndicatorIcon className="pencilIcon-div" />
           </div>
           <div>
-            <h2 className='MainPoints'>Skills </h2>
+            <h2 className="MainPoints">Skills </h2>
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
         </div>
         <div className="d-flex flex-wrap">
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Interpersonal Communication <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Interpersonal Communication{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Leadership and Teamwork <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Leadership and Teamwork{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Effective Team Leader <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Effective Team Leader{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Ability to Multitask <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Ability to Multitask{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
             Creativity Thinking Skills
-            <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Collaboration & Teamwork <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Collaboration & Teamwork{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Customer Relation <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Customer Relation{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Creative Thinking <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Creative Thinking{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
-          <a className="btn btn-light btn-div m-1" href onClick={handleAddSkills}>
-            Good Communication <AddIcon style={{ fontSize: '1.1rem', color: 'grey ', fontWeight: 'bold' }} />
+          <a
+            className="btn btn-light btn-div m-1"
+            href
+            onClick={handleAddSkills}
+          >
+            Good Communication{" "}
+            <AddIcon
+              style={{ fontSize: "1.1rem", color: "grey ", fontWeight: "bold" }}
+            />
           </a>
         </div>
       </div>
@@ -178,7 +242,6 @@ function EducationNew() {
                       {addEdu.length === 1 && (
                         <>
                           <div className="d-flex">
-
                             <div className="w-100">
                               <Draggable
                                 key={index}
@@ -217,7 +280,9 @@ function EducationNew() {
                                                 name="skillName"
                                                 variant="filled"
                                                 defaultValue={
-                                                  content.skills.skillName ? content.skills.skillName : ''
+                                                  content.skills.skillName
+                                                    ? content.skills.skillName
+                                                    : ""
                                                 }
                                                 inputRef={register}
                                                 onChange={handleSubmit(
@@ -231,13 +296,34 @@ function EducationNew() {
                                               <span className={classes.title}>
                                                 Level
                                               </span>
-                                              <Radio.Group defaultValue={content.skills.level ? content.skills.level : "a"} onChange={e => handleSubmit(
-                                                onSubmit2(e.target.value))} buttonStyle='outline'>
-                                                <Radio.Button value="Novice">Novice</Radio.Button>
-                                                <Radio.Button value="Biggner">Biggner</Radio.Button>
-                                                <Radio.Button value="SkillFull">SkillFull</Radio.Button>
-                                                <Radio.Button value="Experienced">Experienced</Radio.Button>
-                                                <Radio.Button value="Expert">Expert</Radio.Button>
+                                              <Radio.Group
+                                                defaultValue={
+                                                  content.skills.level
+                                                    ? content.skills.level
+                                                    : "a"
+                                                }
+                                                onChange={(e) =>
+                                                  handleSubmit(
+                                                    onSubmit2(e.target.value)
+                                                  )
+                                                }
+                                                buttonStyle="outline"
+                                              >
+                                                <Radio.Button value="Novice">
+                                                  Novice
+                                                </Radio.Button>
+                                                <Radio.Button value="Biggner">
+                                                  Biggner
+                                                </Radio.Button>
+                                                <Radio.Button value="SkillFull">
+                                                  SkillFull
+                                                </Radio.Button>
+                                                <Radio.Button value="Experienced">
+                                                  Experienced
+                                                </Radio.Button>
+                                                <Radio.Button value="Expert">
+                                                  Expert
+                                                </Radio.Button>
                                               </Radio.Group>
                                             </Col>
                                           </Row>
@@ -248,7 +334,6 @@ function EducationNew() {
                                 )}
                               </Draggable>
                             </div>
-
                           </div>
                         </>
                       )}
@@ -328,10 +413,20 @@ function EducationNew() {
                     </div>
                     <div>
                       <DeleteOutlineOutlinedIcon
-                        onClick={() => handleDelete(item)}
+                        onClick={handleShow}
                         className="pencilIcon-div mt-4"
                       />
                     </div>
+                    <Modal
+                      // title="Vertically centered modal dialog"
+                      centered
+                      visible={show}
+                      onOk={() => handleDelete(item)}
+                      onCancel={handleClose}
+                    >
+                      <h4>Delete Entry</h4>
+                      <h6>Are you sure you want to delete entry?</h6>
+                    </Modal>
                   </div>
                 </>
               ))}
