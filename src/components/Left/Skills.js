@@ -120,9 +120,7 @@ function EducationNew() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-2 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Skills </h2>
           </div>
@@ -267,7 +265,7 @@ function EducationNew() {
                                         onChange={callback}
                                         expandIconPosition="right"
                                         ghost
-                                        // defaultActiveKey={["1"]}
+                                      // defaultActiveKey={["1"]}
                                       >
                                         <Panel header={panelHeader} key={"1"}>
                                           <Row className={classes.rowWidth}>

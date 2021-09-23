@@ -6,7 +6,7 @@ import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined"
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+//import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 //import InputLabel from '@material-ui/core/InputLabel';
 //import MenuItem from '@material-ui/core/MenuItem';
 //import FormControl from '@material-ui/core/FormControl';
@@ -71,20 +71,20 @@ function Languages() {
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
-    {content.languages.language ? (
-      <h4 style={{ fontSize: "1rem" }}>
-        {content.languages.language}
-      </h4>
-    ) : (
-      <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
-    )}
+      {content.languages.language ? (
+        <h4 style={{ fontSize: "1rem" }}>
+          {content.languages.language}
+        </h4>
+      ) : (
+        <h4 style={{ fontSize: "1rem" }}>(Not Specified)</h4>
+      )}
 
-    {content.languages.languages_level? (
-      <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
-        {content.languages.languages_level} 
-      </p>
-    ) : null}
-  </div>
+      {content.languages.languages_level ? (
+        <p style={{ marginTop: -10, fontSize: 12, color: "#98A1B3" }}>
+          {content.languages.languages_level}
+        </p>
+      ) : null}
+    </div>
   );
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -101,7 +101,7 @@ function Languages() {
   //   // });
   // };
   const handleDelete = (delFile) => {
-    localStorage.setItem("dataLocal", JSON.stringify({...content, languages:{}}));
+    localStorage.setItem("dataLocal", JSON.stringify({ ...content, languages: {} }));
     const newEdu = addEdu.filter((items) => items !== delFile);
     setEdu(newEdu);
   };
@@ -109,9 +109,7 @@ function Languages() {
     <div>
       <div className="heading">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Languages</h2>
           </div>
@@ -122,70 +120,70 @@ function Languages() {
       </div>
       {addEdu.map((item, index) => (
         <div className="d-flex ">
-        <div
-          key={index}
-          style={{
-            border: "0.5px solid #b3d4fc",
-            borderRadius: "5px",
-            marginBottom: 10,
-            width:"100%"
-          }}
-        >
-          <Collapse
-            accordion
-            onChange={callback}
-            expandIconPosition="right"
-            ghost
+          <div
+            key={index}
+            style={{
+              border: "0.5px solid #b3d4fc",
+              borderRadius: "5px",
+              marginBottom: 10,
+              width: "100%"
+            }}
           >
-            <Panel header={panelHeader} key="1">
-              <Row className={classes.rowWidth}>
-                <Col span={11}>
-                  <span className={classes.title}>Language</span>
-                  <TextField
-                    id="filled-basic"
-                    // label="City"
-                    name="language"
-                    variant="filled"
-                    defaultValue={content.languages.language}
-                    inputRef={register}
-                    onChange={handleSubmit(onSubmit)}
-                    style={{ width: "100%" }}
-                  />
-                </Col>
-                <Col span={2}></Col>
-                <Col span={11}>
-                  <div className={classes.title}>Level</div>
+            <Collapse
+              accordion
+              onChange={callback}
+              expandIconPosition="right"
+              ghost
+            >
+              <Panel header={panelHeader} key="1">
+                <Row className={classes.rowWidth}>
+                  <Col span={11}>
+                    <span className={classes.title}>Language</span>
+                    <TextField
+                      id="filled-basic"
+                      // label="City"
+                      name="language"
+                      variant="filled"
+                      defaultValue={content.languages.language}
+                      inputRef={register}
+                      onChange={handleSubmit(onSubmit)}
+                      style={{ width: "100%" }}
+                    />
+                  </Col>
+                  <Col span={2}></Col>
+                  <Col span={11}>
+                    <div className={classes.title}>Level</div>
 
-                  {/* <Radio.Group value={size} onChange={handleSizeChange}>
+                    {/* <Radio.Group value={size} onChange={handleSizeChange}>
                                     <Radio.Button value="large">Large</Radio.Button>
                                     <Radio.Button value="default">Default</Radio.Button>
                                     <Radio.Button value="small">Small</Radio.Button>
                                     </Radio.Group> */}
 
-                  <Select
-                    size="large"
-                    defaultValue="Select Level"
-                    // onChange={handleChange}
-                    onChange={(e) =>
-                      onSubmit({ ...content.languages, languages_level: e })
-                    }
-                    style={{ width: 200 }}
-                  >
-                    <Option key={"Native Speaker"}>Native Speaker</Option>
+                    <Select
+                      size="large"
+                      defaultValue="Select Level"
+                      // onChange={handleChange}
+                      onChange={(e) =>
+                        onSubmit({ ...content.languages, languages_level: e })
+                      }
+                      style={{ width: 200 }}
+                    >
+                      <Option key={"Native Speaker"}>Native Speaker</Option>
 
-                    <Option key={"Very Good Command"}>
-                      Very Good Command{" "}
-                    </Option>
-                    <Option key={"Good Working Knowledge"}>
-                      Good Working Knowledge
-                    </Option>
-                  </Select>
-                </Col>
-              </Row>
-            </Panel>
-          </Collapse>
-        </div>
-        <div>
+                      <Option key={"Very Good Command"}>
+                        Very Good Command{" "}
+                      </Option>
+                      <Option key={"Good Working Knowledge"}>
+                        Good Working Knowledge
+                      </Option>
+                    </Select>
+                  </Col>
+                </Row>
+              </Panel>
+            </Collapse>
+          </div>
+          <div>
             <DeleteOutlineOutlinedIcon
               onClick={() => handleDelete(item)}
               className="pencilIcon-div mt-4"

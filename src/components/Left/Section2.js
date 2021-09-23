@@ -12,11 +12,11 @@ import CustomSection from "./CustomSection";
 // import SpeakerPhoneOutlinedIcon from "@material-ui/icons/SpeakerPhoneOutlined";
 // import MergeTypeIcon from "@material-ui/icons/MergeType";
 // import LayersIcon from "@material-ui/icons/Layers";
-//import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
-// import React, { useContext,useState } from "react";
-import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-//import { makeStyles } from "@material-ui/core/styles";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
+// import React, { useContext,useState } from "react";
+//import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+//import { makeStyles } from "@material-ui/core/styles";
+
 //import classes from "./Left.module.css";
 //import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
@@ -121,46 +121,42 @@ function EducationNew() {
     <div>
       {content.contextArray.length
         ? content.contextArray.map((item) => {
-            console.log("item ==> ", item);
-            return (
-              <>
-                <div className="d-flex align-items-center  Main-title">
-                  <div>
-                    <DragIndicatorIcon className="pencilIcon-div mt-5" />
+          console.log("item ==> ", item);
+          return (
+            <>
+              <div className="d-flex align-items-center  Main-title">
+                <div>
+                  <DragIndicatorIcon className="pencilIcon-div mt-5" />
+                </div>
+                <div className="w-100">
+                  <div key={item.customSectionId}>
+                    <CustomSection data={item} id={item.customSectionId} />
                   </div>
-                  <div className="w-100">
-                    <div key={item.customSectionId}>
-                      <CustomSection data={item} id={item.customSectionId} />
-                    </div>
-                  </div>
-                  {/* <div>
+                </div>
+                {/* <div>
                     <DeleteOutlineOutlinedIcon
                       onClick={() => handleDelete(item)}
                       className="pencilIcon-div mt-5"
                     />
                   </div> */}
-                </div>
-              </>
-            );
-          })
+              </div>
+            </>
+          );
+        })
         : ""}
 
       <div className="header">
         <div className="d-flex align-items-center py-1 Main-title">
-          <div>
-            <DragIndicatorIcon className="pencilIcon-div" />
-          </div>
+
           <div>
             <h2 className="MainPoints">Add Section </h2>
           </div>
-          <div className="mx-1">
-            <CreateOutlinedIcon className="pencilIcon-div" />
-          </div>
+
         </div>
 
         <div className="container-fluid align-content-center p-0">
           <div className="row m-0 p-0">
-            <div className="col-6" style={{margin:'0px 0px 0px -24px '}}>
+            <div className="col-6" style={{ margin: '0px 0px 0px -24px ' }}>
               <div
                 onClick={onChangesCustomSection}
                 style={{ cursor: "pointer" }}

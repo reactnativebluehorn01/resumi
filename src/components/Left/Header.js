@@ -345,8 +345,8 @@ function Header() {
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
-        //onSubmit={(event, type, id) => handleSubmit(onSubmit(event, type, id))}
-        // target="#"
+      //onSubmit={(event, type, id) => handleSubmit(onSubmit(event, type, id))}
+      // target="#"
       >
         <Row gutter={32} className={classes.rowWidth}>
           <Col xs={24} sm={12}>
@@ -461,7 +461,7 @@ function Header() {
             <h4
               onClick={handleDisplayClick}
               className="edit-hide"
-              // style={{ color: '#2196F3', cursor: 'pointer', marginTop: '30px', marginBottom: '30px' }}
+            // style={{ color: '#2196F3', cursor: 'pointer', marginTop: '30px', marginBottom: '30px' }}
             >
               Edit additional Details
               <KeyboardArrowDownIcon style={{ verticalAlign: "middle" }} />
@@ -600,7 +600,7 @@ function Header() {
             <h4
               onClick={handleHideClick}
               className="edit-hide"
-              // style={{ cursor: 'pointer', color: '#2196F3', marginTop: '30px', marginBottom: '30px' }}
+            // style={{ cursor: 'pointer', color: '#2196F3', marginTop: '30px', marginBottom: '30px' }}
             >
               Hide additional Details
               <KeyboardArrowUpIcon style={{ verticalAlign: "middle" }} />
@@ -683,8 +683,8 @@ function Header() {
                   if (item.content == 0) {
                     myContent = (
                       <div id="employmentHistoryDiv">
-                        {" "}
-                        <EmploymentHistory />{" "}
+
+                        <EmploymentHistory />
                       </div>
                     );
                   } else if (item.content == 1) {
@@ -755,14 +755,16 @@ function Header() {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          // style={getItemStyle(
-                          //   snapshot.isDragging,
-                          //   provided.draggableProps.style
-                          // )}
+                        // style={getItemStyle(
+                        //   snapshot.isDragging,
+                        //   provided.draggableProps.style
+                        // )}
                         >
-                          <div className="row col-12">
-                            <DragIndicatorIcon className="pencilIcon-div mt-4" />
-                            <>{myContent}</>
+                          <div className="d-flex">
+                            <div className='Main-title'>
+                              <DragIndicatorIcon className=" pencilIcon-div mt-4" />
+                            </div>
+                            <div className='mb-2'>{myContent}</div>
                           </div>{" "}
                         </div>
                       )}
