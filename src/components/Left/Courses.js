@@ -13,8 +13,10 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 import { Modal } from "antd";
+import DatePicker from "react-datepicker";
 
-import DatePicker from "@mui/lab/DatePicker";
+import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "@mui/lab/DatePicker";
 
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
@@ -43,6 +45,8 @@ function Courses() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
@@ -181,63 +185,70 @@ function Courses() {
                       </Col>
                     </Row>
                     <Row className={classes.rowWidth}>
-                      <Col span={11}>
-                        <span className={classes.title}>
-                          Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
-                        </span>
-                        <Row>
-                          <Col span={11}>
-                            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-                              <DatePicker
+                      {/* <Col span={11}> */}
+                      <span className={classes.title}>
+                        Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                      </span>
+                      <Row>
+                        <Col span={10}>
+                          <DatePicker
+                            dateFormat="MM/yyyy"
+                            showMonthYearPicker
+                            showFourColumnMonthYearPicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            placeholderText="mm/yy"
+                            inputRef={register}
+                            className="month"
+                          />
+                        </Col>
 
-                                onChange={handleSubmit(onSubmit)}
-                                openTo="month"
-                                views={['year', 'month']}
-                                //  value={value}
-                                // onChange={(newValue) => {
-                                //   setValue(newValue);
-                                // }}
-                                renderInput={(params) => <TextField {...params}
-                                  id="filled-basic"
-                                  label="MM/YY"
-                                  name="startDate"
-                                  variant="filled"
-                                  defaultValue={content.courses.startDate}
-                                  style={{ width: "100%" }}
-                                />}
-                              />
-                            </LocalizationProvider> */}
+                        <Col span={4}></Col>
 
-                            <TextField
+                        <Col span={10}>
+                          <DatePicker
+                            dateFormat="MM/yyyy"
+                            showMonthYearPicker
+                            showFourColumnMonthYearPicker
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
+                            placeholderText="mm/yy"
+                            inputRef={register}
+                            className="month"
+                          />
+                        </Col>
+                      </Row>
+                      {/* <TextField
                               // id="filled-basic"
+                              label="mm/yy"
+
                               id="date"
                               type="month"
-                              //label="MM/YY"
-
+                              // plarceholde="MM/YY"
                               name="startDate"
                               variant="filled"
+                              // icon={false}
                               defaultValue={content.courses.startDate}
                               inputRef={register}
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
-                            />
-                          </Col>
-                          <Col span={2}></Col>
-                          <Col span={11}>
-                            <TextField
+                            /> */}
+                      {/* </Col> */}
+                      {/* <Col span={2}></Col> */}
+                      {/* <Col span={11}> */}
+                      {/* <TextField
                               // id="filled-basic"
                               id="date"
                               type="month"
                               //label="MM/YY"
-
                               name="endDate"
                               variant="filled"
                               defaultValue={content.courses.endDate}
                               inputRef={register}
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
-                            />
-                            {/* <TextField
+                            /> */}
+                      {/* <TextField
                               id="filled-basic"
                               label="MM/YY"
                               name="endDate"
@@ -247,9 +258,9 @@ function Courses() {
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
                             />{" "} */}
-                          </Col>
-                        </Row>
-                      </Col>
+                      {/* </Col> */}
+                      {/* </Row> */}
+                      {/* </Col> */}
                     </Row>
                   </Panel>
                 </Collapse>
