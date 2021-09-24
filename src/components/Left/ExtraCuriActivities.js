@@ -126,7 +126,7 @@ function ExtraCuriActivities() {
     // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
 
     removeFakeData();
-    updateAddSection({ ...content.addSection, courses: false });
+    updateAddSection({ ...content.addSection, activities: false });
     handleDelete2();
 
   };

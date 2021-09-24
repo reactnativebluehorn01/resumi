@@ -122,6 +122,7 @@ function ExtraCuriActivities({ data, id }) {
     setEdu(newEdu);
     handleClose();
   };
+
   return (
     <>
       <div>

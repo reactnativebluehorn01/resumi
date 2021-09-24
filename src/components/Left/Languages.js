@@ -46,12 +46,8 @@ const useStyles = makeStyles((theme) => ({
 function Languages() {
   const [show, setShow] = useState(false);
   const [showAlert, setshowAlert] = useState(false);
-
   const handleShow = () => setShow(true);
-
-
   const handleClose = () => setShow(false);
-
 
   //const [age, setAge] = React.useState('');
   const btnclass = useStyles();
@@ -118,9 +114,9 @@ function Languages() {
   };
 
   const handleDelete2 = () => {
-    console.log('alert Language');
+    console.log("alert Language");
     setshowAlert(!showAlert);
-  }
+  };
   const handleDelete3 = () => {
     //  setCoursesFlag(!coursesFlag);
     // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
@@ -128,7 +124,6 @@ function Languages() {
     removeFakeData();
     updateAddSection({ ...content.addSection, languages: false });
     handleDelete2();
-
   };
 
   return (
@@ -238,8 +233,6 @@ function Languages() {
             <h4>Delete this</h4>
             <h6>Are you sure you want to delete this record ?</h6>
           </Modal>
-
-
         </div>
       ))}
 
@@ -254,8 +247,6 @@ function Languages() {
       >
         Add Language
       </Button>
-
-
     </div>
   );
 }

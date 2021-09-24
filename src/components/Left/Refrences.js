@@ -75,6 +75,7 @@ function Refrences() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showAlert, setshowAlert] = useState(false);
 
   const [state, setState] = React.useState({ checkedC: true });
   const handleSwitchChange = (event) => {
@@ -99,6 +100,19 @@ function Refrences() {
     setEdu([...addActivity, " "]);
     console.log(addActivity);
   };
+  const handleDelete2 = () => {
+    console.log('alert courses');
+    setshowAlert(!showAlert);
+  }
+  const handleDelete3 = () => {
+    //  setCoursesFlag(!coursesFlag);
+    // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
+
+    removeFakeData();
+    updateAddSection({ ...content.addSection, refrences: false });
+    handleDelete2();
+
+  };
   const defaultTheme = createMuiTheme();
 
   Object.assign(defaultTheme, {
@@ -120,7 +134,7 @@ function Refrences() {
       },
     },
   });
-  const { content, updateRefrencesData, removeFakeData } =
+  const { content, updateRefrencesData, removeFakeData ,updateAddSection} =
     useContext(ResumeContext);
   const panelHeader = (
     <div className="">
@@ -160,6 +174,20 @@ function Refrences() {
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
+            <DeleteOutlineOutlinedIcon
+              onClick={handleDelete2}
+              className="pencilIcon-div mt-4"
+            />
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={showAlert}
+              onOk={handleDelete3}
+              onCancel={() => setshowAlert(false)}
+            >
+              <h4>Delete Refrence!</h4>
+              <h6>Are you sure you want to delete this record ?</h6>
+            </Modal>
           </div>
         </div>
       </div>

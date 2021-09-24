@@ -37,9 +37,10 @@ function Internship() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [showAlert, setshowAlert] = useState(false);
+
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   function callback(key) {
@@ -57,6 +58,19 @@ function Internship() {
   const addEmploymentHistory = () => {
     setEdu([...addEdu, " "]);
     console.log(addEdu);
+  };
+  const handleDelete2 = () => {
+    console.log('alert courses');
+    setshowAlert(!showAlert);
+  }
+  const handleDelete3 = () => {
+    //  setCoursesFlag(!coursesFlag);
+    // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
+
+    removeFakeData();
+    updateAddSection({ ...content.addSection, internship: false });
+    handleDelete2();
+
   };
   const defaultTheme = createMuiTheme();
 
@@ -79,7 +93,7 @@ function Internship() {
       },
     },
   });
-  const { content, updateIntrenshipData, removeFakeData } =
+  const { content, updateIntrenshipData, removeFakeData,updateAddSection } =
     useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
@@ -123,6 +137,20 @@ function Internship() {
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
+            <DeleteOutlineOutlinedIcon
+              onClick={handleDelete2}
+              className="pencilIcon-div mt-4"
+            />
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={showAlert}
+              onOk={handleDelete3}
+              onCancel={() => setshowAlert(false)}
+            >
+              <h4>Delete InternShip!</h4>
+              <h6>Are you sure you want to delete this record ?</h6>
+            </Modal>
           </div>
         </div>
       </div>
