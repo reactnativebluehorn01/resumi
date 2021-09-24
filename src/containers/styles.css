@@ -6,6 +6,15 @@ padding: 0;
 background: #F2F3F4;
 width: 98vw;
 }
+.month{
+    border: none;
+    background-color: #f0f2f3;
+    padding: 14px;
+    outline: none;
+}
+.month:focus{
+    border-bottom: solid 2px rgb(34, 34, 165);
+}
 *{
     margin: 0px;
     padding: 0px;

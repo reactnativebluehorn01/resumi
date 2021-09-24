@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Collapse, Col, Row, Space } from "antd";
+import { Collapse, Col, Row, Space, Modal } from "antd";
+
 //import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
@@ -12,9 +13,11 @@ import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
-import { Modal } from "antd";
 
-import DatePicker from "@mui/lab/DatePicker";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "@mui/lab/DatePicker";
 
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 
@@ -43,7 +46,9 @@ function Courses() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [showAlert, setshowAlert] = useState(false);
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   function callback(key) {
@@ -67,15 +72,22 @@ function Courses() {
   //   content.addSection.courses ? content.addSection.courses : false
   // );
 
-  const handleShow2 = () => {
+
+
+
+  const handleDelete2 = () => {
+    console.log('alert courses');
+    setshowAlert(!showAlert);
+  }
+  const handleDelete3 = () => {
     //  setCoursesFlag(!coursesFlag);
     // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
 
     removeFakeData();
     updateAddSection({ ...content.addSection, courses: false });
+    handleDelete2();
+
   };
-
-
 
   const defaultTheme = createMuiTheme();
 
@@ -142,9 +154,19 @@ function Courses() {
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
             <DeleteOutlineOutlinedIcon
-              onClick={handleShow2}
+              onClick={handleDelete2}
               className="pencilIcon-div mt-4"
             />
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={showAlert}
+              onOk={handleDelete3}
+              onCancel={() => setshowAlert(false)}
+            >
+              <h4>Delete Courses!</h4>
+              <h6>Are you sure you want to delete this record ?</h6>
+            </Modal>
           </div>
         </div>
         {/* <p  style={{marginTop: -15,fontSize: 14,color: '#98A1B3',}}>Include your 10 years of relevant experience and date in this section. List Your most recent position here.</p> */}
@@ -202,63 +224,70 @@ function Courses() {
                       </Col>
                     </Row>
                     <Row className={classes.rowWidth}>
-                      <Col span={11}>
-                        <span className={classes.title}>
-                          Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
-                        </span>
-                        <Row>
-                          <Col span={11}>
-                            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-                              <DatePicker
+                      {/* <Col span={11}> */}
+                      <span className={classes.title}>
+                        Start & End Date <HelpOutlineIcon fontSize="small" />{" "}
+                      </span>
+                      <Row>
+                        <Col span={10}>
+                          <DatePicker
+                            dateFormat="MM/yyyy"
+                            showMonthYearPicker
+                            showFourColumnMonthYearPicker
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                            placeholderText="mm/yy"
+                            inputRef={register}
+                            className="month"
+                          />
+                        </Col>
 
-                                onChange={handleSubmit(onSubmit)}
-                                openTo="month"
-                                views={['year', 'month']}
-                                //  value={value}
-                                // onChange={(newValue) => {
-                                //   setValue(newValue);
-                                // }}
-                                renderInput={(params) => <TextField {...params}
-                                  id="filled-basic"
-                                  label="MM/YY"
-                                  name="startDate"
-                                  variant="filled"
-                                  defaultValue={content.courses.startDate}
-                                  style={{ width: "100%" }}
-                                />}
-                              />
-                            </LocalizationProvider> */}
+                        <Col span={4}></Col>
 
-                            <TextField
+                        <Col span={10}>
+                          <DatePicker
+                            dateFormat="MM/yyyy"
+                            showMonthYearPicker
+                            showFourColumnMonthYearPicker
+                            selected={endDate}
+                            onChange={(date) => setEndDate(date)}
+                            placeholderText="mm/yy"
+                            inputRef={register}
+                            className="month"
+                          />
+                        </Col>
+                      </Row>
+                      {/* <TextField
                               // id="filled-basic"
+                              label="mm/yy"
+
                               id="date"
                               type="month"
-                              //label="MM/YY"
-
+                              // plarceholde="MM/YY"
                               name="startDate"
                               variant="filled"
+                              // icon={false}
                               defaultValue={content.courses.startDate}
                               inputRef={register}
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
-                            />
-                          </Col>
-                          <Col span={2}></Col>
-                          <Col span={11}>
-                            <TextField
+                            /> */}
+                      {/* </Col> */}
+                      {/* <Col span={2}></Col> */}
+                      {/* <Col span={11}> */}
+                      {/* <TextField
                               // id="filled-basic"
                               id="date"
                               type="month"
                               //label="MM/YY"
-
                               name="endDate"
                               variant="filled"
                               defaultValue={content.courses.endDate}
                               inputRef={register}
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
-                            />
-                            {/* <TextField
+                            /> */}
+                      {/* <TextField
                               id="filled-basic"
                               label="MM/YY"
                               name="endDate"
@@ -268,9 +297,9 @@ function Courses() {
                               onChange={handleSubmit(onSubmit)}
                               style={{ width: "100%" }}
                             />{" "} */}
-                          </Col>
-                        </Row>
-                      </Col>
+                      {/* </Col> */}
+                      {/* </Row> */}
+                      {/* </Col> */}
                     </Row>
                   </Panel>
                 </Collapse>

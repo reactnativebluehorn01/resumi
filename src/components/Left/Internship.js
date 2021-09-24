@@ -16,7 +16,8 @@ import TextField from "@material-ui/core/TextField";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { Modal } from "antd";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 const { Panel } = Collapse;
 
 const useStyles = makeStyles({
@@ -36,6 +37,8 @@ function Internship() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
 
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
@@ -178,7 +181,7 @@ function Internship() {
                     </span>
                     <Row>
                       <Col span={11}>
-                        <TextField
+                        {/* <TextField
                           id="filled-basic"
                           // label="City"
                           name="startDate"
@@ -187,11 +190,31 @@ function Internship() {
                           inputRef={register}
                           onChange={handleSubmit(onSubmit)}
                           style={{ width: "100%" }}
+                        /> */}
+                        <DatePicker
+                          dateFormat="MM/yyyy"
+                          showMonthYearPicker
+                          showFourColumnMonthYearPicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          placeholderText="mm/yy"
+                          inputRef={register}
+                          className="month"
                         />
                       </Col>
                       <Col span={2}></Col>
                       <Col span={11}>
-                        <TextField
+                        <DatePicker
+                          dateFormat="MM/yyyy"
+                          showMonthYearPicker
+                          showFourColumnMonthYearPicker
+                          selected={endDate}
+                          onChange={(date) => setEndDate(date)}
+                          placeholderText="mm/yy"
+                          inputRef={register}
+                          className="month"
+                        />
+                        {/* <TextField
                           id="filled-basic"
                           // label="City"
                           name="endDate"
@@ -200,7 +223,7 @@ function Internship() {
                           inputRef={register}
                           onChange={handleSubmit(onSubmit)}
                           style={{ width: "100%" }}
-                        />{" "}
+                        />{" "} */}
                       </Col>
                     </Row>
                   </Col>

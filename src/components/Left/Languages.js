@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Collapse, Col, Row, Select } from "antd";
+import { Collapse, Col, Row, Select, Modal } from "antd";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 // import React, { useContext,useState } from "react";
@@ -19,7 +19,6 @@ import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
 //import { createMuiTheme } from '@material-ui/core/styles'
-import { Modal } from "antd";
 
 const { Option } = Select;
 
@@ -46,8 +45,14 @@ const useStyles = makeStyles((theme) => ({
 
 function Languages() {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [showAlert, setshowAlert] = useState(false);
+
   const handleShow = () => setShow(true);
+
+
+  const handleClose = () => setShow(false);
+
+
   //const [age, setAge] = React.useState('');
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
@@ -70,7 +75,7 @@ function Languages() {
     console.log(addEdu);
   };
 
-  const { content, updateLanguagesData, removeFakeData } =
+  const { content, updateLanguagesData, removeFakeData, updateAddSection } =
     useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
@@ -111,6 +116,21 @@ function Languages() {
     setEdu(newEdu);
     handleClose();
   };
+
+  const handleDelete2 = () => {
+    console.log('alert Language');
+    setshowAlert(!showAlert);
+  }
+  const handleDelete3 = () => {
+    //  setCoursesFlag(!coursesFlag);
+    // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
+
+    removeFakeData();
+    updateAddSection({ ...content.addSection, languages: false });
+    handleDelete2();
+
+  };
+
   return (
     <div>
       <div className="heading">
@@ -120,6 +140,20 @@ function Languages() {
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
+            <DeleteOutlineOutlinedIcon
+              onClick={handleDelete2}
+              className="pencilIcon-div mt-4"
+            />
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={showAlert}
+              onOk={handleDelete3}
+              onCancel={() => setshowAlert(false)}
+            >
+              <h4>Delete language</h4>
+              <h6>Are you sure you want to delete this record ?</h6>
+            </Modal>
           </div>
         </div>
       </div>
@@ -201,9 +235,11 @@ function Languages() {
             onOk={() => handleDelete(item)}
             onCancel={handleClose}
           >
-            <h4>Delete Entry</h4>
-            <h6>Are you sure you want to delete entry?</h6>
+            <h4>Delete this</h4>
+            <h6>Are you sure you want to delete this record ?</h6>
           </Modal>
+
+
         </div>
       ))}
 
@@ -218,6 +254,8 @@ function Languages() {
       >
         Add Language
       </Button>
+
+
     </div>
   );
 }
