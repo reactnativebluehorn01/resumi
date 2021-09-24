@@ -2,6 +2,7 @@ import React from "react";
 import Basic from "../components/Left/Basic";
 import Right from "../components/Right/Right";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 import "./styles.css";
 import ResumeContextProvider from "../contexts/ResumeContext";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
@@ -10,6 +11,7 @@ import logo from "../../src/assets/default.png";
 import thumbn from "../../src/assets/templateA.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import resumi from "../components/ResumiPage/resumi";
 
 function Templates() {
   const useStyles = makeStyles({
@@ -66,6 +68,8 @@ function App() {
           <Switch>
             <Route path="/" component={Templates} exact />
             <Route path="/basic" component={Basic} />
+            <Route path="/resumi" component={resumi} />
+
           </Switch>
         </BrowserRouter>
         <Right/>

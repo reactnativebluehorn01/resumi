@@ -35,6 +35,7 @@ import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import AddCircle from "@material-ui/icons/AddCircle";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { AiFillFileText } from "react-icons/ai";
+import ResumiP from '../ResumiPage/resumi'
 
 import onDrag from '../../utils/OnDrag';
 
@@ -784,11 +785,10 @@ function Header() {
           Update
         </Button> */}
       </form>
-      <div className="d-xl-none d-block">
-        <button type="button" className="btnDiv fixed-bottom ">
-          <b> Preview & Download</b>
-          <AiFillFileText className="fixButton" />{" "}
-        </button>
+      <div >
+      
+          <ResumiP/>
+         
       </div>
     </div>
   );
