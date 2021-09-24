@@ -125,6 +125,43 @@ function EducationNew() {
     //  updateEducationData(data);
   };
 
+  const onChangeDate = (date1) => {
+    setStartDate(date1);
+    let str = JSON.parse(JSON.stringify(date1));
+    let dd = str.substring(0, 7) // 2021-03
+    let month = parseInt(dd.substring(5, 7)) + 1;
+    let year = dd.substring(0, 4);
+    if (month < 10) {
+      month = '0' + month;
+    }
+    let date = year + '-' + month;
+
+    removeFakeData();
+    updateCoursesData({
+      ...content.education,
+      startDate: date
+    });
+
+  }
+  const onChangeDate2 = (date2) => {
+    setEndDate(date2);
+    let str = JSON.parse(JSON.stringify(date2));
+    let dd = str.substring(0, 7) // 2021-03
+    let month = parseInt(dd.substring(5, 7)) + 1;
+    let year = dd.substring(0, 4);
+    if (month < 10) {
+      month = '0' + month;
+    }
+    let date = year + '-' + month;
+
+    // console.log(year, ' : ', month)
+    removeFakeData();
+    updateCoursesData({
+      ...content.education,
+      endDate: date
+    });
+  }
+
   // const save = (data) => {
 
   //   removeFakeData();
@@ -167,73 +204,73 @@ function EducationNew() {
             >
               {addEdu.length
                 ? addEdu.map((item, index) => (
-                    <div className="d-flex" key={index}>
-                      <div className="w-100">
-                        <>
-                          <div className="d-flex Main-title">
-                            <div>
-                              <DragIndicatorIcon className="pencilIcon-div mt-4" />
-                            </div>
-                            <div className="w-100">
-                              <div
-                                style={{
-                                  border: "0.5px solid #b3d4fc",
-                                  borderRadius: "5px",
-                                  marginBottom: 10,
-                                }}
+                  <div className="d-flex" key={index}>
+                    <div className="w-100">
+                      <>
+                        <div className="d-flex Main-title">
+                          <div>
+                            <DragIndicatorIcon className="pencilIcon-div mt-4" />
+                          </div>
+                          <div className="w-100">
+                            <div
+                              style={{
+                                border: "0.5px solid #b3d4fc",
+                                borderRadius: "5px",
+                                marginBottom: 10,
+                              }}
+                            >
+                              <Collapse
+                                accordion
+                                onChange={callback}
+                                expandIconPosition="right"
+                                ghost
+                              // defaultActiveKey={["1"]}
                               >
-                                <Collapse
-                                  accordion
-                                  onChange={callback}
-                                  expandIconPosition="right"
-                                  ghost
-                                  // defaultActiveKey={["1"]}
-                                >
-                                  <Panel header={panelHeader} key={"1"}>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          School
-                                        </span>
-                                        <TextField
-                                          id="filled-basic"
-                                          name="school"
-                                          variant="filled"
-                                          defaultValue={
-                                            content.education.school
-                                          }
-                                          inputRef={register}
-                                          onChange={handleSubmit(onSubmit)}
-                                          style={{ width: "100%" }}
-                                        />
-                                      </Col>
-                                      <Col span={2}></Col>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          Degree
-                                        </span>
-                                        <TextField
-                                          id="filled-basic"
-                                          name="degree"
-                                          variant="filled"
-                                          defaultValue={
-                                            content.education.degree
-                                          }
-                                          inputRef={register}
-                                          onChange={handleSubmit(onSubmit)}
-                                          style={{ width: "100%" }}
-                                        />
-                                      </Col>
-                                    </Row>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          Start & End Date
-                                          <HelpOutlineIcon fontSize="small" />
-                                        </span>
-                                        <Row>
-                                          <Col span={11}>
-                                            {/* <TextField
+                                <Panel header={panelHeader} key={"1"}>
+                                  <Row className={classes.rowWidth}>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        School
+                                      </span>
+                                      <TextField
+                                        id="filled-basic"
+                                        name="school"
+                                        variant="filled"
+                                        defaultValue={
+                                          content.education.school
+                                        }
+                                        inputRef={register}
+                                        onChange={handleSubmit(onSubmit)}
+                                        style={{ width: "100%" }}
+                                      />
+                                    </Col>
+                                    <Col span={2}></Col>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        Degree
+                                      </span>
+                                      <TextField
+                                        id="filled-basic"
+                                        name="degree"
+                                        variant="filled"
+                                        defaultValue={
+                                          content.education.degree
+                                        }
+                                        inputRef={register}
+                                        onChange={handleSubmit(onSubmit)}
+                                        style={{ width: "100%" }}
+                                      />
+                                    </Col>
+                                  </Row>
+                                  <Row className={classes.rowWidth}>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        Start & End Date
+                                        <HelpOutlineIcon fontSize="small" />
+                                      </span>
+                                      <Row>
+                                        <Col span={11}>
+                                          {/* <TextField
                                               id="filled-basic"
                                               name="startDate"
                                               variant="filled"
@@ -244,22 +281,23 @@ function EducationNew() {
                                               onChange={handleSubmit(onSubmit)}
                                               style={{ width: "100%" }}
                                             /> */}
-                                            <DatePicker
-                                              dateFormat="MM/yyyy"
-                                              showMonthYearPicker
-                                              showFourColumnMonthYearPicker
-                                              selected={startDate}
-                                              onChange={(date) =>
-                                                setStartDate(date)
-                                              }
-                                              placeholderText="mm/yy"
-                                              inputRef={register}
-                                              className="month"
-                                            />
-                                          </Col>
-                                          <Col span={2}></Col>
-                                          <Col span={11}>
-                                            {/* <TextField
+                                          <DatePicker
+                                            dateFormat="MM/yyyy"
+                                            showMonthYearPicker
+                                            showFourColumnMonthYearPicker
+                                            selected={startDate}
+                                            // onChange={(date) =>
+                                            //   setStartDate(date)
+                                            // }
+                                            onSelect={onChangeDate}
+                                            placeholderText="mm/yy"
+                                            inputRef={register}
+                                            className="month"
+                                          />
+                                        </Col>
+                                        <Col span={2}></Col>
+                                        <Col span={11}>
+                                          {/* <TextField
                                               id="filled-basic"
                                               name="endDate"
                                               variant="filled"
@@ -270,103 +308,104 @@ function EducationNew() {
                                               onChange={handleSubmit(onSubmit)}
                                               style={{ width: "100%" }}
                                             /> */}
-                                            <DatePicker
-                                              dateFormat="MM/yyyy"
-                                              showMonthYearPicker
-                                              showFourColumnMonthYearPicker
-                                              selected={endDate}
-                                              onChange={(date) =>
-                                                setEndDate(date)
-                                              }
-                                              placeholderText="mm/yy"
-                                              inputRef={register}
-                                              className="month"
-                                            />
-                                          </Col>
-                                        </Row>
-                                      </Col>
-
-                                      <Col span={2}></Col>
-                                      <Col span={11}>
-                                        <span className={classes.title}>
-                                          city
-                                        </span>
-                                        <TextField
-                                          id="filled-basic"
-                                          name="city"
-                                          variant="filled"
-                                          defaultValue={content.education.city}
-                                          inputRef={register}
-                                          onChange={handleSubmit(onSubmit)}
-                                          style={{ width: "100%" }}
-                                        />
-                                      </Col>
-                                    </Row>
-                                    <Row className={classes.rowWidth}>
-                                      <Col span={24}>
-                                        <span
-                                          className={classes.title}
-                                          style={{ marginLeft: "10px" }}
-                                        >
-                                          Description
-                                        </span>
-                                        <MuiThemeProvider theme={defaultTheme}>
-                                          <MUIRichTextEditor
-                                            label="Enter description"
-                                            // onSave={save}
-                                            inlineToolbar={true}
-                                            name="education_description"
-                                            // inputRef={register}
-                                            // readOnly={false}
-                                            // onChange={handleSubmit(onSubmit2)}
-                                            // onChange={handleSubmit(onSubmit)}
-                                            onChange={(e) =>
-                                              onSubmit({
-                                                ...content.education,
-                                                education_description: e
-                                                  .getCurrentContent()
-                                                  .getPlainText(),
-                                              })
-                                            }
-                                            // onChange={save}
-                                            // defaultValue={content.education.education_description}
-                                            controls={[
-                                              "bold",
-                                              "italic",
-                                              "underline",
-                                              "strikethrough",
-                                              "numberList",
-                                              "bulletList",
-                                              "spellcheck",
-                                            ]}
+                                          <DatePicker
+                                            dateFormat="MM/yyyy"
+                                            showMonthYearPicker
+                                            showFourColumnMonthYearPicker
+                                            selected={endDate}
+                                            // onChange={(date) =>
+                                            //   setEndDate(date)
+                                            // }
+                                            onSelect={onChangeDate2}
+                                            placeholderText="mm/yy"
+                                            inputRef={register}
+                                            className="month"
                                           />
-                                        </MuiThemeProvider>
-                                      </Col>
-                                    </Row>
-                                  </Panel>
-                                </Collapse>
-                              </div>
-                            </div>
-                            <div>
-                              <DeleteOutlineOutlinedIcon
-                                onClick={handleShow}
-                                className="pencilIcon-div mt-4"
-                              />
-                            </div>
-                            <Modal
-                              // title="Vertically centered modal dialog"
-                              centered
-                              visible={show}
-                              onOk={() => handleDelete(item)}
-                              onCancel={handleClose}
-                            >
-                              <h4>Delete Entry</h4>
-                              <h6>Are you sure you want to delete entry?</h6>
-                            </Modal>
-                          </div>
-                        </>
+                                        </Col>
+                                      </Row>
+                                    </Col>
 
-                        {/* {addEdu.length === 2 && (
+                                    <Col span={2}></Col>
+                                    <Col span={11}>
+                                      <span className={classes.title}>
+                                        city
+                                      </span>
+                                      <TextField
+                                        id="filled-basic"
+                                        name="city"
+                                        variant="filled"
+                                        defaultValue={content.education.city}
+                                        inputRef={register}
+                                        onChange={handleSubmit(onSubmit)}
+                                        style={{ width: "100%" }}
+                                      />
+                                    </Col>
+                                  </Row>
+                                  <Row className={classes.rowWidth}>
+                                    <Col span={24}>
+                                      <span
+                                        className={classes.title}
+                                        style={{ marginLeft: "10px" }}
+                                      >
+                                        Description
+                                      </span>
+                                      <MuiThemeProvider theme={defaultTheme}>
+                                        <MUIRichTextEditor
+                                          label="Enter description"
+                                          // onSave={save}
+                                          inlineToolbar={true}
+                                          name="education_description"
+                                          // inputRef={register}
+                                          // readOnly={false}
+                                          // onChange={handleSubmit(onSubmit2)}
+                                          // onChange={handleSubmit(onSubmit)}
+                                          onChange={(e) =>
+                                            onSubmit({
+                                              ...content.education,
+                                              education_description: e
+                                                .getCurrentContent()
+                                                .getPlainText(),
+                                            })
+                                          }
+                                          // onChange={save}
+                                          // defaultValue={content.education.education_description}
+                                          controls={[
+                                            "bold",
+                                            "italic",
+                                            "underline",
+                                            "strikethrough",
+                                            "numberList",
+                                            "bulletList",
+                                            "spellcheck",
+                                          ]}
+                                        />
+                                      </MuiThemeProvider>
+                                    </Col>
+                                  </Row>
+                                </Panel>
+                              </Collapse>
+                            </div>
+                          </div>
+                          <div>
+                            <DeleteOutlineOutlinedIcon
+                              onClick={handleShow}
+                              className="pencilIcon-div mt-4"
+                            />
+                          </div>
+                          <Modal
+                            // title="Vertically centered modal dialog"
+                            centered
+                            visible={show}
+                            onOk={() => handleDelete(item)}
+                            onCancel={handleClose}
+                          >
+                            <h4>Delete Entry</h4>
+                            <h6>Are you sure you want to delete entry?</h6>
+                          </Modal>
+                        </div>
+                      </>
+
+                      {/* {addEdu.length === 2 && (
 
                       <div
 
@@ -504,9 +543,9 @@ function EducationNew() {
                       </div>
 
                     )} */}
-                      </div>
                     </div>
-                  ))
+                  </div>
+                ))
                 : ""}
 
               {provided.placeholder}
