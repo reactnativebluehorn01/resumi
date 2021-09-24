@@ -49,6 +49,9 @@ function Courses() {
   function callback(key) {
     console.log(key);
   }
+  const { content, updateCoursesData, removeFakeData, updateAddSection } =
+    useContext(ResumeContext);
+
   useEffect(() => {
     const dataLocal = JSON.parse(localStorage.getItem("dataLocal"));
     dataLocal && Object.keys(dataLocal.courses).length > 0 && addCourses();
@@ -59,6 +62,21 @@ function Courses() {
   const addCourses = () => {
     setEdu([...addEdu, " "]);
   };
+
+  // const [coursesFlag, setCoursesFlag] = useState(
+  //   content.addSection.courses ? content.addSection.courses : false
+  // );
+
+  const handleShow2 = () => {
+    //  setCoursesFlag(!coursesFlag);
+    // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
+
+    removeFakeData();
+    updateAddSection({ ...content.addSection, courses: false });
+  };
+
+
+
   const defaultTheme = createMuiTheme();
 
   Object.assign(defaultTheme, {
@@ -80,8 +98,7 @@ function Courses() {
       },
     },
   });
-  const { content, updateCoursesData, removeFakeData } =
-    useContext(ResumeContext);
+
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
     <div className="">
@@ -124,6 +141,10 @@ function Courses() {
           </div>
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
+            <DeleteOutlineOutlinedIcon
+              onClick={handleShow2}
+              className="pencilIcon-div mt-4"
+            />
           </div>
         </div>
         {/* <p  style={{marginTop: -15,fontSize: 14,color: '#98A1B3',}}>Include your 10 years of relevant experience and date in this section. List Your most recent position here.</p> */}
