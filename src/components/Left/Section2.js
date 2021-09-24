@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 //import { Collapse } from "antd";
 //import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 //import MUIRichTextEditor from "mui-rte";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+//import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 //import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 // import BallotIcon from "@material-ui/icons/Ballot";
 import CustomSection from "./CustomSection";
@@ -20,7 +20,7 @@ import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 //import classes from "./Left.module.css";
 //import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
-import { TramRounded } from "@material-ui/icons";
+//import { TramRounded } from "@material-ui/icons";
 //import TextField from "@material-ui/core/TextField";
 //import { createMuiTheme } from "@material-ui/core/styles"; //MuiThemeProvider
 

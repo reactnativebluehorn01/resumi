@@ -64,6 +64,43 @@ function Courses() {
   // const save = (data) => {
   //   console.log(data);
   // };
+  const onChangeDate = (date1) => {
+    setStartDate(date1);
+    let str = JSON.parse(JSON.stringify(date1));
+    let dd = str.substring(0, 7) // 2021-03
+    let month = parseInt(dd.substring(5, 7)) + 1;
+    let year = dd.substring(0, 4);
+    if (month < 10) {
+      month = '0' + month;
+    }
+    let date = year + '-' + month;
+
+    removeFakeData();
+    updateCoursesData({
+      ...content.courses,
+      startDate: date
+    });
+
+  }
+  const onChangeDate2 = (date2) => {
+    setEndDate(date2);
+    let str = JSON.parse(JSON.stringify(date2));
+    let dd = str.substring(0, 7) // 2021-03
+    let month = parseInt(dd.substring(5, 7)) + 1;
+    let year = dd.substring(0, 4);
+    if (month < 10) {
+      month = '0' + month;
+    }
+    let date = year + '-' + month;
+
+    // console.log(year, ' : ', month)
+    removeFakeData();
+    updateCoursesData({
+      ...content.courses,
+      endDate: date
+    });
+  }
+
   const addCourses = () => {
     setEdu([...addEdu, " "]);
   };
@@ -235,10 +272,11 @@ function Courses() {
                             showMonthYearPicker
                             showFourColumnMonthYearPicker
                             selected={startDate}
-                            onChange={(date) => setStartDate(date)}
+                            onChange={(date) => onChangeDate(date)}
                             placeholderText="mm/yy"
                             inputRef={register}
                             className="month"
+
                           />
                         </Col>
 
@@ -250,7 +288,8 @@ function Courses() {
                             showMonthYearPicker
                             showFourColumnMonthYearPicker
                             selected={endDate}
-                            onChange={(date) => setEndDate(date)}
+                            //  onChange={onChangeDate2}
+                            onSelect={onChangeDate2}
                             placeholderText="mm/yy"
                             inputRef={register}
                             className="month"
