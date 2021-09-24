@@ -181,7 +181,7 @@ width: 50vw;
 /* / min-height: 100vh; / */
 font-family: "Lora", serif;
 background: #7A8599;
-height: 100vh !important;
+height: 878px !important;
 position: sticky;
 }
 
@@ -248,11 +248,11 @@ cursor: pointer;
 background: white;
 display: block;
 margin: 0 auto;
-margin-top: 50px;
+margin-top: 5rem !important;
 margin-bottom: 0.5cm;
 overflow-y: auto;
 margin: 2.5rem 6rem 0rem 6rem;
-height: 500px;
+height: 700px;
 border-radius: 6px;
 }
 .right .page::-webkit-scrollbar{
