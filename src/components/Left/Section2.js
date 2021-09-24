@@ -40,7 +40,7 @@ import { TramRounded } from "@material-ui/icons";
 // });
 
 function EducationNew() {
-  const [contextArray, setContextArray] = useState([]);
+  //  const [contextArray, setContextArray] = useState([]);
   // const btnclass = useStyles();
   const { content, updateAddSection, removeFakeData } =
     useContext(ResumeContext);
@@ -50,7 +50,7 @@ function EducationNew() {
   ); //https://resume.io/packs/media/resume-editor/section-activities-gray-7e85425b.svg
   const onChangeActivitiesFlag = () => {
     setActivitiesFlag(!activitiesFlag);
-    onSubmit2({ ...content.addSection, activities: !activitiesFlag });
+    onSubmit2({ ...content.addSection, activities: false });//!activitiesFlag
   };
 
   const [internshipFlag, setInternshipFlag] = useState(
@@ -59,7 +59,7 @@ function EducationNew() {
 
   const onChangeInternshipFlag = () => {
     setInternshipFlag(!internshipFlag);
-    onSubmit2({ ...content.addSection, internship: !internshipFlag });
+    onSubmit2({ ...content.addSection, internship: true });//!internshipFlag
   };
 
   const [languagesFlag, setLanguagesFlag] = useState(
