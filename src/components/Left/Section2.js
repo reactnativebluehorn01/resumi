@@ -71,15 +71,15 @@ function EducationNew() {
   };
   const [coursesFlag, setCoursesFlag] = useState(
     content.addSection.courses ? content.addSection.courses : false
-  ); //https://resume.io/packs/media/resume-editor/section-activities-gray-7e85425b.svg
+  );
 
   const onChangeCoursesFlag = () => {
     setCoursesFlag(!coursesFlag);
-    onSubmit2({ ...content.addSection, courses: !coursesFlag });
-  }; //refrences
+    onSubmit2({ ...content.addSection, courses: true }); // !coursesFlag
+  };
   const [refrencesFlag, setRefrencesFlag] = useState(
     content.addSection.refrences ? content.addSection.refrences : false
-  ); //https://resume.io/packs/media/resume-editor/section-activities-gray-7e85425b.svg
+  );
 
   const onChangeRefrencesFlag = () => {
     setRefrencesFlag(!refrencesFlag);
