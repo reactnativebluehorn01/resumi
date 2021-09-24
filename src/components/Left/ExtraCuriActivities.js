@@ -40,7 +40,7 @@ function ExtraCuriActivities() {
   const handleShow = () => setShow(true);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
+  const [showAlert, setshowAlert] = useState(false);
   const btnclass = useStyles();
   const [addActivity, setEdu] = useState([]);
   function callback(key) {
@@ -80,7 +80,7 @@ function ExtraCuriActivities() {
       },
     },
   });
-  const { content, updateExtraCurricularActivity, removeFakeData } =
+  const { content, updateExtraCurricularActivity, removeFakeData, updateAddSection } =
     useContext(ResumeContext);
   // const [btnText, setBtnText] = useState("Add");
   const panelHeader = (
@@ -117,6 +117,19 @@ function ExtraCuriActivities() {
     setEdu(newEdu);
     handleClose();
   };
+  const handleDelete2 = () => {
+    console.log('alert courses');
+    setshowAlert(!showAlert);
+  }
+  const handleDelete3 = () => {
+    //  setCoursesFlag(!coursesFlag);
+    // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
+
+    removeFakeData();
+    updateAddSection({ ...content.addSection, courses: false });
+    handleDelete2();
+
+  };
   return (
     <div>
       <div className="heading">
@@ -127,6 +140,20 @@ function ExtraCuriActivities() {
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
           </div>
+          <DeleteOutlineOutlinedIcon
+            onClick={handleDelete2}
+            className="pencilIcon-div mt-4"
+          />
+          <Modal
+            // title="Vertically centered modal dialog"
+            centered
+            visible={showAlert}
+            onOk={handleDelete3}
+            onCancel={() => setshowAlert(false)}
+          >
+            <h4>Delete Courses!</h4>
+            <h6>Are you sure you want to delete this record ?</h6>
+          </Modal>
         </div>
       </div>
       {addActivity.map((item, index) => (
@@ -197,7 +224,7 @@ function ExtraCuriActivities() {
                           onChange={handleSubmit(onSubmit)}
                           style={{ width: "100%" }}
                         /> */}
-                         <DatePicker
+                        <DatePicker
                           dateFormat="MM/yyyy"
                           showMonthYearPicker
                           showFourColumnMonthYearPicker
@@ -219,7 +246,7 @@ function ExtraCuriActivities() {
                           onChange={handleSubmit(onSubmit)}
                           style={{ width: "100%" }}
                         />{" "} */}
-                         <DatePicker
+                        <DatePicker
                           dateFormat="MM/yyyy"
                           showMonthYearPicker
                           showFourColumnMonthYearPicker
