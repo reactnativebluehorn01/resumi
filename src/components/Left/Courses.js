@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Collapse, Col, Row, Space } from "antd";
+import { Collapse, Col, Row, Space, Modal } from "antd";
+
 //import MUIRichTextEditor from "mui-rte";
 import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 
@@ -12,7 +13,7 @@ import classes from "./Left.module.css";
 import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
 import TextField from "@material-ui/core/TextField";
-import { Modal } from "antd";
+
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -47,7 +48,7 @@ function Courses() {
   const handleShow = () => setShow(true);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
-
+  const [showAlert, setshowAlert] = useState(false);
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   function callback(key) {
@@ -71,15 +72,22 @@ function Courses() {
   //   content.addSection.courses ? content.addSection.courses : false
   // );
 
-  const handleShow2 = () => {
+
+
+
+  const handleDelete2 = () => {
+    console.log('alert courses');
+    setshowAlert(!showAlert);
+  }
+  const handleDelete3 = () => {
     //  setCoursesFlag(!coursesFlag);
     // onSubmit2({ ...content.addSection, courses: false }); // !coursesFlag
 
     removeFakeData();
     updateAddSection({ ...content.addSection, courses: false });
+    handleDelete2();
+
   };
-
-
 
   const defaultTheme = createMuiTheme();
 
@@ -146,9 +154,19 @@ function Courses() {
           <div className="mx-1">
             <CreateOutlinedIcon className="pencilIcon-div" />
             <DeleteOutlineOutlinedIcon
-              onClick={handleShow2}
+              onClick={handleDelete2}
               className="pencilIcon-div mt-4"
             />
+            <Modal
+              // title="Vertically centered modal dialog"
+              centered
+              visible={showAlert}
+              onOk={handleDelete3}
+              onCancel={() => setshowAlert(false)}
+            >
+              <h4>Delete Courses!</h4>
+              <h6>Are you sure you want to delete this record ?</h6>
+            </Modal>
           </div>
         </div>
         {/* <p  style={{marginTop: -15,fontSize: 14,color: '#98A1B3',}}>Include your 10 years of relevant experience and date in this section. List Your most recent position here.</p> */}

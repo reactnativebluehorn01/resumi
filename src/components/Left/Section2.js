@@ -20,6 +20,7 @@ import DragIndicatorIcon from "@material-ui/icons/DragIndicator";
 //import classes from "./Left.module.css";
 //import { useForm } from "react-hook-form";
 import { ResumeContext } from "../../contexts/ResumeContext";
+import { TramRounded } from "@material-ui/icons";
 //import TextField from "@material-ui/core/TextField";
 //import { createMuiTheme } from "@material-ui/core/styles"; //MuiThemeProvider
 
@@ -67,7 +68,7 @@ function EducationNew() {
 
   const onChangeLanguagesFlag = () => {
     setLanguagesFlag(!languagesFlag);
-    onSubmit2({ ...content.addSection, languages: !languagesFlag });
+    onSubmit2({ ...content.addSection, languages: true });//!languagesFlag
   };
   const [coursesFlag, setCoursesFlag] = useState(
     content.addSection.courses ? content.addSection.courses : false
@@ -91,7 +92,7 @@ function EducationNew() {
 
   const onChangeHobbiesFlag = () => {
     setHobbiesFlag(!hobbiesFlag);
-    onSubmit2({ ...content.addSection, hobbies: !hobbiesFlag });
+    onSubmit2({ ...content.addSection, hobbies: true }); //!hobbiesFlag 
   }; //hobbies
 
   const [customSectionCount, setCustomSectionCount] = useState(
