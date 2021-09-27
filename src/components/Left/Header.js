@@ -785,7 +785,7 @@ function Header() {
           Update
         </Button> */}
       </form>
-      <div >
+      <div className="d-xl-none d-block">
       
           <ResumiP/>
          

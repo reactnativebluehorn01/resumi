@@ -6,12 +6,23 @@ padding: 0;
 background: #F2F3F4;
 width: 98vw;
 }
+.month2{
+    border: none;
+    background-color: #F2F5FA;
+    padding: 16px 0px;
+    outline: none;
+    
+}
+.month2:focus{
+    border-bottom: solid 2px rgb(34, 34, 165);
+}
+
 .month{
     border: none;
-    background-color: #f0f2f3;
-    padding: 14px;
+    background-color: #F2F5FA;
+    padding: 16px 0px;
     outline: none;
-}
+}  
 .month:focus{
     border-bottom: solid 2px rgb(34, 34, 165);
 }
