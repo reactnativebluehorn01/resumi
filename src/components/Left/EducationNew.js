@@ -47,7 +47,7 @@ function EducationNew() {
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   const [characters, updateCharacters] = useState(addEdu);
-  const { content, updateEducationData, removeFakeData,updateCoursesData } =
+  const { content, updateEducationData, removeFakeData } =
     useContext(ResumeContext);
   const { register, handleSubmit } = useForm();
   const defaultTheme = createTheme();
@@ -137,7 +137,7 @@ function EducationNew() {
     let date = year + '-' + month;
 
     removeFakeData();
-    updateCoursesData({
+    updateEducationData({
       ...content.education,
       startDate: date
     });
@@ -156,7 +156,7 @@ function EducationNew() {
 
     // console.log(year, ' : ', month)
     removeFakeData();
-    updateCoursesData({
+    updateEducationData({
       ...content.education,
       endDate: date
     });
