@@ -47,7 +47,7 @@ function EducationNew() {
   const btnclass = useStyles();
   const [addEdu, setEdu] = useState([]);
   const [characters, updateCharacters] = useState(addEdu);
-  const { content, updateEducationData, removeFakeData } =
+  const { content, updateEducationData, removeFakeData,updateCoursesData } =
     useContext(ResumeContext);
   const { register, handleSubmit } = useForm();
   const defaultTheme = createTheme();
