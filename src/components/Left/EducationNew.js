@@ -209,7 +209,7 @@ function EducationNew() {
                       <>
                         <div className="d-flex Main-title">
                           <div>
-                            <DragIndicatorIcon className="pencilIcon-div mt-4" />
+                            <DragIndicatorIcon className="pencilIcon-div mt-3" />
                           </div>
                           <div className="w-100">
                             <div
@@ -389,7 +389,7 @@ function EducationNew() {
                           <div>
                             <DeleteOutlineOutlinedIcon
                               onClick={handleShow}
-                              className="pencilIcon-div mt-4"
+                              className="pencilIcon-div mt-3"
                             />
                           </div>
                           <Modal
